@@ -18,7 +18,7 @@ export default class project extends Component {
       super(props, context)
       this.state = {
         days: 0,
-        volume2: 0,
+        infusion: 0,
       }
     }
 
@@ -27,19 +27,48 @@ export default class project extends Component {
         days: value
       })
     }
+    handleOnChangeInfusion = (value) => {
+      this.setState({
+        infusion: value
+      })
+    }
   render() {
     return (
       <View style={styles.container}>
-        <Text>
-          DAYS PER INFUSION CYCLE
-        </Text>
-        <Slider
-          value={this.state.volume1}
-          minimumValue = {0}
-          maximumValue = {31}
-          onValueChange={(value)=> this.handleOnChangeDays(value)}/>
-        <Text>DAYS: {this.state.days}</Text>
+        <View style={{
+          borderBottomColor: 'black',
+          borderBottomWidth: 2,
+          marginBottom: 5,
+        }}>
+          <Text>
+            DAYS PER INFUSION CYCLE
+          </Text>
+          <Slider
+            value={this.state.days}
+            minimumValue = {0}
+            maximumValue = {31}
+            onValueChange={(value)=> this.handleOnChangeDays(value)}/>
+          <Text>DAYS: {this.state.days}</Text>
+        </View>
+        <View style={{
+          borderBottomColor: 'black',
+          borderBottomWidth: 2,
+          marginBottom: 5,
+        }}>
+          <Text>
+            NUMBER OF INFUSION          
+          </Text>
+          <Slider
+            value={this.state.infusion}
+            minimumValue = {0}
+            maximumValue = {31}
+            onValueChange={(value)=> this.handleOnChangeInfusion(value)}/>
+          <Text>Infusion: {this.state.infusion}</Text>
+        </View>
+        <View>
+        </View>
       </View>
+
     );
   }
 }
@@ -51,6 +80,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
     alignItems: 'stretch',
     justifyContent: 'center',
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
   },
   container1: {
     flex: 1,
