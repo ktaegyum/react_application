@@ -13,37 +13,33 @@ import {
   Slider
 } from 'react-native';
 
-
 export default class project extends Component {
     constructor(props, context) {
       super(props, context)
       this.state = {
-        volume: 0,
-
+        days: 0,
+        volume2: 0,
       }
     }
 
-    handleOnChange = (value) => {
+    handleOnChangeDays = (value) => {
       this.setState({
-        volume: value
+        days: value
       })
     }
   render() {
-    let { volume } = this.state
     return (
       <View style={styles.container}>
         <Text>
           DAYS PER INFUSION CYCLE
         </Text>
         <Slider
-          value={this.state.value}
+          value={this.state.volume1}
           minimumValue = {0}
           maximumValue = {31}
-          onValueChange={(value)=> this.setState({value})}/>
-        <Text>Value: {this.state.value}</Text>
+          onValueChange={(value)=> this.handleOnChangeDays(value)}/>
+        <Text>DAYS: {this.state.days}</Text>
       </View>
-      
-     
     );
   }
 }
