@@ -3,7 +3,6 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -11,11 +10,28 @@ import {
   Text,
   View,
   Slider,
-  Button
+  Button,
+  Alert
 } from 'react-native';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
+import { StackNavigator } from 'react-navigation';
 
 export default class project extends Component {
+  constructor(props, context) {
+    super(props, context)
+  }
+  render() {
+      return (
+        <View>
+
+        </View>
+
+
+      );
+  }
+}
+
+class calendar extends Component {
     constructor(props, context) {
       super(props, context)
       this.state = {
@@ -33,6 +49,9 @@ export default class project extends Component {
       this.setState({
         infusion: value
       })
+    }
+    _onPressButton() {
+    Alert.alert('You tapped the button!')
     }
   render() {
     return (
@@ -76,7 +95,9 @@ export default class project extends Component {
         </View>
         <View>
           <Button
-            title = "SAVE" />
+            onPress={this._onPressButton}
+            title="Next"
+            color="#841584" />
         </View>
       </View>
 

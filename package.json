@@ -11,7 +11,9 @@
 		"react-native": "^0.45.1",
 		"react-native-calendar": "^0.12.2",
 		"react-native-calendars": "^1.4.0",
+		"react-native-deprecated-custom-components": "^0.1.0",
 		"react-native-multi-slider": "^0.3.5",
+		"react-navigation": "^1.0.0-beta.11",
 		"react-rangeslider": "^2.1.0"
 	},
 	"devDependencies": {
