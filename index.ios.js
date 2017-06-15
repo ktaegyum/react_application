@@ -10,8 +10,10 @@ import {
   StyleSheet,
   Text,
   View,
-  Slider
+  Slider,
+  Button
 } from 'react-native';
+import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 
 export default class project extends Component {
     constructor(props, context) {
@@ -24,7 +26,7 @@ export default class project extends Component {
 
     handleOnChangeDays = (value) => {
       this.setState({
-        days: value
+        days: value,
       })
     }
     handleOnChangeInfusion = (value) => {
@@ -39,33 +41,42 @@ export default class project extends Component {
           borderBottomColor: 'black',
           borderBottomWidth: 2,
           marginBottom: 5,
+
         }}>
-          <Text>
-            DAYS PER INFUSION CYCLE
-          </Text>
+          <Text> DAYS PER INFUSION CYCLE </Text>
           <Slider
             value={this.state.days}
             minimumValue = {0}
             maximumValue = {31}
+            step = {1}
             onValueChange={(value)=> this.handleOnChangeDays(value)}/>
-          <Text>DAYS: {this.state.days}</Text>
+          <Text>DAYS: {this.state.days} </Text>
         </View>
         <View style={{
           borderBottomColor: 'black',
           borderBottomWidth: 2,
           marginBottom: 5,
         }}>
-          <Text>
-            NUMBER OF INFUSION          
-          </Text>
+          <Text> NUMBER OF INFUSION </Text>
           <Slider
             value={this.state.infusion}
             minimumValue = {0}
             maximumValue = {31}
+            step = {1}
             onValueChange={(value)=> this.handleOnChangeInfusion(value)}/>
-          <Text>Infusion: {this.state.infusion}</Text>
+          <Text>Infusion: {this.state.infusion} </Text>
+        </View>
+
+        <View style = {{
+          height: 350, 
+          borderBottomColor: 'black',
+          borderBottomWidth: 2
+        }}>
+            <Calendar/>
         </View>
         <View>
+          <Button
+            title = "SAVE" />
         </View>
       </View>
 
@@ -76,20 +87,14 @@ export default class project extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 40,
     marginLeft: 10,
     marginRight: 10,
     alignItems: 'stretch',
-    justifyContent: 'center',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
   },
   container1: {
-    flex: 1,
-    marginLeft: 10,
-    marginRight: 10,
-    alignItems: 'stretch',
-    justifyContent: 'center',
-  },
+    height: 40
+  }
 });
 
 AppRegistry.registerComponent('project', () => project);
