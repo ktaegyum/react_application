@@ -14,29 +14,25 @@ import styles from './Style';
 import SignUp from './SignUp';
 
 export default class RegimenInfomation extends Component {
-    constructor(props, context) {
+  constructor(props, context) {
       super(props, context)
-      this.state = {
-        days: 0,
-        infusion: 0,
-      }
     }
   static navigationOptions = {
     title: 'Regimen Infomation',
   };
-    handleOnChangeDays = (value) => {
-      this.setState({
-        days: value,
-      })
-    }
-    handleOnChangeInfusion = (value) => {
-      this.setState({
+  handleOnChangeDays = (value) => {
+    this.setState({
+       days: value,
+    })
+  }
+  handleOnChangeInfusion = (value) => {
+    this.setState({
         infusion: value
-      })
-    }
-    _onPressButton() {
+    })
+  }
+  _onPressButton() {
     Alert.alert('You tapped the button!')
-    }
+  }
   render() {
     return (
       <View style={styles.container}>
