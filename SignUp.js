@@ -1,8 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -16,28 +11,20 @@ import {
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import { StackNavigator } from 'react-navigation';
 import styles from './Style';
-import SignUp from './SignUp'
 import RegimenInfomation from './RegimenInfomation'
 
-export default class project extends Component {
+export default class SignUp extends Component {
   constructor(props, context) {
     super(props, context)
   }
   static navigationOptions = {
-    title: 'Welcome',
+    title: 'Sign Up',
   };
 render() {
     return (
       <Button
-        onPress={() => this.props.navigation.navigate('SignUp')}
-        title="Sign Up"/>
+        onPress={() => this.props.navigation.navigate('RegimenInfomation')}
+        title="DONE"/>
     );
   }
 }
-
-const App = StackNavigator({
-  Home: { screen: project },
-  SignUp: { screen: SignUp },
-  RegimenInfomation: { screen: RegimenInfomation },
-});
-AppRegistry.registerComponent('project', () => App);
