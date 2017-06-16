@@ -20,17 +20,34 @@ export default class project extends Component {
   constructor(props, context) {
     super(props, context)
   }
-  render() {
-      return (
-        <View>
-
-        </View>
-
-
-      );
+  static navigationOptions = {
+    title: 'Welcome',
+  };
+render() {
+    return (
+      <Button
+        onPress={() => this.props.navigation.navigate('SignUp')}
+        title="Sign Up"/>
+    );
   }
 }
 
+
+class SignUp extends Component {
+  constructor(props, context) {
+    super(props, context)
+  }
+  static navigationOptions = {
+    title: 'Sign Up',
+  };
+render() {
+    return (
+      <Button
+        onPress={() => this.props.navigation.navigate('Calendar')}
+        title="DONE"/>
+    );
+  }
+}
 class calendar extends Component {
     constructor(props, context) {
       super(props, context)
@@ -39,7 +56,9 @@ class calendar extends Component {
         infusion: 0,
       }
     }
-
+  static navigationOptions = {
+    title: 'Calender',
+  };
     handleOnChangeDays = (value) => {
       this.setState({
         days: value,
@@ -108,7 +127,7 @@ class calendar extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 40,
+    marginTop: 10,
     marginLeft: 10,
     marginRight: 10,
     alignItems: 'stretch',
@@ -117,5 +136,9 @@ const styles = StyleSheet.create({
     height: 40
   }
 });
-
-AppRegistry.registerComponent('project', () => project);
+const App = StackNavigator({
+  Home: { screen: project },
+  SignUp: { screen: SignUp },
+  Calendar: { screen: calendar },
+});
+AppRegistry.registerComponent('project', () => App);
