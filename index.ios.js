@@ -16,9 +16,9 @@ import {
 } from 'react-native';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import { StackNavigator } from 'react-navigation';
-import styles from './Style';
-import SignUp from './SignUp'
-import RegimenInfomation from './RegimenInfomation'
+import styles from './class/Style';
+import SignUp from './class/SignUp'
+import RegimenInfomation from './class/RegimenInfomation'
 
 export default class project extends Component {
   constructor(props, context) {
@@ -39,7 +39,7 @@ export default class project extends Component {
             onPress = {() => this.props.navigation.navigate('SignUp')}
             title = "Sign Up"/>
           <Button
-            onPress = {() => this.props.navagation.navigate('SignUp')}
+            onPress = {() => this.props.navigation.navigate('RegimenInfomation')}
             title = "Log In W/ CancerBase"/>
         </View>
       );

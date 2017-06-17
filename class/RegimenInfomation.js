@@ -15,8 +15,12 @@ import SignUp from './SignUp';
 
 export default class RegimenInfomation extends Component {
   constructor(props, context) {
-      super(props, context)
-    }
+    super(props, context)
+    this.state = {
+       days: 0,
+       infusion: 0,
+    } 
+  }
   static navigationOptions = {
     title: 'Regimen Infomation',
   };
