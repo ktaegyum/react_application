@@ -17,8 +17,12 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     alignItems: 'stretch',
+    backgroundColor: '#ffffff'
   },
-  container1: {
-    height: 40
+  intro: {
+            flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
   }
 });

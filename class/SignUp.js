@@ -23,7 +23,7 @@ constructor(props, context) {
     }
 }
 static navigationOptions = {
-    title: 'Sign Up',
+    title: 'Sign Uㄸp',
 };
 setEmail = (user_email) => {
 	this.setState ({
@@ -48,7 +48,8 @@ render() {
       	<TextInput
       		style = {{height: 40, padding: 10}}
       		placeholder =  "password"
-      		onChangeText = {(value) => this.setPassword(value)}/>
+      		onChangeText = {(value) => this.setPassword(value)}
+          secureTextEntry = {true}/>
 	    <Button
 	        onPress={() => this.props.navigation.navigate('RegimenInfomation')}
 	        title="DONE"/>

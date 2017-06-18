@@ -77,7 +77,7 @@ export default class RegimenInfomation extends Component {
         }}>
             <Calendar/>
         </View>
-        <View>
+        <View style={{backgroundColor: 'antiquewhite', flex: 0.3}}>
           <Button
             onPress={this._onPressButton}
             title="Next"
