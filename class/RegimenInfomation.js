@@ -39,7 +39,10 @@ export default class RegimenInfomation extends Component {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <View style = {{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between'}}>
         <View style={{
           borderBottomColor: 'black',
           borderBottomWidth: 2,
@@ -75,13 +78,13 @@ export default class RegimenInfomation extends Component {
           borderBottomColor: 'black',
           borderBottomWidth: 2
         }}>
-            <Calendar/>
+        <Calendar/>
         </View>
-        <View style={{backgroundColor: 'antiquewhite', flex: 0.3}}>
-          <Button
-            onPress={this._onPressButton}
-            title="Next"
-            color="#841584" />
+          <View style={{backgroundColor: 'antiquewhite'}}>
+            <Button
+              onPress={this._onPressButton}
+              title="Next"
+              color="#841584" />
         </View>
       </View>
 

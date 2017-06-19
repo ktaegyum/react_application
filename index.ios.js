@@ -3,6 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
+console.ignoredYellowBox = ['Remote debugger'];
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -43,13 +44,14 @@ export default class project extends Component {
       clearInterval(this.state.interval);
   }
   render() {
-      /*temp pic setting. it should be change later*/
-      let pic = {
-         uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
-      };
       return (
-        <View>
-          <View>
+        <View style = {{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'space-between'}}>
+          <View style ={{
+            marginBottom: 20
+          }}>
             <ImageSlider images = {[
               require('./images/brian.jpg'),
               require('./images/Taegyum.jpg'),
@@ -58,12 +60,27 @@ export default class project extends Component {
               position={this.state.position}
               onPositionChanged={position => this.setState({position})}/>
           </View>
-          <Button
-            onPress = {() => this.props.navigation.navigate('SignUp')}
-            title = "Sign Up"/>
-          <Button
-            onPress = {() => this.props.navigation.navigate('Condition')}
-            title = "Log In W/ CancerBase"/>
+          
+          <View style = {{
+            alignItems: 'center'
+          }}>
+            <Text> 
+              Adding introduction about this application
+              It can be multiple lines 
+            </Text>
+          </View>
+          
+          <View>
+
+          </View>
+            <View style={{backgroundColor: 'antiquewhite'}}>
+            <Button
+              onPress = {() => this.props.navigation.navigate('SignUp')}
+              title = "Sign Up"/>
+            <Button
+              onPress = {() => this.props.navigation.navigate('Condition')}
+              title = "Log In W/ CancerBase"/>
+          </View>
         </View>
       );
   };

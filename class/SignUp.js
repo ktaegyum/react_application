@@ -15,44 +15,62 @@ import styles from './Style';
 import RegimenInfomation from './RegimenInfomation'
 
 export default class SignUp extends Component {
-constructor(props, context) {
+  constructor(props, context) {
     super(props, context)
     this.state = {
-       email: 0,
-       password: 0,
+      email: 0,
+      password: 0,
+      information: null
     }
-}
-static navigationOptions = {
-    title: 'Sign Uㄸp',
-};
-setEmail = (user_email) => {
-	this.setState ({
-		email: user_email
-	})
-}
-setPassword = (user_password) => {
-	this.setState({
-		password: user_password
-	})
-}
-render() {
+  }
+  static navigationOptions = {
+      title: 'Sign Up',
+  };
+  setEmail = (user_email) => {
+  	this.setState ({
+  		email: user_email
+  	})
+  }
+  setPassword = (user_password) => {
+  	this.setState({
+  		password: user_password
+  	})
+  }
+  setInformation = (user_information) => {
+    this.setState({
+      information: user_information
+    })
+  }
+  render() {
     return (
-      <View style={styles.container}>
-      	<Text> SignUp </Text>
-      	<Text> Email </Text>
-      	<TextInput
-      		style = {{height: 40, padding: 10}}
-      		placeholder =  "account@example.com"
-      		onChangeText = {(value) => this.setEmail(value)}/>
-      	<Text> Password </Text>
-      	<TextInput
-      		style = {{height: 40, padding: 10}}
-      		placeholder =  "password"
-      		onChangeText = {(value) => this.setPassword(value)}
-          secureTextEntry = {true}/>
-	    <Button
-	        onPress={() => this.props.navigation.navigate('RegimenInfomation')}
-	        title="DONE"/>
+        <View style = {{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'space-between'}}>
+        <View>
+        	<Text> Email </Text>
+        	<TextInput
+        		style = {{height: 40, padding: 10}}
+        		placeholder =  "account@example.com"
+        		onChangeText = {(value) => this.setEmail(value)}/>
+        	<Text> Password </Text>
+        	<TextInput
+        		style = {{height: 40, padding: 10}}
+        		placeholder =  "password"
+        		onChangeText = {(value) => this.setPassword(value)}
+            secureTextEntry = {true}/>
+          <Text>Additional Information</Text>
+          <TextInput
+            style = {{height: 300, padding: 10}}
+            placeholder = "Add additional information"
+            onChangeText = {(value) => this.setInformation(value)}
+            multiline = {true}/>
+        </View> 
+	       <View>
+          <Button
+            onPress={() => this.props.navigation.navigate('RegimenInfomation')}
+            title="DONE"/>
+         </View>
       </View>
     );
   }
