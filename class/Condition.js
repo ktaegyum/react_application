@@ -39,7 +39,12 @@ setCondition = (user_condition) => {
 }
 render() {
     return (
-      <ScrollView style = {styles.container}>
+      <View style = {{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between'}}>
+        
+        <ScrollView style = {styles.container}>
       	<Text> EULA & TERMS </Text>
       	<TextInput
       		style = {{height: 200, padding: 10}}
@@ -53,13 +58,16 @@ render() {
           multiline={true}
       		placeholder =  "Write your detail condition"
       		onChangeText = {(value) => this.setCondition(value)}/>
-        <View style={{backgroundColor: 'antiquewhite', flex: 0.3}}>
-    	    <Button
-    	        onPress={() => this.props.navigation.navigate('RegimenInfomation')}
-    	        title="DONE"
+
+        </ScrollView>
+        <View style={{backgroundColor: 'antiquewhite'}}>
+          <Button
+              onPress={() => this.props.navigation.navigate('RegimenInfomation')}
+              title="DONE"
               color="#841584"/>
         </View>
-      </ScrollView>
+      </View>
+
     );
   }
 }

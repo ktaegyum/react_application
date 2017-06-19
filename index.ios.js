@@ -3,6 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
+ /*To get rid of */
 console.ignoredYellowBox = ['Remote debugger'];
 import React, { Component } from 'react';
 import {

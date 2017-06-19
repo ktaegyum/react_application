@@ -5,8 +5,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'stretch',
+    justifyContent: 'space-between'
   },
   intro: {
     flex: 1,

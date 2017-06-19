@@ -19,7 +19,9 @@ export default class RegimenInfomation extends Component {
     this.state = {
        days: 0,
        infusion: 0,
-    } 
+    }
+    this.onDayPress = this.onDayPress.bind(this);
+
   }
   static navigationOptions = {
     title: 'Regimen Infomation',
@@ -35,7 +37,13 @@ export default class RegimenInfomation extends Component {
     })
   }
   _onPressButton() {
-    Alert.alert('You tapped the button!')
+    Alert.alert("hey")
+  }
+
+  onDayPress(day) {
+    this.setState({
+      selected: day.dateString
+    });
   }
   render() {
     return (
@@ -78,7 +86,12 @@ export default class RegimenInfomation extends Component {
           borderBottomColor: 'black',
           borderBottomWidth: 2
         }}>
-        <Calendar/>
+        
+        <Calendar
+          onDayPress={this.onDayPress}
+          scrollEnabled={true}  />
+        <Text>Selected Date: {this.state.selected} </Text>  
+        
         </View>
           <View style={{backgroundColor: 'antiquewhite'}}>
             <Button
