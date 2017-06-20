@@ -44,10 +44,10 @@ export default class SideEffect extends Component {
 	          				radio_props = {radio_props}
 	          				initial = {0}
 	          				style = {{flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-    	}}
+						        flexDirection: 'row',
+						        justifyContent: 'space-between',
+						        alignItems: 'center'
+						    	}}
 	          				labelStyle = {{color: '#000000'}}
 	          				onPress = {(value) => {this.setState(prevState => {return {fatigue: value};})}}
 							formHorizontal={true}
@@ -56,6 +56,40 @@ export default class SideEffect extends Component {
 							isSelected = {true}
 							buttonWrapStyle={{marginLeft: 50}}/>
 						<Text>Selected Level: {this.state.fatigue}</Text>
+	    				<Text>NAUSEA</Text>
+	 					<RadioForm
+	          				radio_props = {radio_props}
+	          				initial = {0}
+	          				style = {{flex: 1,
+						        flexDirection: 'row',
+						        justifyContent: 'space-between',
+						        alignItems: 'center'
+						    	}}
+	          				labelStyle = {{color: '#000000'}}
+	          				onPress = {(value) => {this.setState(prevState => {return {nausea: value};})}}
+							formHorizontal={true}
+							labelHorizontal={false}
+							buttonColor={'#2196f3'} 
+							isSelected = {true}
+							buttonWrapStyle={{marginLeft: 50}}/>
+						<Text>Selected Level: {this.state.nausea}</Text>
+	    				<Text>APPETITE</Text>
+	 					<RadioForm
+	          				radio_props = {radio_props}
+	          				initial = {0}
+	          				style = {{flex: 1,
+						        flexDirection: 'row',
+						        justifyContent: 'space-between',
+						        alignItems: 'center'
+						    	}}
+	          				labelStyle = {{color: '#000000'}}
+	          				onPress = {(value) => {this.setState(prevState => {return {appetite: value};})}}
+							formHorizontal={true}
+							labelHorizontal={false}
+							buttonColor={'#2196f3'} 
+							isSelected = {true}
+							buttonWrapStyle={{marginLeft: 50}}/>
+						<Text>Selected Level: {this.state.appetite}</Text>
 					</View>
 	    		</ScrollView>
 
