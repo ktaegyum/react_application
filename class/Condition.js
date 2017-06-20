@@ -45,20 +45,8 @@ render() {
         justifyContent: 'space-between'}}>
         
         <ScrollView style = {styles.container}>
-      	<Text> EULA & TERMS </Text>
-      	<TextInput
-      		style = {{height: 200, padding: 10}}
-          multiline={true}
-      		placeholder =  "Write down your condition"
-      		onChangeText = {(value) => this.setEula(value)}/>
-
-      	<Text> CONDITION </Text>
-      	<TextInput
-      		style = {{height: 200, padding: 10}}
-          multiline={true}
-      		placeholder =  "Write your detail condition"
-      		onChangeText = {(value) => this.setCondition(value)}/>
-
+        	<Text> EULA & TERMS </Text>
+        	<Text> {styles.EULA} </Text>
         </ScrollView>
         <View style={{backgroundColor: 'antiquewhite'}}>
           <Button

@@ -23,6 +23,9 @@ import styles from './class/Style';
 import SignUp from './class/SignUp'
 import RegimenInfomation from './class/RegimenInfomation'
 import Condition from './class/Condition'
+import Overview from './class/Overview'
+import DataPage from './class/DataPage'
+import SettingsPage from './class/SettingPage'
 
 export default class project extends Component {
   constructor(props, context) {
@@ -90,22 +93,6 @@ export default class project extends Component {
   };
 }
 
-class Overview extends React.Component {
-  render() {
-    return <Text>TODAY IS INFUSION</Text>
-  }
-}
-class DataPage extends React.Component {
-  render() {
-    return <Text>Show list of data cards</Text>
-  }
-}
-class SettingsPage extends React.Component {
-  render() {
-    return <Text>Show list of settings cards</Text>
-  }
-}
-
 const MainDashNavigator = TabNavigator({
   Overview: { screen: Overview },
   Data: { screen: DataPage },
@@ -114,9 +101,8 @@ const MainDashNavigator = TabNavigator({
   {swipeEnabled : true,
   lazy: false,}
   // tabBarOptions: {styles.tabBarStyle}
+);
 
-
-  );
 const App = StackNavigator({
   Home: { screen: project },
   SignUp: { screen: SignUp },
