@@ -17,7 +17,7 @@ import {
   Image,
 } from 'react-native';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, TabNavigator } from 'react-navigation';
 import ImageSlider from 'react-native-image-slider';
 import styles from './class/Style';
 import SignUp from './class/SignUp'
@@ -81,16 +81,51 @@ export default class project extends Component {
             <Button
               onPress = {() => this.props.navigation.navigate('Condition')}
               title = "Log In W/ CancerBase"/>
+            <Button
+              onPress = {() => this.props.navigation.navigate('MainDash')}
+              title = "Jump to Main Dashboard"/>
           </View>
         </View>
       );
   };
 }
+
+class Overview extends React.Component {
+  render() {
+    return <Text>TODAY IS INFUSION</Text>
+  }
+}
+class DataPage extends React.Component {
+  render() {
+    return <Text>Show list of data cards</Text>
+  }
+}
+class SettingsPage extends React.Component {
+  render() {
+    return <Text>Show list of settings cards</Text>
+  }
+}
+
+const MainDashNavigator = TabNavigator({
+  Overview: { screen: Overview },
+  Data: { screen: DataPage },
+  Settings: { screen: SettingsPage },
+},
+  {swipeEnabled : true,
+  lazy: false,}
+  // tabBarOptions: {styles.tabBarStyle}
+
+
+  );
 const App = StackNavigator({
   Home: { screen: project },
   SignUp: { screen: SignUp },
   RegimenInfomation: { screen: RegimenInfomation },
   Condition: {screen: Condition},
+  MainDash: {screen: MainDashNavigator},
 });
+
+
+
 
 AppRegistry.registerComponent('project', () => App);
