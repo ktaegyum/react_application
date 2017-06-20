@@ -10,7 +10,10 @@ import {
 } from 'react-native';
 
 export default class SettingsPage extends Component {
+	
   render() {
-    return <Text>Show list of settings cards</Text>
-  }
+    return (
+    	<Text>Show list of settings cards</Text>
+    )
+  };
 }

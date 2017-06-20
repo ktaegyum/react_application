@@ -26,6 +26,7 @@ import Condition from './class/Condition'
 import Overview from './class/Overview'
 import DataPage from './class/DataPage'
 import SettingsPage from './class/SettingPage'
+import SideEffect from './class/SideEffect'
 
 export default class project extends Component {
   constructor(props, context) {
@@ -109,6 +110,7 @@ const App = StackNavigator({
   RegimenInfomation: { screen: RegimenInfomation },
   Condition: {screen: Condition},
   MainDash: {screen: MainDashNavigator},
+  SideEffect: {screen: SideEffect},
 });
 
 

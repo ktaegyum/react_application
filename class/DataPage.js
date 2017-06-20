@@ -11,6 +11,8 @@ import {
 
 export default class DataPage extends Component {
   render() {
-    return <Text>Show list of data cards</Text>
-  }
+    return (
+    	<Text>Show list of data cards</Text>
+    )
+  };
 }

@@ -95,7 +95,7 @@ export default class RegimenInfomation extends Component {
         </View>
           <View style={{backgroundColor: 'antiquewhite'}}>
           <Button
-            onPress={() => this.props.navigation.navigate('MainDash')}
+            onPress={() => this.props.navigation.navigate('SideEffect')}
             title="DONE"/>
         </View>
       </View>

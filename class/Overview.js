@@ -11,6 +11,8 @@ import {
 
 export default class Overview extends Component {
   render() {
-    return <Text>TODAY IS INFUSION</Text>
-  }
+    return (
+    	<Text>TODAY IS INFUSION</Text>
+    )
+  };
 }
