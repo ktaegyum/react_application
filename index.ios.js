@@ -57,13 +57,13 @@ export default class project extends Component {
           <View style ={{
             marginBottom: 20
           }}>
-            <ImageSlider images = {[
-              require('./images/brian.jpg'),
-              require('./images/Taegyum.jpg'),
-              require('./images/Kian.jpg')]}
-              height = {400}
-              position={this.state.position}
-              onPositionChanged={position => this.setState({position})}/>
+            <ImageSlider images={[
+                    'http://placeimg.com/640/480/any',
+                    'http://placeimg.com/640/480/any',
+                    'http://placeimg.com/640/480/any']}
+                    height = {400}
+                    position={this.state.position}
+                    onPositionChanged={position => this.setState({position})}/>
           </View>
           
           <View style = {{

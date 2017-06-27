@@ -25,6 +25,15 @@ export default class SideEffect extends Component {
 			fatigue: 0,
 			nausea: 0,
 			appetite: 0,
+		      types1: [{label: 'param1', value: 0}, {label: 'param2', value: 1}],
+		      value1: 0,
+		      value1Index: 0,
+		      types2: [{label: 'param1', value: 0}, {label: 'param2', value: 1}, {label: 'param3', value: 2},],
+		      value2: 0,
+		      value2Index: 0,
+		      types3: [{label: 'param1', value: 0}, {label: 'param2', value: 1}, {label: 'param3', value: 2},],
+		      value3: 0,
+		      value3Index: 0,
 		}
 	}
 	static navigationOptions = {
@@ -38,6 +47,36 @@ export default class SideEffect extends Component {
 		        justifyContent: 'space-between',
 		    	padding: 10}}>
 	    		<ScrollView>
+	    			<View>
+	    				<Text> Test </Text>
+				          <RadioForm
+				            formHorizontal={true}
+				            animation={true}
+				          >
+				            {this.state.types2.map((obj, i) => {
+				              var that = this;
+				              var is_selected = this.state.value2Index == i;
+				              return (
+				                <View key={i} style={styles.radioButtonWrap}>
+				                  <RadioButton
+				                    isSelected={is_selected}
+				                    obj={obj}
+				                    index={i}
+				                    labelHorizontal={true}
+				                    buttonColor={'#2196f3'}
+				                    labelColor={'#000'}
+				                    style={[i !== this.state.types2.length-1 && styles.radioStyle]}
+				                    onPress={(value, index) => {
+				                      this.setState({value2:value})
+				                      this.setState({value2Index: index});
+				                    }}
+				                  />
+				                </View>
+				              )
+				            })}
+				          </RadioForm>
+	    			</View>
+
 	    			<View>
 	    				<Text>FATIGUE</Text>
 	 					<RadioForm
@@ -91,6 +130,7 @@ export default class SideEffect extends Component {
 							buttonWrapStyle={{marginLeft: 50}}/>
 						<Text>Selected Level: {this.state.appetite}</Text>
 					</View>
+					
 	    		</ScrollView>
 
 		        <View style={{backgroundColor: 'antiquewhite'}}>
