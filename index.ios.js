@@ -38,7 +38,7 @@ export default class project extends Component {
     };
   };
   static navigationOptions = {
-    title: 'Welcome',
+    title: 'Infusion',
   };
   componentWillMount() {
       this.setState({interval: setInterval(() => {
@@ -56,29 +56,25 @@ export default class project extends Component {
           flexDirection: 'column',
           justifyContent: 'space-between'}}>
           <View style ={{
-            marginBottom: 20
+            marginBottom: 40,
+            backgroundColor: '#ffffff'
           }}>
-            <ImageSlider images={[
-                    'http://placeimg.com/640/480/any',
-                    'http://placeimg.com/640/480/any',
-                    'http://placeimg.com/640/480/any']}
-                    height = {400}
-                    position={this.state.position}
-                    onPositionChanged={position => this.setState({position})}/>
+            <ImageSlider images = {[
+              require('./images/intro.png'),
+              require('./images/trajectory.png'),
+              require('./images/calendar.png')]}
+              height = {400}
+              position={this.state.position}
+              onPositionChanged={position => this.setState({position})}/>
           </View>
           
           <View style = {{
             alignItems: 'center'
           }}>
-            <Text> 
-              Adding introduction about this application
-              It can be multiple lines 
-            </Text>
-          </View>
-          
-          <View>
 
           </View>
+          
+
             <View style={{backgroundColor: 'antiquewhite'}}>
             <Button
               onPress = {() => this.props.navigation.navigate('SignUp')}
