@@ -10,13 +10,26 @@ import {
   ScrollView,
 } from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import {styles} from './Style';
 var radio_props = [
   {label: '0', value: 0 },
   {label: '1', value: 1 },
   {label: '2', value: 2 },
   {label: '3', value: 3 },
-  {label: '4', value: 4 }
+  {label: '4', value: 4 },
 ];
+function renderIf(condition, content) {
+    if (condition) {
+        return content;
+    } else {
+        return null;
+    }
+}
+var explanation1 = "This is zero, and there should be more explan"
+var explanation2 = "This is zero, and there should be more explan"
+var explanation3 = "This is zero, and there should be more explan"
+var explanation4 = "This is zero, and there should be more explan"
+var explanation5 = "This is zero, and there should be more explan"
 
 export default class SideEffect extends Component {
 	constructor(props, context) {
@@ -25,58 +38,45 @@ export default class SideEffect extends Component {
 			fatigue: 0,
 			nausea: 0,
 			appetite: 0,
-		      types1: [{label: 'param1', value: 0}, {label: 'param2', value: 1}],
-		      value1: 0,
-		      value1Index: 0,
-		      types2: [{label: 'param1', value: 0}, {label: 'param2', value: 1}, {label: 'param3', value: 2},],
-		      value2: 0,
-		      value2Index: 0,
-		      types3: [{label: 'param1', value: 0}, {label: 'param2', value: 1}, {label: 'param3', value: 2},],
-		      value3: 0,
-		      value3Index: 0,
+			isClicked_fatigue: false,
+			isClicked_nausea: false,
+			isClicked_appetite: false,
 		}
 	}
 	static navigationOptions = {
     	title: 'Side Effect',
 	};
+	clicked_fatigue = (value) => {
+		this.setState({
+			fatigue: value,
+			isClicked_fatigue: true,
+			isClicked_nausea: false,
+			isClicked_appetite: false,
+		})
+	}
+	clicked_nausea = (value) => {
+		this.setState({
+			nausea: value,
+			isClicked_fatigue: false,
+			isClicked_nausea: true,
+			isClicked_appetite: false,
+		})
+	}
+	clicked_appetite = (value) => {
+		this.setState({
+			appetite: value,
+			isClicked_fatigue: false,
+			isClicked_nausea: false,
+			isClicked_appetite: true,
+		})
+	}
 	render() {
 	    return (
 		    <View style = {{
 		        flex: 1,
 		        flexDirection: 'column',
-		        justifyContent: 'space-between',
-		    	padding: 10}}>
+		        justifyContent: 'space-between'}}>
 	    		<ScrollView>
-	    			<View>
-	    				<Text> Test </Text>
-				          <RadioForm
-				            formHorizontal={true}
-				            animation={true}
-				          >
-				            {this.state.types2.map((obj, i) => {
-				              var that = this;
-				              var is_selected = this.state.value2Index == i;
-				              return (
-				                <View key={i} style={styles.radioButtonWrap}>
-				                  <RadioButton
-				                    isSelected={is_selected}
-				                    obj={obj}
-				                    index={i}
-				                    labelHorizontal={true}
-				                    buttonColor={'#2196f3'}
-				                    labelColor={'#000'}
-				                    style={[i !== this.state.types2.length-1 && styles.radioStyle]}
-				                    onPress={(value, index) => {
-				                      this.setState({value2:value})
-				                      this.setState({value2Index: index});
-				                    }}
-				                  />
-				                </View>
-				              )
-				            })}
-				          </RadioForm>
-	    			</View>
-
 	    			<View>
 	    				<Text>FATIGUE</Text>
 	 					<RadioForm
@@ -88,12 +88,22 @@ export default class SideEffect extends Component {
 						        alignItems: 'center'
 						    	}}
 	          				labelStyle = {{color: '#000000'}}
-	          				onPress = {(value) => {this.setState(prevState => {return {fatigue: value};})}}
+	          				onPress = {(value)=> this.clicked_fatigue(value)}
 							formHorizontal={true}
 							labelHorizontal={false}
-							buttonColor={'#2196f3'} 
-							isSelected = {true}
-							buttonWrapStyle={{marginLeft: 50}}/>
+							buttonColor={'#2196f3'}
+							isSelected = {false}
+							buttonWrapStyle={{marginLeft: 100}}/>
+
+						{renderIf(this.state.isClicked_fatigue, 
+						<View style={{flex: 1, flexDirection: 'row'}}>
+							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{explanation1}</Text></View>
+							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{explanation2}</Text></View>
+							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{explanation3}</Text></View>
+							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{explanation4}</Text></View>
+							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{explanation5}</Text></View>
+						</View>
+						)}
 						<Text>Selected Level: {this.state.fatigue}</Text>
 	    				<Text>NAUSEA</Text>
 	 					<RadioForm
@@ -105,12 +115,21 @@ export default class SideEffect extends Component {
 						        alignItems: 'center'
 						    	}}
 	          				labelStyle = {{color: '#000000'}}
-	          				onPress = {(value) => {this.setState(prevState => {return {nausea: value};})}}
+	          				onPress = {(value)=> this.clicked_nausea(value)}
 							formHorizontal={true}
 							labelHorizontal={false}
 							buttonColor={'#2196f3'} 
 							isSelected = {true}
-							buttonWrapStyle={{marginLeft: 50}}/>
+						buttonWrapStyle={{marginLeft: 50}}/>
+						{renderIf(this.state.isClicked_nausea, 
+						<View style={{flex: 1, flexDirection: 'row'}}>
+							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{explanation1}</Text></View>
+							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{explanation2}</Text></View>
+							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{explanation3}</Text></View>
+							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{explanation4}</Text></View>
+							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{explanation5}</Text></View>
+						</View>
+						)}
 						<Text>Selected Level: {this.state.nausea}</Text>
 	    				<Text>APPETITE</Text>
 	 					<RadioForm
@@ -122,12 +141,21 @@ export default class SideEffect extends Component {
 						        alignItems: 'center'
 						    	}}
 	          				labelStyle = {{color: '#000000'}}
-	          				onPress = {(value) => {this.setState(prevState => {return {appetite: value};})}}
+	          				onPress = {(value)=> this.clicked_appetite(value)}
 							formHorizontal={true}
 							labelHorizontal={false}
 							buttonColor={'#2196f3'} 
 							isSelected = {true}
 							buttonWrapStyle={{marginLeft: 50}}/>
+						{renderIf(this.state.isClicked_appetite, 
+						<View style={{flex: 1, flexDirection: 'row'}}>
+							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{explanation1}</Text></View>
+							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{explanation2}</Text></View>
+							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{explanation3}</Text></View>
+							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{explanation4}</Text></View>
+							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{explanation5}</Text></View>
+						</View>
+						)}
 						<Text>Selected Level: {this.state.appetite}</Text>
 					</View>
 					
