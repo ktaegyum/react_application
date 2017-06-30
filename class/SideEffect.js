@@ -163,7 +163,7 @@ export default class SideEffect extends Component {
 
 		        <View style={{backgroundColor: 'antiquewhite'}}>
 		          <Button
-		              onPress={() => this.props.navigation.navigate('RegimenInfomation')}
+		              onPress={() => this.props.navigation.navigate('MainDashNavigator')}
 		              title="DONE"
 		              color="#841584"/>
 		        </View>
