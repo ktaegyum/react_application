@@ -80,13 +80,11 @@ export default class RegimenInfomation extends Component {
             onValueChange={(value)=> this.handleOnChangeInfusion(value)}/>
           <Text>Infusion: {this.state.infusion} </Text>
         </View>
-
         <View style = {{
           height: 350, 
           borderBottomColor: 'black',
           borderBottomWidth: 2
         }}>
-        
         <Calendar
           onDayPress={this.onDayPress}
           scrollEnabled={true}  />

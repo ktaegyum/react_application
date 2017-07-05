@@ -67,7 +67,7 @@ export default class SignUp extends Component {
             onChangeText = {(value) => this.setInformation(value)}
             multiline = {true}/>
         </View> 
-	       <View>
+	       <View style={{backgroundColor: 'antiquewhite'}}>
           <Button
             onPress={() => this.props.navigation.navigate('Condition')}
             title="DONE"/>
@@ -76,9 +76,6 @@ export default class SignUp extends Component {
     );
   }
 }
-
-
-
 firebase.initializeApp({
     apiKey: "yourkeyhere",
     authDomain: "infusion-e7ed9.firebaseapp.com",

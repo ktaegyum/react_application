@@ -45,7 +45,6 @@ export default class project extends Component {
           this.setState({position: this.state.position === 2 ? 0 : this.state.position + 1});
       }, 2000)});
   }
-
   componentWillUnmount() {
       clearInterval(this.state.interval);
   }
@@ -67,14 +66,10 @@ export default class project extends Component {
               position={this.state.position}
               onPositionChanged={position => this.setState({position})}/>
           </View>
-          
           <View style = {{
             alignItems: 'center'
           }}>
-
           </View>
-          
-
             <View style={{backgroundColor: 'antiquewhite'}}>
             <Button
               onPress = {() => this.props.navigation.navigate('SignUp')}
@@ -109,8 +104,5 @@ const App = StackNavigator({
   MainDash: {screen: MainDashNavigator},
   SideEffect: {screen: SideEffect},
 });
-
-
-
 
 AppRegistry.registerComponent('project', () => App);
