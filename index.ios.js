@@ -105,13 +105,13 @@ const App = StackNavigator({
   MainDash: {screen: MainDashNavigator},
   SideEffect: {screen: SideEffect},
 });
-
+/*
 firebase.initializeApp({
     apiKey: "AIzaSyBfnermI1NQwpKOhy5FIKpJJ4Y_zZcCBJc",
     authDomain: "infusion-e7ed9.firebaseapp.com",
     databaseURL: "https://infusion-e7ed9.firebaseio.com",
     storageBucket: "infusion-e7ed9.appspot.com"
 });
-
+*/
 
 AppRegistry.registerComponent('project', () => App);
