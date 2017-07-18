@@ -12,7 +12,18 @@ import {
 export default class Overview extends Component {
   render() {
     return (
-    	<Text>TODAY IS INFUSION</Text>
+
+<View>
+<Text>TODAY IS INFUSION</Text>
+<Text>Your next treatment is Thursday of next week, on June 1st</Text>
+<Text>You have 12 infusions left</Text>
+<Text>Today's Forecast</Text>
+<Text>Some vomiting, Severe constipation, no peripheral neuropathy.</Text>
+<Text>Fatigue</Text>
+
+</View>
+
+
     )
   };
 }
