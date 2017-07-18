@@ -16,6 +16,12 @@ import {
   Alert,
   Image,
 } from 'react-native';
+import {Provider} from 'react-redux';
+import { createStore, applyMiddleware, combineReducers, compose} from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
+
+
 import * as firebase from "firebase";
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import { StackNavigator, TabNavigator } from 'react-navigation';
