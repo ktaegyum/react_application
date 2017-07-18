@@ -6,13 +6,20 @@ import {
   View,
   Slider,
   Button,
-  Alert
+  Alert,
+  ScrollView,
 } from 'react-native';
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import {styles} from './Style';
 
 export default class DataPage extends Component {
+  
+
+
+
   render() {
     return (
-    	<Text>Show list of data cards</Text>
+      <Text>TODAY IS INFUSION</Text>
     )
   };
 }
