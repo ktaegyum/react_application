@@ -16,6 +16,7 @@ import {
   Alert,
   Image,
 } from 'react-native';
+import { createStore } from 'redux'
 import * as firebase from "firebase";
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import { StackNavigator, TabNavigator } from 'react-navigation';
