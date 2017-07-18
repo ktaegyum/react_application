@@ -116,7 +116,7 @@ export default class SettingsPage extends Component {
             marginBottom: 5,
             }}>
                <Button
-                onPress = {() => this.clicked_regimen()}
+                onPress={() => this.props.navigation.navigate('RegimenInfomation')}
                 title = "Edit Regimen"/>
               {renderIf(this.state.editRegimen_clicked, 
               <View>
