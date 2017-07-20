@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import {styles} from './Style';
+import {FETCHING_PEOPLE, FETCHING_PEOPLE_SUCCESS, FETCHING_PEOPLE_FAILURE} from '../constants'
 
 function renderIf(condition, content) {
     if (condition) {
@@ -19,62 +20,9 @@ function renderIf(condition, content) {
         return null;
     }
 }
-
 export default class SettingsPage extends Component {
   constructor(props, context) {
     super(props, context)
-    this.state = {
-      account_clicked: false,
-      notification_clicked: false,
-      editRegimen_clicked: false,
-      about_clicked: false,
-      support_clicked: false
-    }
-  }
-  clicked_account = () => {
-    this.setState({
-      account_clicked: true,
-      notification_clicked: false,
-      editRegimen_clicked: false,
-      about_clicked: false,
-      support_clicked: false
-    })
-  }
-  clicked_notification = () => {
-    this.setState({
-      account_clicked: false,
-      notification_clicked: true,
-      editRegimen_clicked: false,
-      about_clicked: false,
-      support_clicked: false
-    })
-  }
-  clicked_regimen = () => {
-    this.setState({
-      account_clicked: false,
-      notification_clicked: false,
-      editRegimen_clicked: true,
-      about_clicked: false,
-      support_clicked: false
-    })
-  }
-  clicked_about = () => {
-    this.setState({
-      account_clicked: false,
-      notification_clicked: false,
-      editRegimen_clicked: false,
-      about_clicked: true,
-      support_clicked: false
-    })
-  }
-  clicked_support = () => {
-    this.setState({
-      account_clicked: false,
-      notification_clicked: false,
-      editRegimen_clicked: false,
-      about_clicked: false,
-      support_clicked: true
-    })
   }
   render() {
     return (
@@ -86,9 +34,9 @@ export default class SettingsPage extends Component {
               marginBottom: 5,
               }}>
               <Button
-                onPress = {() => this.clicked_account()}
+                onPress = {this.props.showing_account}
                 title = "Edit Account"/>
-              {renderIf(this.state.account_clicked, 
+              {renderIf(this.props.account, 
               <View>
                 <Text>hey</Text>
               </View>
@@ -101,9 +49,9 @@ export default class SettingsPage extends Component {
             marginBottom: 5,
             }}>
               <Button
-                onPress = {() => this.clicked_notification()}
+                onPress = {this.props.showing_notification}
                 title = "Push Notification"/>
-              {renderIf(this.state.notification_clicked, 
+              {renderIf(this.props.notification, 
               <View>
                 <Text>hey</Text>
               </View>
@@ -118,7 +66,7 @@ export default class SettingsPage extends Component {
                <Button
                 onPress={() => this.props.navigation.navigate('RegimenInfomation')}
                 title = "Edit Regimen"/>
-              {renderIf(this.state.editRegimen_clicked, 
+              {renderIf(this.props.regimen, 
               <View>
                 <Text>hey</Text>
               </View> 
@@ -131,9 +79,9 @@ export default class SettingsPage extends Component {
             marginBottom: 5,
             }}>
               <Button
-                onPress = {() => this.clicked_about()}
+                onPress = {this.props.showing_about}
                 title = "About"/> 
-              {renderIf(this.state.about_clicked, 
+              {renderIf(this.props.about, 
               <View>
                 <Text>hey</Text>
               </View>  
@@ -146,9 +94,9 @@ export default class SettingsPage extends Component {
             marginBottom: 5,
             }}>
               <Button
-                onPress = {() => this.clicked_support()}
+                onPress = {this.props.showing_support}
                 title = "Support"/>
-              {renderIf(this.state.support_clicked, 
+              {renderIf(this.props.support, 
               <View>
                 <Text>hey</Text>
               </View> 

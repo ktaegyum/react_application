@@ -36,10 +36,6 @@ export default class RegimenInfomation extends Component {
         infusion: value
     })
   }
-  _onPressButton() {
-    Alert.alert("hey")
-  }
-
   onDayPress(day) {
     this.setState({
       selected: day.dateString
