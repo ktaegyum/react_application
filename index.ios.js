@@ -115,4 +115,11 @@ firebase.initializeApp({
 });
 */
 
-AppRegistry.registerComponent('project', () => App);
+const rnredux = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+)
+
+
+AppRegistry.registerComponent('project', () => rnredux);
