@@ -25,14 +25,13 @@ import RegimenInfomation from './class/RegimenInfomation'
 import Condition from './class/Condition'
 import Overview from './class/Overview'
 import DataPage from './class/DataPage'
-import SettingsPage from './class/SettingPage'
+import SettingsPage from './action_setting.js'
 import SideEffect from './class/SideEffect'
 
 import configureStore from './configureStore'
 import {Provider} from 'react-redux'
 
-const store = configureStore()
-
+import store from './reducers/people.js'
 
 export default class project extends Component {
   constructor(props, context) {
@@ -117,14 +116,10 @@ firebase.initializeApp({
     storageBucket: "infusion-e7ed9.appspot.com"
 });
 */
-
 const rnredux = () => (
   <Provider store={store}>
     <App />
   </Provider>
 )
-
-
-
 
 AppRegistry.registerComponent('project', () => rnredux);

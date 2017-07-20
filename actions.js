@@ -32,3 +32,5 @@ function getPeopleFailure(){
     type: FETCHING_PEOPLE_FAILURE
   }
 }
+
+
