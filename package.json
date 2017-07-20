@@ -20,7 +20,8 @@
     "react-navigation": "^1.0.0-beta.11",
     "react-rangeslider": "^2.1.0",
     "react-redux": "^5.0.5",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-jest": "20.0.3",
