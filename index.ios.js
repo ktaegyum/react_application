@@ -16,8 +16,6 @@ import {
   Alert,
   Image,
 } from 'react-native';
-import { createStore } from 'redux'
-import * as firebase from "firebase";
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import ImageSlider from 'react-native-image-slider';
@@ -29,6 +27,11 @@ import Overview from './class/Overview'
 import DataPage from './class/DataPage'
 import SettingsPage from './class/SettingPage'
 import SideEffect from './class/SideEffect'
+
+import configureStore from './configureStore'
+import {Provider} from 'react-redux'
+
+const store = configureStore()
 
 
 export default class project extends Component {
