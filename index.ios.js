@@ -125,4 +125,6 @@ const rnredux = () => (
 )
 
 
+
+
 AppRegistry.registerComponent('project', () => rnredux);
