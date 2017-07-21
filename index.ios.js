@@ -31,7 +31,7 @@ import SideEffect from './class/SideEffect'
 import configureStore from './configureStore'
 import {Provider} from 'react-redux'
 
-import store from './reducers/people.js'
+const store = configureStore()
 
 export default class project extends Component {
   constructor(props, context) {
