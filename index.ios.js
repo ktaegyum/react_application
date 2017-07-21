@@ -85,7 +85,7 @@ export default class project extends Component {
               onPress = {() => this.props.navigation.navigate('MainDash')}
               title = "Jump to Main Dashboard"/>
               <Button
-                onPress = {() => console.log(props.people)}
+                onPress = {() => console.log(this.props.people)}
                 title = "ConsoleLog the store"/>
           </View>
         </View>
