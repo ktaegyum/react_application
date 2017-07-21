@@ -113,7 +113,7 @@ const MainDashNavigator = TabNavigator({
 );
 
 const App = StackNavigator({
-  Home : {screen : ConnectedProject}
+  Home : {screen : ConnectedProject},
   SignUp: { screen: SignUp },
   RegimenInfomation: { screen: RegimenInfomation },
   Condition: {screen: Condition},
