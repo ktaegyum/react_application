@@ -33,7 +33,7 @@ import {Provider, connect} from "react-redux"
 
 const store = configureStore()
 
-const mapState = (state) = > {
+const mapState = (state) => {
     return {
         people : state.people
     };
@@ -105,6 +105,7 @@ const MainDashNavigator = TabNavigator({
   Overview: { screen: Overview },
   Data: { screen: DataPage },
   Settings: { screen: SettingsPage },
+
 },
   {swipeEnabled : true,
   lazy: false,}
@@ -112,7 +113,7 @@ const MainDashNavigator = TabNavigator({
 );
 
 const App = StackNavigator({
-  Home: { screen: project },
+  Home : {screen : ConnectedProject}
   SignUp: { screen: SignUp },
   RegimenInfomation: { screen: RegimenInfomation },
   Condition: {screen: Condition},
