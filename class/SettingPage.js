@@ -88,7 +88,7 @@ export default class SettingsPage extends Component {
               <Button
                 onPress = {() => this.clicked_account()}
                 title = "Edit Account"/>
-              {renderIf(this.state.account_clicked, 
+              {renderIf(this.state.account_clicked,
               <View>
                 <Text>hey</Text>
               </View>
@@ -103,13 +103,13 @@ export default class SettingsPage extends Component {
               <Button
                 onPress = {() => this.clicked_notification()}
                 title = "Push Notification"/>
-              {renderIf(this.state.notification_clicked, 
+              {renderIf(this.state.notification_clicked,
               <View>
                 <Text>hey</Text>
               </View>
               )}
           </View>
-        
+
           <View style={{
             borderBottomColor: 'black',
             borderBottomWidth: 1,
@@ -118,13 +118,13 @@ export default class SettingsPage extends Component {
                <Button
                 onPress={() => this.props.navigation.navigate('RegimenInfomation')}
                 title = "Edit Regimen"/>
-              {renderIf(this.state.editRegimen_clicked, 
+              {renderIf(this.state.editRegimen_clicked,
               <View>
                 <Text>hey</Text>
-              </View> 
-              )}      
+              </View>
+              )}
           </View>
-        
+
           <View style={{
             borderBottomColor: 'black',
             borderBottomWidth: 1,
@@ -132,14 +132,14 @@ export default class SettingsPage extends Component {
             }}>
               <Button
                 onPress = {() => this.clicked_about()}
-                title = "About"/> 
-              {renderIf(this.state.about_clicked, 
+                title = "About"/>
+              {renderIf(this.state.about_clicked,
               <View>
                 <Text>hey</Text>
-              </View>  
-              )}     
+              </View>
+              )}
           </View>
-          
+
           <View style={{
             borderBottomColor: 'black',
             borderBottomWidth: 1,
@@ -148,12 +148,24 @@ export default class SettingsPage extends Component {
               <Button
                 onPress = {() => this.clicked_support()}
                 title = "Support"/>
-              {renderIf(this.state.support_clicked, 
+              {renderIf(this.state.support_clicked,
               <View>
                 <Text>hey</Text>
-              </View> 
+              </View>
               )}
           </View>
+
+          <View style={{
+            borderBottomColor: 'black',
+            borderBottomWidth: 1,
+            marginBottom: 5,
+            }}>
+              <Button
+                onPress = {() => fetchPeopleFromAPI()}
+                title = "run fetch people dispatch"/>
+          </View>
+
+
 
         </ScrollView>
       </View>
