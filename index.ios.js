@@ -29,7 +29,7 @@ import SettingsPage from './action_setting.js'
 import SideEffect from './class/SideEffect'
 
 import configureStore from './configureStore'
-import {Provider} from 'react-redux'
+import {Provider, connect} from "react-redux"
 
 const store = configureStore()
 
@@ -99,7 +99,7 @@ export default class project extends Component {
   };
 }
 
-connect(mapState)(project)
+const ConnectedProject = connect(mapState)(project);
 
 const MainDashNavigator = TabNavigator({
   Overview: { screen: Overview },
