@@ -33,6 +33,12 @@ import {Provider} from 'react-redux'
 
 const store = configureStore()
 
+const mapState = (state) = > {
+    return {
+        people : state.people
+    };
+}
+
 export default class project extends Component {
   constructor(props, context) {
     super(props, context);
@@ -92,6 +98,8 @@ export default class project extends Component {
       );
   };
 }
+
+connect(mapState)(project)
 
 const MainDashNavigator = TabNavigator({
   Overview: { screen: Overview },
