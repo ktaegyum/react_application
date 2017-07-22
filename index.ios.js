@@ -37,7 +37,7 @@ export default class project extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      position: 1,
+      position: 0,
       interval: null
     };
   };
