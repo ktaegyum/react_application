@@ -44,14 +44,6 @@ export default class project extends Component {
   static navigationOptions = {
     title: 'Infusion',
   };
-  componentWillMount() {
-      this.setState({interval: setInterval(() => {
-          this.setState({position: this.state.position === 2 ? 0 : this.state.position + 1});
-      }, 2000)});
-  }
-  componentWillUnmount() {
-      clearInterval(this.state.interval);
-  }
   render() {
       return (
         <View style = {{
