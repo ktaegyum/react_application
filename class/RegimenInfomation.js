@@ -12,6 +12,9 @@ import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import { StackNavigator } from 'react-navigation';
 import styles from './Style';
 import SignUp from './SignUp';
+import {FETCHING_PEOPLE, FETCHING_PEOPLE_SUCCESS, FETCHING_PEOPLE_FAILURE} from '../constants'
+import {SETTING_ACCOUNT, SETTING_NOTIFICATION, SETTING_EDITREGIMEN, SETTING_ABOUT, SETTING_SUPPORT} from '../constants.js'
+import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE} from '../constants.js'
 
 export default class RegimenInfomation extends Component {
   constructor(props, context) {
@@ -60,7 +63,7 @@ export default class RegimenInfomation extends Component {
             maximumValue = {31}
             step = {1}
             onValueChange={(value)=> this.handleOnChangeDays(value)}/>
-          <Text>DAYS: {this.state.days} </Text>
+          <Text>DAYS: {this.props.test} </Text>
         </View>
         <View style={{
           borderBottomColor: 'black',
