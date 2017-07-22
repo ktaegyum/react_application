@@ -12,7 +12,7 @@ const initialState = {
   setting_about: false,
   setting_support: false,
 }
-export const peopleReducer = (state = initialState, action) => {
+export const mainReducer = (state = initialState, action) => {
   switch(action.type){
     case FETCHING_PEOPLE:
       return {
@@ -77,6 +77,6 @@ export const peopleReducer = (state = initialState, action) => {
   }
 }
 
-let store = createStore(peopleReducer);
+let store = createStore(mainReducer);
 
 export default store;

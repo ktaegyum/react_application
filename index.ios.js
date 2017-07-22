@@ -35,7 +35,7 @@ const store = configureStore()
 
 const mapState = (state) => {
     return {
-        people : state.people
+        userData : state.userData
     };
 }
 
@@ -88,10 +88,10 @@ export default class project extends Component {
               onPress = {() => this.props.navigation.navigate('Condition')}
               title = "Log In W/ CancerBase"/>
             <Button
-              onPress = {() => this.props.navigation.navigate('MainDash')}
-              title = "Jump to Main Dashboard"/>
+              onPress = {() => this.props.navigation.navigate('RegimenInfomation')}
+              title = "Jump to regimen"/>
               <Button
-                onPress = {() => console.log(this.props.people)}
+                onPress = {() => console.log(this.props.userData)}
                 title = "ConsoleLog the store"/>
           </View>
         </View>
