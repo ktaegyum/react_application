@@ -1474,7 +1474,7 @@ fbjs-scripts@^0.7.0:
     semver "^5.1.0"
     through2 "^2.0.0"
 
-fbjs@0.8.12, fbjs@^0.8.9, fbjs@~0.8.9:
+fbjs@0.8.12, fbjs@^0.8.12, fbjs@^0.8.9, fbjs@~0.8.9:
   version "0.8.12"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.12.tgz#10b5d92f76d45575fd63a217d4ea02bea2f8ed04"
   dependencies:
@@ -1536,7 +1536,7 @@ find-up@^2.1.0:
   dependencies:
     locate-path "^2.0.0"
 
-firebase@^4.1.3:
+firebase@4.1.3:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/firebase/-/firebase-4.1.3.tgz#e5d7327366c854dc12461633ba8bfeea2f5c7358"
   dependencies:
@@ -1748,13 +1748,9 @@ hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
 
-hoist-non-react-statics@^1.0.3:
+hoist-non-react-statics@^1.0.3, hoist-non-react-statics@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
-
-hoist-non-react-statics@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.2.0.tgz#b099ca82f3640b1244309c8a526a2bd60ad9d7d9"
 
 home-or-tmp@^2.0.0:
   version "2.0.0"
@@ -3068,26 +3064,25 @@ react-devtools-core@^2.1.8:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
-react-native-calendar@^0.12.2:
-  version "0.12.3"
-  resolved "https://registry.yarnpkg.com/react-native-calendar/-/react-native-calendar-0.12.3.tgz#318fff1202b7d7d6b61a9c4b933835b187a51860"
+react-native-calendar@0.12.2:
+  version "0.12.2"
+  resolved "https://registry.yarnpkg.com/react-native-calendar/-/react-native-calendar-0.12.2.tgz#117bca1bc127b767d0d99d013b2c6d5a89c2a32d"
   dependencies:
     moment ">=2.10.3"
 
-react-native-calendars@^1.4.0:
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.5.3.tgz#882937a40045152d97fb20a5159c68783ce26601"
+react-native-calendars@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.4.0.tgz#3ae9b0cd2914085d10068bb2ac751653374014ba"
   dependencies:
     prop-types "^15.5.10"
     xdate "^0.8.0"
 
-react-native-deprecated-custom-components@^0.1.0:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-deprecated-custom-components/-/react-native-deprecated-custom-components-0.1.1.tgz#bb911f01bf2f47f0a91764757bf918f3216e94e9"
+react-native-deprecated-custom-components@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-deprecated-custom-components/-/react-native-deprecated-custom-components-0.1.0.tgz#f716d431ef2dc4f91b7a686af091ee3656538086"
   dependencies:
     fbjs "~0.8.9"
     immutable "~3.7.6"
-    prop-types "^15.5.10"
     react-timer-mixin "^0.13.2"
     rebound "^0.0.13"
 
@@ -3095,7 +3090,7 @@ react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-dismiss-keyboard/-/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
 
-react-native-drawer-layout-polyfill@^1.3.2:
+react-native-drawer-layout-polyfill@^1.3.0:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/react-native-drawer-layout-polyfill/-/react-native-drawer-layout-polyfill-1.3.2.tgz#192c84d7a5a6b8a6d2be2c7daa5e4164518d0cc7"
   dependencies:
@@ -3107,29 +3102,29 @@ react-native-drawer-layout@1.3.2:
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
 
-react-native-filesystem@^0.1.0:
+react-native-filesystem@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/react-native-filesystem/-/react-native-filesystem-0.1.0.tgz#b66eebbfa046ac12cb5d2503eda78641fca58c23"
 
-react-native-image-slider@^1.1.5:
+react-native-image-slider@1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/react-native-image-slider/-/react-native-image-slider-1.1.5.tgz#1fa8537d1e0477c41d6c3a05f3fe02ffcdddd150"
 
-react-native-multi-slider@^0.3.5:
+react-native-multi-slider@0.3.5:
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/react-native-multi-slider/-/react-native-multi-slider-0.3.5.tgz#eda1f7b7062c74578441d434678a78052e120673"
 
-react-native-simple-radio-button@^2.5.0-alpha.1:
+react-native-simple-radio-button@2.5.0-alpha.1:
   version "2.5.0-alpha.1"
   resolved "https://registry.yarnpkg.com/react-native-simple-radio-button/-/react-native-simple-radio-button-2.5.0-alpha.1.tgz#59d1d6a3b2db4eafc36ab675348f4e6bb89303de"
 
-react-native-tab-view@^0.0.67:
-  version "0.0.67"
-  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.67.tgz#cdd146fe5e5d4baff6c89f2d5d0b15fa23db39d0"
+react-native-tab-view@^0.0.65:
+  version "0.0.65"
+  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.65.tgz#b685ea3081ff7c96486cd997361026c407302c59"
   dependencies:
     prop-types "^15.5.8"
 
-react-native@^0.45.1:
+react-native@0.45.1:
   version "0.45.1"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.45.1.tgz#b3283c4a88233421f9c662a2ff1a4ccc8a9f07c0"
   dependencies:
@@ -3217,16 +3212,17 @@ react-native@^0.45.1:
     xtend ">=4.0.0 <4.1.0-0"
     yargs "^6.4.0"
 
-react-navigation@^1.0.0-beta.11:
-  version "1.0.0-beta.12"
-  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-1.0.0-beta.12.tgz#cf0f04ffbf9fefe41f5c5a1dab92106b48a29f0a"
+react-navigation@1.0.0-beta.11:
+  version "1.0.0-beta.11"
+  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-1.0.0-beta.11.tgz#4271edb23cdbcc6eb88602f7fde0a77f0ef7a160"
   dependencies:
     clamp "^1.0.1"
-    hoist-non-react-statics "^2.2.0"
+    fbjs "^0.8.12"
+    hoist-non-react-statics "^1.2.0"
     path-to-regexp "^1.7.0"
     prop-types "^15.5.10"
-    react-native-drawer-layout-polyfill "^1.3.2"
-    react-native-tab-view "^0.0.67"
+    react-native-drawer-layout-polyfill "^1.3.0"
+    react-native-tab-view "^0.0.65"
 
 react-proxy@^1.1.7:
   version "1.1.8"
@@ -3235,14 +3231,14 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-rangeslider@^2.1.0:
+react-rangeslider@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-rangeslider/-/react-rangeslider-2.1.0.tgz#7473bcccf354fba7017047827d06e2ab2fd0c77b"
   dependencies:
     classnames "^2.2.3"
     resize-observer-polyfill "^1.4.2"
 
-react-redux@^5.0.5:
+react-redux@5.0.5:
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.5.tgz#f8e8c7b239422576e52d6b7db06439469be9846a"
   dependencies:
@@ -3272,10 +3268,11 @@ react-transform-hmr@^1.0.4:
     global "^4.3.0"
     react-proxy "^1.1.7"
 
-react@^16.0.0-alpha.12:
-  version "16.0.0-alpha.13"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.0.0-alpha.13.tgz#de37e035b06283a15cfb916c6943b9b066b25de0"
+react@16.0.0-alpha.12:
+  version "16.0.0-alpha.12"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.0.0-alpha.12.tgz#8c59485281485df319b6f77682d8dd0621c08194"
   dependencies:
+    create-react-class "^15.5.2"
     fbjs "^0.8.9"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
@@ -3344,11 +3341,11 @@ redux-devtools@^3.4.0:
     prop-types "^15.5.7"
     redux-devtools-instrument "^1.0.1"
 
-redux-thunk@^2.2.0:
+redux-thunk@2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.2.0.tgz#e615a16e16b47a19a515766133d1e3e99b7852e5"
 
-redux@^3.7.2:
+redux@3.7.2:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/redux/-/redux-3.7.2.tgz#06b73123215901d25d065be342eb026bc1c8537b"
   dependencies:
