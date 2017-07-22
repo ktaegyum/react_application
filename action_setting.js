@@ -11,6 +11,7 @@ const mapStateToProps = state => ({
   notification: state.setting_notification,
   about: state.setting_about,
   support: state.setting_support,
+  test: state.test,
 })
 
 const mapDispatchToProps = (dispatch) => ({

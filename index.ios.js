@@ -3,7 +3,6 @@
  * https://github.com/facebook/react-native
  * @flow
  */
- /*To get rid of */
 console.ignoredYellowBox = ['Remote debugger'];
 import React, { Component } from 'react';
 import {
@@ -19,20 +18,23 @@ import {
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import ImageSlider from 'react-native-image-slider';
+import configureStore from './configureStore'
+import {Provider} from 'react-redux'
+
+//Pages class
 import styles from './class/Style';
 import SignUp from './class/SignUp'
-import RegimenInfomation from './class/RegimenInfomation'
+import RegimenInfomation from './action_regimentInfo'
 import Condition from './class/Condition'
 import Overview from './class/Overview'
 import DataPage from './class/DataPage'
 import SettingsPage from './action_setting.js'
 import SideEffect from './class/SideEffect'
 
-import configureStore from './configureStore'
-import {Provider} from 'react-redux'
-
+//Redux Store
 import store from './reducers/people.js'
 
+//initial page
 export default class project extends Component {
   constructor(props, context) {
     super(props, context);
@@ -108,7 +110,7 @@ const App = StackNavigator({
   MainDash: {screen: MainDashNavigator},
   SideEffect: {screen: SideEffect},
 });
-/*
+/* firebase setup
 firebase.initializeApp({
     apiKey: "AIzaSyBfnermI1NQwpKOhy5FIKpJJ4Y_zZcCBJc",
     authDomain: "infusion-e7ed9.firebaseapp.com",
@@ -116,10 +118,11 @@ firebase.initializeApp({
     storageBucket: "infusion-e7ed9.appspot.com"
 });
 */
+//redux initialization
 const rnredux = () => (
   <Provider store={store}>
     <App />
   </Provider>
 )
-
+//calling
 AppRegistry.registerComponent('project', () => rnredux);
