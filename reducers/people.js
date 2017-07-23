@@ -81,15 +81,15 @@ export const peopleReducer = (state = initialState, action) => {
       }
     case REGIMEN_INFUSIONCYCLE:
       return {
-
+        regimen_infusionCycle: action.content,
       }
     case REGIMEN_INFUSIONNUM:
       return {
-
+        regimen_infusionNum: action.content,
       }
     case REGIMEN_DATE:
       return {
-
+         regimen_date: action.content,
       }
     default:
       return state

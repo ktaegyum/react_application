@@ -15,7 +15,14 @@ import SignUp from './SignUp';
 import {FETCHING_PEOPLE, FETCHING_PEOPLE_SUCCESS, FETCHING_PEOPLE_FAILURE} from '../constants'
 import {SETTING_ACCOUNT, SETTING_NOTIFICATION, SETTING_EDITREGIMEN, SETTING_ABOUT, SETTING_SUPPORT} from '../constants.js'
 import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE} from '../constants.js'
+import store from '../reducers/people.js'
 
+function redux_connector(command,data){
+  return {
+    type: command,
+    content: data
+  }
+}
 export default class RegimenInfomation extends Component {
   constructor(props, context) {
     super(props, context)
@@ -43,6 +50,7 @@ export default class RegimenInfomation extends Component {
     this.setState({
       selected: day.dateString
     });
+    store.dispatch(redux_connector(REGIMEN_DATE,day));
   }
   render() {
     return (
@@ -62,8 +70,8 @@ export default class RegimenInfomation extends Component {
             minimumValue = {0}
             maximumValue = {31}
             step = {1}
-            onValueChange={(value)=> this.handleOnChangeDays(value)}/>
-          <Text>DAYS: {this.props.test} </Text>
+            onValueChange={(value)=> store.dispatch(redux_connector(REGIMEN_INFUSIONCYCLE,value))}/>
+          <Text>DAYS: {this.props.cycle} </Text>
         </View>
         <View style={{
           borderBottomColor: 'black',
@@ -76,8 +84,8 @@ export default class RegimenInfomation extends Component {
             minimumValue = {0}
             maximumValue = {31}
             step = {1}
-            onValueChange={(value)=> this.handleOnChangeInfusion(value)}/>
-          <Text>Infusion: {this.state.infusion} </Text>
+            onValueChange={(value)=> store.dispatch(redux_connector(REGIMEN_INFUSIONNUM,value))}/>
+          <Text>Infusion: {this.props.num} </Text>
         </View>
         <View style = {{
           height: 350, 
@@ -87,7 +95,7 @@ export default class RegimenInfomation extends Component {
         <Calendar
           onDayPress={this.onDayPress}
           scrollEnabled={true}  />
-        <Text>Selected Date: {this.state.selected} </Text>  
+        <Text>Selected Date: {this.props.date} </Text>  
         
         </View>
           <View style={{backgroundColor: 'antiquewhite'}}>
