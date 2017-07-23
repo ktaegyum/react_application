@@ -50,7 +50,7 @@ export default class RegimenInfomation extends Component {
     this.setState({
       selected: day.dateString
     });
-    store.dispatch(redux_connector(REGIMEN_DATE,day));
+    store.dispatch(redux_connector(REGIMEN_DATE,day.dateString));
   }
   render() {
     return (
