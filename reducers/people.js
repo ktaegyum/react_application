@@ -18,6 +18,7 @@ const initialState = {
   setting_support: false,
 }
 export const peopleReducer = (state = initialState, action) => {
+  console.log(state.regimen_infusionCycle);
   switch(action.type){
     case FETCHING_PEOPLE:
       return {
@@ -40,6 +41,7 @@ export const peopleReducer = (state = initialState, action) => {
     case SETTING_ACCOUNT:
       console.log("asd");
       return {
+        ...state,
         setting_account: true,
         setting_regimen: false,
         setting_notification: false,
@@ -49,6 +51,7 @@ export const peopleReducer = (state = initialState, action) => {
       }
     case SETTING_NOTIFICATION:
       return {
+        ...state,
         setting_account: false,
         setting_regimen: false,
         setting_notification: true,
@@ -57,6 +60,7 @@ export const peopleReducer = (state = initialState, action) => {
       }
     case SETTING_EDITREGIMEN:
       return {
+        ...state,
         setting_account: false,
         setting_regimen: true,
         setting_notification: false,
@@ -65,6 +69,7 @@ export const peopleReducer = (state = initialState, action) => {
       }
     case SETTING_ABOUT:
       return {
+        ...state,
         setting_account: false,
         setting_regimen: false,
         setting_notification: false,
@@ -73,6 +78,7 @@ export const peopleReducer = (state = initialState, action) => {
       }
     case SETTING_SUPPORT:
       return {
+        ...state,
         setting_account: false,
         setting_regimen: false,
         setting_notification: false,
@@ -81,14 +87,17 @@ export const peopleReducer = (state = initialState, action) => {
       }
     case REGIMEN_INFUSIONCYCLE:
       return {
+        ...state,
         regimen_infusionCycle: action.content,
       }
     case REGIMEN_INFUSIONNUM:
       return {
+        ...state,
         regimen_infusionNum: action.content,
       }
     case REGIMEN_DATE:
       return {
+        ...state,
          regimen_date: action.content,
       }
     default:
