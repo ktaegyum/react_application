@@ -46,8 +46,7 @@ export const peopleReducer = (state = initialState, action) => {
         setting_regimen: false,
         setting_notification: false,
         setting_about: false,
-        setting_comment: false,
-        test:25,
+        setting_support: false,
       }
     case SETTING_NOTIFICATION:
       return {
@@ -56,7 +55,7 @@ export const peopleReducer = (state = initialState, action) => {
         setting_regimen: false,
         setting_notification: true,
         setting_about: false,
-        setting_comment: false,
+        setting_support: false,
       }
     case SETTING_EDITREGIMEN:
       return {
@@ -65,7 +64,7 @@ export const peopleReducer = (state = initialState, action) => {
         setting_regimen: true,
         setting_notification: false,
         setting_about: false,
-        setting_comment: false,
+        setting_support: false,
       }
     case SETTING_ABOUT:
       return {
@@ -74,7 +73,7 @@ export const peopleReducer = (state = initialState, action) => {
         setting_regimen: false,
         setting_notification: false,
         setting_about: true,
-        setting_comment: false,
+        setting_support: false,
       }
     case SETTING_SUPPORT:
       return {
