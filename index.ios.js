@@ -30,8 +30,9 @@ import SideEffect from './class/SideEffect'
 
 import configureStore from './configureStore'
 import {Provider} from 'react-redux'
-
-import store from './reducers/people.js'
+import { createStore, applyMiddleware, compose } from 'redux'
+import ReduxThunk from 'redux-thunk'
+import reducers from './reducers'
 
 export default class project extends Component {
   constructor(props, context) {
@@ -108,6 +109,9 @@ firebase.initializeApp({
     storageBucket: "infusion-e7ed9.appspot.com"
 });
 */
+
+const store = createStore(reducers, {}, compose(applyMiddleware(ReduxThunk)));
+
 const rnredux = () => (
   <Provider store={store}>
     <App />
