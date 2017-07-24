@@ -10,38 +10,18 @@ import {
 } from 'react-native';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import { StackNavigator } from 'react-navigation';
+import {connect} from 'react-redux';
 import styles from './Style';
 import SignUp from './SignUp';
+import {updateRegimen} from '../actions';
 
-export default class RegimenInfomation extends Component {
-  constructor(props, context) {
-    super(props, context)
-    this.state = {
-       days: 0,
-       infusion: 0,
-    }
-    this.onDayPress = this.onDayPress.bind(this);
-
-  }
+class RegimenInfomation extends Component {
   static navigationOptions = {
     title: 'Regimen Infomation',
   };
-  handleOnChangeDays = (value) => {
-    this.setState({
-       days: value,
-    })
-  }
-  handleOnChangeInfusion = (value) => {
-    this.setState({
-        infusion: value
-    })
-  }
-  onDayPress(day) {
-    this.setState({
-      selected: day.dateString
-    });
-  }
+  
   render() {
+    const {num_treatments, days_per_infusion_cycle, start_date, updateRegimen:updateRegimentStore} = this.props;
     return (
       <View style = {{
         flex: 1,
@@ -55,12 +35,12 @@ export default class RegimenInfomation extends Component {
         }}>
           <Text> DAYS PER INFUSION CYCLE </Text>
           <Slider
-            value={this.state.days}
+            value={days_per_infusion_cycle}
             minimumValue = {0}
             maximumValue = {31}
             step = {1}
-            onValueChange={(value)=> this.handleOnChangeDays(value)}/>
-          <Text>DAYS: {this.state.days} </Text>
+            onValueChange={(value)=> updateRegimentStore('infusion', value)}/>
+          <Text>DAYS: {days_per_infusion_cycle} </Text>
         </View>
         <View style={{
           borderBottomColor: 'black',
@@ -69,12 +49,12 @@ export default class RegimenInfomation extends Component {
         }}>
           <Text> NUMBER OF INFUSION </Text>
           <Slider
-            value={this.state.infusion}
+            value={num_treatments}
             minimumValue = {0}
             maximumValue = {31}
             step = {1}
-            onValueChange={(value)=> this.handleOnChangeInfusion(value)}/>
-          <Text>Infusion: {this.state.infusion} </Text>
+            onValueChange={(value)=> updateRegimentStore('treatment', value)}/>
+          <Text>Infusion: {num_treatments} </Text>
         </View>
         <View style = {{
           height: 350, 
@@ -82,9 +62,9 @@ export default class RegimenInfomation extends Component {
           borderBottomWidth: 2
         }}>
         <Calendar
-          onDayPress={this.onDayPress}
+          onDayPress={(day) => updateRegimentStore('start_date', day.dateString)}
           scrollEnabled={true}  />
-        <Text>Selected Date: {this.state.selected} </Text>  
+        <Text>Selected Date: {start_date} </Text>  
         
         </View>
           <View style={{backgroundColor: 'antiquewhite'}}>
@@ -97,3 +77,11 @@ export default class RegimenInfomation extends Component {
     );
   }
 }
+
+const mapStatesToProps = ({regimen}) => {
+  const {num_treatments, days_per_infusion_cycle, start_date} = regimen
+
+  return {num_treatments, days_per_infusion_cycle, start_date}
+}
+
+export default connect(mapStatesToProps, {updateRegimen})(RegimenInfomation);

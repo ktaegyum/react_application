@@ -1,6 +1,5 @@
 import {FETCHING_PEOPLE, FETCHING_PEOPLE_SUCCESS, FETCHING_PEOPLE_FAILURE} from '../constants'
 import {SETTING_ACCOUNT, SETTING_NOTIFICATION, SETTING_EDITREGIMEN, SETTING_ABOUT, SETTING_SUPPORT} from '../constants.js'
-import { createStore } from 'redux'
 
 const initialState = {
   people: [],
@@ -226,7 +225,7 @@ const initialState = {
     ]
 
 }
-export const peopleReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch(action.type){
     case FETCHING_PEOPLE:
       return {
@@ -290,7 +289,3 @@ export const peopleReducer = (state = initialState, action) => {
       return state
   }
 }
-
-let store = createStore(peopleReducer);
-
-export default store;

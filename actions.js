@@ -1,4 +1,11 @@
-import {FETCHING_PEOPLE, FETCHING_PEOPLE_SUCCESS, FETCHING_PEOPLE_FAILURE} from './constants'
+import {
+    FETCHING_PEOPLE, 
+    FETCHING_PEOPLE_SUCCESS,
+    FETCHING_PEOPLE_FAILURE,
+    TREATMENT_NUMBER_UPDATE,
+    INFUSION_CYLCE_UPDATE,
+    START_DATE_CHANGE
+} from './constants'
 
 export function fetchPeopleFromAPI() {
   return (dispatch) => {
@@ -33,4 +40,10 @@ function getPeopleFailure(){
   }
 }
 
-
+export const updateRegimen = (field, value) => (dispatch) => {
+  const action = {treatment: TREATMENT_NUMBER_UPDATE, infusion: INFUSION_CYLCE_UPDATE, start_date: START_DATE_CHANGE};
+  dispatch({
+    type: action[field],
+    payload: value
+  })
+}
