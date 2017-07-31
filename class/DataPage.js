@@ -14,9 +14,6 @@ import {styles} from './Style';
 
 export default class DataPage extends Component {
   
-
-
-
   render() {
     return (
       <Text>TODAY IS INFUSION</Text>
