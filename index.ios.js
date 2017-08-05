@@ -30,11 +30,20 @@ import Overview from './class/Overview'
 import DataPage from './class/DataPage'
 import SettingsPage from './action_setting.js'
 import SideEffect from './action_regimentInfo.js'
-
+import * as firebase from "firebase";
 //Redux Store
 import store from './reducers/people.js'
 
 //initial page
+var config = {
+  apiKey: "AIzaSyBfnermI1NQwpKOhy5FIKpJJ4Y_zZcCBJc",
+  authDomain: "infusion-e7ed9.firebaseapp.com",
+  databaseURL: "https://infusion-e7ed9.firebaseio.com",
+  projectId: "infusion-e7ed9",
+  storageBucket: "infusion-e7ed9.appspot.com",
+  messagingSenderId: "290851092660",
+};
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 export default class project extends Component {
   constructor(props, context) {
     super(props, context);
