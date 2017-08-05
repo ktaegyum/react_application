@@ -21,7 +21,7 @@ export default class DataPage extends Component {
   render() {
     return (
       <View>
-        <View style>
+        <View>
           <Text>MIN(Fatigue)</Text>
           <View style={{flexDirection: 'row'}}>
             <View style ={{marginRight: 5}}><Text>M :</Text></View>
