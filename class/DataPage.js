@@ -12,41 +12,39 @@ import {
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import {styles} from './Style';
 
+
+
+function DateAndBar(day,width) {
+  console.log(day)
+  console.log(width)
+  return(
+    <View style={{flexDirection: 'row'}}>
+      <View style ={{marginRight: 5}}><Text>{day}:</Text></View>
+      <View style={{width: width, height: 10, backgroundColor: 'blue', marginTop: 4 }} />
+    </View>
+  )
+}
+
 export default class DataPage extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
     };
+
   };
+
+
+
   render() {
     return (
       <View>
         <View style>
-          <Text>MIN(Fatigue)</Text>
-          <View style={{flexDirection: 'row'}}>
-            <View style ={{marginRight: 5}}><Text>M :</Text></View>
-            <View style={{width: 50, height: 10, backgroundColor: 'blue', marginTop: 4 }} />
-          </View>
-          <View style={{flexDirection: 'row'}}>
-            <View style ={{marginRight: 5}}><Text>T  :</Text></View>
-            <View style={{width: 60, height: 10, backgroundColor: 'blue', marginTop: 4 }} />
-          </View>
-          <View style={{flexDirection: 'row'}}>
-            <View style ={{marginRight: 5}}><Text>W :</Text></View>
-            <View style={{width: 10, height: 10, backgroundColor: 'blue', marginTop: 4 }} />
-          </View>
-          <View style={{flexDirection: 'row'}}>
-            <View style ={{marginRight: 5}}><Text>R  :</Text></View>
-            <View style={{width: 70, height: 10, backgroundColor: 'blue', marginTop: 4 }} />
-          </View>
-          <View style={{flexDirection: 'row'}}>
-            <View style ={{marginRight: 5}}><Text>F  :</Text></View>
-            <View style={{width: 10, height: 10, backgroundColor: 'blue', marginTop: 4 }} />
-          </View>
-          <View style={{flexDirection: 'row'}}>
-            <View style ={{marginRight: 5}}><Text>S  :</Text></View>
-            <View style={{width: 100, height: 10, backgroundColor: 'blue', marginTop: 4 }} />
-          </View>
+        <Text>Fatigue</Text>
+        {DateAndBar("M",80)}
+        {DateAndBar("M",20)}
+        {DateAndBar("M",50)}
+        {DateAndBar("M",100)}
+        {DateAndBar("M",10)}
         </View>
       </View>
     )
