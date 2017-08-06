@@ -52,6 +52,7 @@ export default class DataPage extends Component {
 
         <View>
           {listItems}
+          <Text>{JSON.stringify(this.props.observations)}</Text>
         </View>
       </ScrollView>
     )
