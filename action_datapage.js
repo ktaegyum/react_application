@@ -5,7 +5,7 @@ import DataPage from './class/DataPage'
 import {FETCHING_PEOPLE, FETCHING_PEOPLE_SUCCESS, FETCHING_PEOPLE_FAILURE} from './constants'
 import {SETTING_ACCOUNT, SETTING_NOTIFICATION, SETTING_EDITREGIMEN, SETTING_ABOUT, SETTING_SUPPORT} from './constants.js'
 import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE} from './constants.js'
-import {SYSMTOM_OBSERVATION} from './constants.js'
+import {SYMPTOM_OBSERVATION} from './constants.js'
 
 const mapStateToProps = state => ({
   observations: state.symptom_observations,

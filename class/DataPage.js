@@ -30,22 +30,26 @@ export default class DataPage extends Component {
     };
   };
   render() {
-    const listItems = this.props.observations.map((ob) =>
+    const listItems = this.props.observations.map((ob) =>{
+      dateTimeOfObservation = new Date(Date.parse(ob.entry_datetime))
+      dayIndexOfWeek = dateTimeOfObservation.getDay()
+      dayOfMonth = dateTimeOfObservation.getDate()
+      monthNum = dateTimeOfObservation.getMonth()
+      return(
             <View style={{flexDirection: 'row'}}>
-              <View style ={{marginRight: 5}}><Text>{ob.entry_datetime}:</Text></View>
+              <View style ={{marginRight: 5}}>
+                <Text>
+                  {["M","T","W","R","F","S","U"][dayIndexOfWeek]}:
+                </Text>
+              </View>
               <View style={{width: 80, height: 10, backgroundColor: 'blue', marginTop: 4 }} />
             </View>
-      );
+      )}
+    );
     return (
       <ScrollView>
-        <View>
         <Text>Fatigue</Text>
-          {DateAndBar("M",80)}
-          {DateAndBar("M",20)}
-          {DateAndBar("M",50)}
-          {DateAndBar("M",100)}
-          {DateAndBar("M",10)}
-        </View>
+
         <View>
           {listItems}
         </View>
