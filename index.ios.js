@@ -29,7 +29,7 @@ import Condition from './class/Condition'
 import Overview from './class/Overview'
 import DataPage from './class/DataPage'
 import SettingsPage from './action_setting.js'
-import SideEffect from './action_regimentInfo.js'
+import SideEffect from './action_sideEffect.js'
 
 //Redux Store
 import store from './reducers/people.js'

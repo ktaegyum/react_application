@@ -32,19 +32,16 @@ export default class DataPage extends Component {
     };
 
   };
-
-
-
   render() {
     return (
       <View>
-        <View style>
-        <Text>Fatigue</Text>
-        {DateAndBar("M",80)}
-        {DateAndBar("M",20)}
-        {DateAndBar("M",50)}
-        {DateAndBar("M",100)}
-        {DateAndBar("M",10)}
+        <View>
+          <Text>Fatigue</Text>
+          {DateAndBar("M",80)}
+          {DateAndBar("M",20)}
+          {DateAndBar("M",50)}
+          {DateAndBar("M",100)}
+          {DateAndBar("M",10)}
         </View>
       </View>
     )
