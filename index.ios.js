@@ -29,7 +29,11 @@ import Condition from './class/Condition'
 import Overview from './class/Overview'
 import DataPage from './class/DataPage'
 import SettingsPage from './action_setting.js'
+<<<<<<< HEAD
 import SideEffect from './action_sideEffect.js'
+=======
+import SideEffect from './class/SideEffect.js'
+>>>>>>> iss23
 
 //Redux Store
 import store from './reducers/people.js'
