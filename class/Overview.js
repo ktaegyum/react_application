@@ -30,7 +30,6 @@ export default class Overview extends Component {
             <Button
               onPress = {() => this.props.navigation.navigate('SideEffect')}
               title = "Submit"/>
-
           </View>
         </View>
     )
