@@ -2,7 +2,7 @@ import {FETCHING_PEOPLE, FETCHING_PEOPLE_SUCCESS, FETCHING_PEOPLE_FAILURE} from 
 import {SETTING_ACCOUNT, SETTING_NOTIFICATION, SETTING_EDITREGIMEN, SETTING_ABOUT, SETTING_SUPPORT} from '../constants.js'
 import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE} from '../constants.js'
 import {SYMPTOM_OBSERVATION} from '../constants.js'
-import {EFFECT_FATIGUE, EFFECT_NAUSEA, EFFECT_FEVER, EFFECT_PAIN, EFFECT_CLICKED_FATIGUE, EFFECT_CLICKED_NAUSEA, EFFECT_CLICKED_FEVER, EFFECT_CLICKED_PAIN} from '../constants.js'
+import {ADD_SYMPTOMS, EFFECT_FATIGUE, EFFECT_NAUSEA, EFFECT_FEVER, EFFECT_PAIN, EFFECT_CLICKED_FATIGUE, EFFECT_CLICKED_NAUSEA, EFFECT_CLICKED_FEVER, EFFECT_CLICKED_PAIN} from '../constants.js'
 
 
 import { createStore } from 'redux'
@@ -374,6 +374,18 @@ export const peopleReducer = (state = initialState, action) => {
         sideEffect_nausea_isClicked: false,
         sideEffect_fever_isClicked: false,
         sideEffect_pain_isClicked: true,
+      }
+    case ADD_SYMPTOMS:
+        state.symptom_observations.push(            
+        {
+          "entry_datetime": action.content.date,
+          "nausea": action.content.fatigue,
+          "fatigue": action.content.nausea,
+          "anxiety": action.content.fever,
+          "lack_of_appetite": action.content.pain,
+        })
+      return {
+        ...state,
       }
     default:
       return state
