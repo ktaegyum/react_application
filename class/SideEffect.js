@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import {styles} from './Style';
-import {EFFECT_FATIGUE, EFFECT_NAUSEA, EFFECT_FEVER, EFFECT_PAIN, EFFECT_CLICKED_FATIGUE, EFFECT_CLICKED_NAUSEA, EFFECT_CLICKED_FEVER, EFFECT_CLICKED_PAIN} from '../constants.js'
+import {ADD_SYMPTOMS, EFFECT_FATIGUE, EFFECT_NAUSEA, EFFECT_FEVER, EFFECT_PAIN, EFFECT_CLICKED_FATIGUE, EFFECT_CLICKED_NAUSEA, EFFECT_CLICKED_FEVER, EFFECT_CLICKED_PAIN} from '../constants.js'
 import store from '../reducers/people.js'
 var radio_props = [
   {label: '0', value: 0 },
@@ -47,6 +47,23 @@ function redux_dispatcher(type, value) {
 		store.dispatch(redux_connector(EFFECT_PAIN,value));
 		store.dispatch(redux_connector(EFFECT_CLICKED_PAIN,value));
 	}
+}
+function Symptom_Constructor(fatigue, nausea, fever, pain) {
+	var date = Date.now();
+	return {
+		date: date,
+		fatigue: fatigue,
+		nausea: nausea,
+		fever: fever,
+		pain: pain,
+	}
+}
+function addSymptoms(fatigue, nausea, fever, pain) {
+	store.dispatch(redux_connector(ADD_SYMPTOMS,Symptom_Constructor(fatigue, nausea, fever, pain)));
+	store.dispatch(redux_connector(EFFECT_CLICKED_FATIGUE,0));
+	store.dispatch(redux_connector(EFFECT_CLICKED_NAUSEA,0));
+	store.dispatch(redux_connector(EFFECT_CLICKED_FEVER,0));
+	store.dispatch(redux_connector(EFFECT_CLICKED_PAIN,0));
 }
 var fatigue0 = "No fatigue"
 var fatigue1 = "Fatigue relieved by rest"
@@ -198,6 +215,12 @@ export default class SideEffect extends Component {
 						<Text>Selected Level: {this.props.pain}</Text>
 					</View>
 	    		</ScrollView>
+		        <View style={{backgroundColor: 'antiquewhite'}}>
+		          <Button
+		              onPress={() => addSymptoms(this.props.fatigue, this.props.nausea, this.props.fever, this.props.pain)}
+		              title="SUBMIT"
+		              color="#841584"/>
+		        </View>
 		        <View style={{backgroundColor: 'antiquewhite'}}>
 		          <Button
 		              onPress={() => this.props.navigation.navigate('MainDash')}
