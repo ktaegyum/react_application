@@ -26,7 +26,7 @@ import styles from './class/Style';
 import SignUp from './class/SignUp'
 import RegimenInfomation from './action_regimentInfo'
 import Condition from './class/Condition'
-import Overview from './class/Overview'
+import Overview from './action_overview'
 import DataPage from './action_datapage'
 import SettingsPage from './action_setting.js'
 import SideEffect from './action_regimentInfo.js'
