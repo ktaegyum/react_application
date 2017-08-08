@@ -30,7 +30,6 @@ export default class DataPage extends Component {
     };
   };
   render() {
-<<<<<<< HEAD
     const fatigueItems = this.props.observations.map((ob) =>{
       dateTimeOfObservation = new Date(Date.parse(ob.entry_datetime))
       dayIndexOfWeek = dateTimeOfObservation.getDay()
