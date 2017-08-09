@@ -31,7 +31,7 @@ export default class DataPage extends Component {
   };
   render() {
     const fatigueItems = this.props.observations.map((ob) =>{
-      dateTimeOfObservation = new Date(Date.parse(ob.entry_datetime))
+      dateTimeOfObservation = new Date(ob.entry_datetime)
       dayIndexOfWeek = dateTimeOfObservation.getDay()
       dayOfMonth = dateTimeOfObservation.getDate()
       monthNum = dateTimeOfObservation.getMonth()
@@ -50,7 +50,7 @@ export default class DataPage extends Component {
 
 
     const anxietyItems = this.props.observations.map((ob) =>{
-      dateTimeOfObservation = new Date(Date.parse(ob.entry_datetime))
+      dateTimeOfObservation = new Date(ob.entry_datetime)
       dayIndexOfWeek = dateTimeOfObservation.getDay()
       dayOfMonth = dateTimeOfObservation.getDate()
       monthNum = dateTimeOfObservation.getMonth()
@@ -68,7 +68,7 @@ export default class DataPage extends Component {
     );
 
     const appetiteItems = this.props.observations.map((ob) =>{
-      dateTimeOfObservation = new Date(Date.parse(ob.entry_datetime))
+      dateTimeOfObservation = new Date(ob.entry_datetime)
       dayIndexOfWeek = dateTimeOfObservation.getDay()
       dayOfMonth = dateTimeOfObservation.getDate()
       monthNum = dateTimeOfObservation.getMonth()
