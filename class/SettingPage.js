@@ -35,7 +35,7 @@ export default class SettingsPage extends Component {
               <Button
                 onPress = {this.props.showing_account}
                 title = "Edit Account"/>
-              {renderIf(this.props.account, 
+              {renderIf(this.props.account,
               <View>
                 <Text>hey</Text>
               </View>
@@ -50,13 +50,13 @@ export default class SettingsPage extends Component {
               <Button
                 onPress = {this.props.showing_notification}
                 title = "Push Notification"/>
-              {renderIf(this.props.notification, 
+              {renderIf(this.props.notification,
               <View>
                 <Text>hey</Text>
               </View>
               )}
           </View>
-        
+
           <View style={{
             borderBottomColor: 'black',
             borderBottomWidth: 1,
@@ -65,13 +65,13 @@ export default class SettingsPage extends Component {
                <Button
                 onPress={() => this.props.navigation.navigate('RegimenInfomation')}
                 title = "Edit Regimen"/>
-              {renderIf(this.props.regimen, 
+              {renderIf(this.props.regimen,
               <View>
                 <Text>hey</Text>
-              </View> 
-              )}      
+              </View>
+              )}
           </View>
-        
+
           <View style={{
             borderBottomColor: 'black',
             borderBottomWidth: 1,
@@ -79,14 +79,14 @@ export default class SettingsPage extends Component {
             }}>
               <Button
                 onPress = {this.props.showing_about}
-                title = "About"/> 
-              {renderIf(this.props.about, 
+                title = "About"/>
+              {renderIf(this.props.about,
               <View>
                 <Text>hey</Text>
-              </View>  
-              )}     
+              </View>
+              )}
           </View>
-          
+
           <View style={{
             borderBottomColor: 'black',
             borderBottomWidth: 1,
@@ -95,10 +95,10 @@ export default class SettingsPage extends Component {
               <Button
                 onPress = {this.props.showing_support}
                 title = "Support"/>
-              {renderIf(this.props.support, 
+              {renderIf(this.props.support,
               <View>
                 <Text>hey</Text>
-              </View> 
+              </View>
               )}
           </View>
 

@@ -14,9 +14,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  EULA: async function() { 
+  EULA: async function() {
       /*return await FileSystem.readFile('./textfiles/EULA.txt');*/
       return 'asd'
   }
 });
-

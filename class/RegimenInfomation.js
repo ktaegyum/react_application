@@ -88,15 +88,15 @@ export default class RegimenInfomation extends Component {
           <Text>Infusion: {this.props.num} </Text>
         </View>
         <View style = {{
-          height: 350, 
+          height: 350,
           borderBottomColor: 'black',
           borderBottomWidth: 2
         }}>
         <Calendar
           onDayPress={this.onDayPress}
           scrollEnabled={true}  />
-        <Text>Selected Date: {this.props.date} </Text>  
-        
+        <Text>Selected Date: {this.props.date} </Text>
+
         </View>
           <View style={{backgroundColor: 'antiquewhite'}}>
           <Button

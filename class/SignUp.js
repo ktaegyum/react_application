@@ -66,7 +66,7 @@ export default class SignUp extends Component {
             placeholder = "Add additional information"
             onChangeText = {(value) => this.setInformation(value)}
             multiline = {true}/>
-        </View> 
+        </View>
 	       <View style={{backgroundColor: 'antiquewhite'}}>
           <Button
             onPress={() => this.props.navigation.navigate('Condition')}
@@ -82,7 +82,3 @@ firebase.initializeApp({
     databaseURL: "https://infusion-e7ed9.firebaseio.com",
     storageBucket: "infusion-e7ed9.appspot.com"
 });
-
-
-
-
