@@ -5,6 +5,7 @@ import {
   Text,
   View,
   Slider,
+  Dimensions,
   Button,
   Alert
 } from 'react-native';
@@ -12,11 +13,15 @@ import {
 export default class Overview extends Component {
   render() {
     completedInfusions = 2
-    totalWidth = 350
+    totalWidth = 300
     progressNumerator = completedInfusions
     progressDenominator = this.props.state.regimen_infusionNum
     progressWidth = totalWidth*(progressNumerator/progressDenominator)
     return (
+        <View style = {{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'space-between'}}>
 
 <View>
 <Text>Infusions</Text>
@@ -25,7 +30,7 @@ export default class Overview extends Component {
 <Text>You have completed {progressNumerator}/{this.props.state.regimen_infusionCycle} infusions</Text>
 <View style={{flexDirection:'row'}}>
 <View style={{width:progressWidth, height:10,backgroundColor:'green'}}></View>
-  <View style={{width:200, height:10,backgroundColor:'lightgrey'}}></View>
+  <View style={{width:300, height:10,backgroundColor:'lightgrey'}}></View>
 </View>
 <Text>Todays Forecast</Text>
 <Text>Some vomiting, Severe constipation, no peripheral neuropathy.</Text>
@@ -34,6 +39,12 @@ export default class Overview extends Component {
 </View>
 
 
+          <View style={{backgroundColor: 'antiquewhite'}}>
+            <Button
+              onPress = {() => this.props.navigation.navigate('SideEffect')}
+              title = "Submit"/>
+          </View>
+        </View>
     )
   };
 }

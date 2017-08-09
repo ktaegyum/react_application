@@ -2,6 +2,7 @@ import {FETCHING_PEOPLE, FETCHING_PEOPLE_SUCCESS, FETCHING_PEOPLE_FAILURE} from 
 import {SETTING_ACCOUNT, SETTING_NOTIFICATION, SETTING_EDITREGIMEN, SETTING_ABOUT, SETTING_SUPPORT} from '../constants.js'
 import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE} from '../constants.js'
 import {SYMPTOM_OBSERVATION} from '../constants.js'
+import {ADD_SYMPTOMS, EFFECT_FATIGUE, EFFECT_NAUSEA, EFFECT_FEVER, EFFECT_PAIN, EFFECT_CLICKED_FATIGUE, EFFECT_CLICKED_NAUSEA, EFFECT_CLICKED_FEVER, EFFECT_CLICKED_PAIN} from '../constants.js'
 
 import { createStore } from 'redux'
 
@@ -18,6 +19,14 @@ const initialState = {
   setting_about: false,
   setting_support: false,
   symptom_observations_fake: true,
+  sideEffect_fatigue: 0,
+  sideEffect_nausea: 0,
+  sideEffect_fever: 0,
+  sideEffect_pain: 0,
+  sideEffect_fatigue_isClicked: false,
+  sideEffect_nausea_isClicked: false,
+  sideEffect_fever_isClicked: false,
+  sideEffect_pain_isClicked: false,
   symptom_observations: [
     {
       "entry_datetime": "2017-05-01T18:25:43.511Z",
@@ -245,7 +254,7 @@ export const peopleReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        people: action.data
+        people: action.content
       }
     case FETCHING_PEOPLE_FAILURE:
       return {
@@ -254,7 +263,6 @@ export const peopleReducer = (state = initialState, action) => {
         error:true
       }
     case SETTING_ACCOUNT:
-      console.log("asd");
       return {
         ...state,
         setting_account: true,
@@ -314,11 +322,74 @@ export const peopleReducer = (state = initialState, action) => {
         ...state,
          regimen_date: action.content,
       }
+    case EFFECT_FATIGUE:
+      return {
+        ...state,
+        sideEffect_fatigue: action.content,
+      }
+    case EFFECT_NAUSEA:
+      return {
+        ...state,
+        sideEffect_nausea: action.content,
+      }
+    case EFFECT_FEVER:
+      return {
+        ...state,
+        sideEffect_fever: action.content,
+      }
+    case EFFECT_PAIN:
+      return {
+        ...state,
+        sideEffect_pain: action.content,
+      }
+    case EFFECT_CLICKED_FATIGUE:
+      return {
+        ...state,
+          sideEffect_fatigue_isClicked: true,
+          sideEffect_nausea_isClicked: false,
+          sideEffect_fever_isClicked: false,
+          sideEffect_pain_isClicked: false,
+      }
+    case EFFECT_CLICKED_NAUSEA:
+      return {
+        ...state,
+        sideEffect_fatigue_isClicked: false,
+        sideEffect_nausea_isClicked: true,
+        sideEffect_fever_isClicked: false,
+        sideEffect_pain_isClicked: false,
+      }
+    case EFFECT_CLICKED_FEVER:
+      return {
+        ...state,
+        sideEffect_fatigue_isClicked: false,
+        sideEffect_nausea_isClicked: false,
+        sideEffect_fever_isClicked: true,
+        sideEffect_pain_isClicked: false,
+      }
+    case EFFECT_CLICKED_PAIN:
+      return {
+        ...state,
+        sideEffect_fatigue_isClicked: false,
+        sideEffect_nausea_isClicked: false,
+        sideEffect_fever_isClicked: false,
+        sideEffect_pain_isClicked: true,
+      }
+    case ADD_SYMPTOMS:
+        state.symptom_observations.push(            
+        {
+          "entry_datetime": action.content.date,
+          "nausea": action.content.fatigue,
+          "fatigue": action.content.nausea,
+          "anxiety": action.content.fever,
+          "lack_of_appetite": action.content.pain,
+        })
+      return {
+        ...state,
+      }
     default:
       return state
   }
 }
-
 let store = createStore(peopleReducer);
 
 export default store;

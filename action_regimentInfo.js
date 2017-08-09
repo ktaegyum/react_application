@@ -13,7 +13,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  cycle_constrol: () => { dispatch({ type: SETTING_ACCOUNT })},
 
 })
 
