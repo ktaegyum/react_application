@@ -50,17 +50,9 @@ function redux_dispatcher(type, value) {
 }
 function Symptom_Constructor(fatigue, nausea, fever, pain) {
 	var unix_timestamp = Math.round((new Date()).getTime() / 1000);
-	//get date object from unix timestamp
-	var date = new Date(unix_timestamp * 1000);
-	console.log(date.getYear());
-	console.log(date.getMonth());
-	console.log(date.getDate());
-	console.log(date.getSeconds());
-	console.log(date.getDay());
-
 
 	return {
-		date: date,
+		date: unix_timestamp,
 		fatigue: fatigue,
 		nausea: nausea,
 		fever: fever,
