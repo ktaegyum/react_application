@@ -4,7 +4,7 @@
  * @flow
  */
 console.ignoredYellowBox = ['Remote debugger'];
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -13,10 +13,10 @@ import {
   Slider,
   Button,
   Alert,
-  Image,
+  Image
 } from 'react-native';
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
-import { StackNavigator, TabNavigator } from 'react-navigation';
+import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import {StackNavigator, TabNavigator} from 'react-navigation';
 import ImageSlider from 'react-native-image-slider';
 import configureStore from './configureStore'
 import {Provider} from 'react-redux'
@@ -31,7 +31,6 @@ import DataPage from './action_datapage'
 import SettingsPage from './action_setting.js'
 import SideEffect from './action_sideEffect.js'
 
-
 //Redux Store
 import store from './reducers/people.js'
 
@@ -45,63 +44,72 @@ export default class project extends Component {
     };
   };
   static navigationOptions = {
-    title: 'Infusion',
+    title: 'Infusion'
   };
   render() {
-      return (
-        <View style = {{
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'space-between'}}>
-          <View style ={{
-            marginBottom: 40,
-            backgroundColor: '#ffffff'
-          }}>
-            <ImageSlider images = {[
-              require('./images/intro.png'),
-              require('./images/trajectory.png'),
-              require('./images/calendar.png')]}
-              height = {400}
-              position={this.state.position}
-              onPositionChanged={position => this.setState({position})}/>
-          </View>
-          <View style = {{
-            alignItems: 'center'
-          }}>
-          </View>
-            <View style={{backgroundColor: 'antiquewhite'}}>
-            <Button
-              onPress = {() => this.props.navigation.navigate('SignUp')}
-              title = "Sign Up"/>
-            <Button
-              onPress = {() => this.props.navigation.navigate('Condition')}
-              title = "Log In W/ CancerBase"/>
-            <Button
-              onPress = {() => this.props.navigation.navigate('MainDash')}
-              title = "Jump to Main Dashboard"/>
-          </View>
+    return (
+      <View style={{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+      }}>
+        <View style ={{
+          marginBottom: 40,
+          backgroundColor: '#ffffff'
+        }}>
+          <ImageSlider images={[require('./images/intro.png'), require('./images/trajectory.png'), require('./images/calendar.png')]} height={400} position={this.state.position} onPositionChanged={position => this.setState({position})}/>
         </View>
-      );
+        <View style={{
+          alignItems: 'center'
+        }}></View>
+        <View style={{
+          backgroundColor: 'antiquewhite'
+        }}>
+          <Button onPress= {() => this.props.navigation.navigate('SignUp')} title="Sign Up"/>
+          <Button onPress= {() => this.props.navigation.navigate('Condition')} title="Log In W/ CancerBase"/>
+          <Button onPress= {() => this.props.navigation.navigate('MainDash')} title="Jump to Main Dashboard"/>
+        </View>
+      </View>
+    );
   };
 }
 
 const MainDashNavigator = TabNavigator({
-  Overview: { screen: Overview },
-  Data: { screen: DataPage },
-  Settings: { screen: SettingsPage },
-},
-  {swipeEnabled : true,
-  lazy: false,}
-  // tabBarOptions: {styles.tabBarStyle}
+  Overview: {
+    screen: Overview
+  },
+  Data: {
+    screen: DataPage
+  },
+  Settings: {
+    screen: SettingsPage
+  }
+}, {
+  swipeEnabled: true,
+  lazy: false
+}
+// tabBarOptions: {styles.tabBarStyle}
 );
 
 const App = StackNavigator({
-  Home: { screen: project },
-  SignUp: { screen: SignUp },
-  RegimenInfomation: { screen: RegimenInfomation },
-  Condition: {screen: Condition},
-  MainDash: {screen: MainDashNavigator},
-  SideEffect: {screen: SideEffect},
+  Home: {
+    screen: project
+  },
+  SignUp: {
+    screen: SignUp
+  },
+  RegimenInfomation: {
+    screen: RegimenInfomation
+  },
+  Condition: {
+    screen: Condition
+  },
+  MainDash: {
+    screen: MainDashNavigator
+  },
+  SideEffect: {
+    screen: SideEffect
+  }
 });
 /* firebase setup
 firebase.initializeApp({
@@ -114,7 +122,7 @@ firebase.initializeApp({
 //redux initialization
 const rnredux = () => (
   <Provider store={store}>
-    <App />
+    <App/>
   </Provider>
 )
 //calling
