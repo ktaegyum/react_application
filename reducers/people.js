@@ -15,7 +15,7 @@ import {
 } from '../constants.js'
 
 import {createStore} from 'redux'
-
+const millisecondsInADay = 60*60*24*1000
 const initialState = {
   people: [],
   isFetching: false,
@@ -39,210 +39,210 @@ const initialState = {
   sideEffect_pain_isClicked: false,
   symptom_observations: [
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*30,
+      "entry_datetime": Date.now() - millisecondsInADay*30,
       "nausea": 0,
       "fatigue": 1,
       "anxiety": 2,
       "lack_of_appetite": 0
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*29,
+      "entry_datetime": Date.now() - millisecondsInADay*29,
       "nausea": 2,
       "fatigue": 4,
       "anxiety": 2,
       "lack_of_appetite": 4
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*28,
+      "entry_datetime": Date.now() - millisecondsInADay*28,
       "nausea": 3,
       "fatigue": 3,
       "anxiety": 1,
       "lack_of_appetite": 3
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*27,
+      "entry_datetime": Date.now() - millisecondsInADay*27,
       "nausea": 3,
       "fatigue": 3,
       "anxiety": 1,
       "lack_of_appetite": 3
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*26,
+      "entry_datetime": Date.now() - millisecondsInADay*26,
       "nausea": 3,
       "fatigue": 2,
       "anxiety": 0,
       "lack_of_appetite": 2
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*25,
+      "entry_datetime": Date.now() - millisecondsInADay*25,
       "nausea": 2,
       "fatigue": 2,
       "anxiety": 0,
       "lack_of_appetite": 2
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*24,
+      "entry_datetime": Date.now() - millisecondsInADay*24,
       "nausea": 1,
       "fatigue": 2,
       "anxiety": 0,
       "lack_of_appetite": 2
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*23,
+      "entry_datetime": Date.now() - millisecondsInADay*23,
       "nausea": 1,
       "fatigue": 2,
       "anxiety": 0,
       "lack_of_appetite": 2
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*22,
+      "entry_datetime": Date.now() - millisecondsInADay*22,
       "nausea": 1,
       "fatigue": 2,
       "anxiety": 0,
       "lack_of_appetite": 2
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*21,
+      "entry_datetime": Date.now() - millisecondsInADay*21,
       "nausea": 0,
       "fatigue": 1,
       "anxiety": 0,
       "lack_of_appetite": 1
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*20,
+      "entry_datetime": Date.now() - millisecondsInADay*20,
       "nausea": 0,
       "fatigue": 1,
       "anxiety": 0,
       "lack_of_appetite": 1
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*19,
+      "entry_datetime": Date.now() - millisecondsInADay*19,
       "nausea": 0,
       "fatigue": 1,
       "anxiety": 1,
       "lack_of_appetite": 1
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*18,
+      "entry_datetime": Date.now() - millisecondsInADay*18,
       "nausea": 0,
       "fatigue": 0,
       "anxiety": 1,
       "lack_of_appetite": 0
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*17,
+      "entry_datetime": Date.now() - millisecondsInADay*17,
       "nausea": 0,
       "fatigue": 0,
       "anxiety": 2,
       "lack_of_appetite": 0
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*16,
+      "entry_datetime": Date.now() - millisecondsInADay*16,
       "nausea": 0,
       "fatigue": 0,
       "anxiety": 3,
       "lack_of_appetite": 0
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*15,
+      "entry_datetime": Date.now() - millisecondsInADay*15,
       "nausea": 1,
       "fatigue": 4,
       "anxiety": 4,
       "lack_of_appetite": 0
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*14,
+      "entry_datetime": Date.now() - millisecondsInADay*14,
       "nausea": 3,
       "fatigue": 4,
       "anxiety": 2,
       "lack_of_appetite": 4
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*13,
+      "entry_datetime": Date.now() - millisecondsInADay*13,
       "nausea": 3,
       "fatigue": 4,
       "anxiety": 2,
       "lack_of_appetite": 4
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*12,
+      "entry_datetime": Date.now() - millisecondsInADay*12,
       "nausea": 4,
       "fatigue": 4,
       "anxiety": 1,
       "lack_of_appetite": 4
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*11,
+      "entry_datetime": Date.now() - millisecondsInADay*11,
       "nausea": 4,
       "fatigue": 3,
       "anxiety": 0,
       "lack_of_appetite": 3
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*10,
+      "entry_datetime": Date.now() - millisecondsInADay*10,
       "nausea": 3,
       "fatigue": 3,
       "anxiety": 0,
       "lack_of_appetite": 3
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*9,
+      "entry_datetime": Date.now() - millisecondsInADay*9,
       "nausea": 2,
       "fatigue": 3,
       "anxiety": 0,
       "lack_of_appetite": 2
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*8,
+      "entry_datetime": Date.now() - millisecondsInADay*8,
       "nausea": 2,
       "fatigue": 2,
       "anxiety": 0,
       "lack_of_appetite": 2
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*7,
+      "entry_datetime": Date.now() - millisecondsInADay*7,
       "nausea": 1,
       "fatigue": 2,
       "anxiety": 0,
       "lack_of_appetite": 1
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*6,
+      "entry_datetime": Date.now() - millisecondsInADay*6,
       "nausea": 0,
       "fatigue": 1,
       "anxiety": 0,
       "lack_of_appetite": 1
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*5,
+      "entry_datetime": Date.now() - millisecondsInADay*5,
       "nausea": 0,
       "fatigue": 1,
       "anxiety": 0,
       "lack_of_appetite": 1
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*4,
+      "entry_datetime": Date.now() - millisecondsInADay*4,
       "nausea": 0,
       "fatigue": 0,
       "anxiety": 1,
       "lack_of_appetite": 0
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*3,
+      "entry_datetime": Date.now() - millisecondsInADay*3,
       "nausea": 0,
       "fatigue": 0,
       "anxiety": 1,
       "lack_of_appetite": 0
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*2,
+      "entry_datetime": Date.now() - millisecondsInADay*2,
       "nausea": 0,
       "fatigue": 0,
       "anxiety": 2,
       "lack_of_appetite": 0
     },
     {
-      "entry_datetime": Date.now() - 60*60*24*1000*1,
+      "entry_datetime": Date.now() - millisecondsInADay*1,
       "nausea": 0,
       "fatigue": 0,
       "anxiety": 2,
