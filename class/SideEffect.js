@@ -117,7 +117,7 @@ export default class SideEffect extends Component {
 						        alignItems: 'center'
 						    	}}
 	          				labelStyle = {{color: '#000000'}}
-	          				onPress = {(value) => {redux_dispatcher('fatigue', value); }}
+	          				onPress = {(value) => redux_dispatcher('fatigue', value)}
 							formHorizontal={true}
 							labelHorizontal={false}
 							buttonColor={'#2196f3'}
