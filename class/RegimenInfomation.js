@@ -76,7 +76,7 @@ export default class RegimenInfomation extends Component {
         }}>
           <Text> DAYS PER INFUSION CYCLE </Text>
           <Slider
-            value={this.state.days}
+            value={this.props.cycle}
             minimumValue = {0}
             maximumValue = {31}
             step = {1}
@@ -90,7 +90,7 @@ export default class RegimenInfomation extends Component {
         }}>
           <Text> NUMBER OF INFUSION </Text>
           <Slider
-            value={this.state.infusion}
+            value={this.props.num}
             minimumValue = {0}
             maximumValue = {31}
             step = {1}
