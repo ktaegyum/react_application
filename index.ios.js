@@ -23,7 +23,8 @@ import {Provider} from 'react-redux'
 
 //Pages class
 import styles from './class/Style'
-import SignUp from './action_login.js'
+import SignUp from './action_signup.js'
+import LogIn from './action_login.js'
 import RegimenInfomation from './action_regimentInfo'
 import Condition from './class/Condition'
 import Overview from './action_overview'
@@ -109,6 +110,9 @@ const App = StackNavigator({
   },
   SideEffect: {
     screen: SideEffect
+  },
+  LogIn: {
+    screen: LogIn
   }
 });
 /* firebase setup
