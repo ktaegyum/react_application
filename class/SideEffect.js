@@ -215,13 +215,16 @@ export default class SideEffect extends Component {
 						<Text>Selected Level: {this.props.pain}</Text>
 					</View>
 	    		</ScrollView>
-		        <View style={{backgroundColor: 'antiquewhite'}}>
+		        <View style={{backgroundColor: '#FFFFFF'}}>
 		          <Button
-		              onPress={() => {addSymptoms(this.props.fatigue, this.props.nausea, this.props.fever, this.props.pain); this.props.navigation.navigate('MainDash')}}
+		              onPress={() => {
+                    addSymptoms(this.props.fatigue, this.props.nausea, this.props.fever, this.props.pain);
+                    this.props.navigation.navigate('MainDash')}
+                  }
 		              title="SUBMIT"
 		              color="#841584"/>
 		        </View>
-		        <View style={{backgroundColor: 'antiquewhite'}}>
+		        <View style={{backgroundColor: '#FFFFFF'}}>
 		          <Button
 		              onPress={() => this.props.navigation.navigate('MainDash')}
 		              title="Go Back"

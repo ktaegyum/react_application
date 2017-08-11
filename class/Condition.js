@@ -48,7 +48,7 @@ export default class Condition extends Component {
           </Text>
         </ScrollView>
         <View style={{
-          backgroundColor: 'antiquewhite'
+          backgroundColor: '#FFFFFF'
         }}>
           <Button onPress={() => this.props.navigation.navigate('RegimenInfomation')} title="DONE" color="#841584"/>
         </View>

@@ -67,7 +67,7 @@ export default class SignUp extends Component {
             onChangeText = {(value) => this.setInformation(value)}
             multiline = {true}/>
         </View>
-	       <View style={{backgroundColor: 'antiquewhite'}}>
+	       <View style={{backgroundColor: '#FFFFFF'}}>
           <Button
             onPress={() => this.props.navigation.navigate('Condition')}
             title="DONE"/>

@@ -63,7 +63,7 @@ export default class project extends Component {
           alignItems: 'center'
         }}></View>
         <View style={{
-          backgroundColor: 'antiquewhite'
+          backgroundColor: '#FFFFFF'
         }}>
           <Button onPress= {() => this.props.navigation.navigate('SignUp')} title="Sign Up"/>
           <Button onPress= {() => this.props.navigation.navigate('Condition')} title="Log In W/ CancerBase"/>

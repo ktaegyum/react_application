@@ -109,7 +109,7 @@ export default class RegimenInfomation extends Component {
         <Text>Selected Date: {date_convertor(this.props.date).date} </Text>
 
         </View>
-          <View style={{backgroundColor: 'antiquewhite'}}>
+          <View style={{backgroundColor: '#FFFFFF'}}>
           <Button
             onPress={() => this.props.navigation.navigate('MainDash')}
             title="DONE"/>
