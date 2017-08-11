@@ -13,6 +13,7 @@ import {
   EFFECT_CLICKED_FEVER,
   EFFECT_CLICKED_PAIN
 } from '../constants.js'
+import {SIGNUP_EMAIL, SIGNUP_PASSWORD, SIGNUP_USERINFO} from '../constants.js'
 
 import {createStore} from 'redux'
 const millisecondsInADay = 60*60*24*1000
@@ -37,6 +38,9 @@ const initialState = {
   sideEffect_nausea_isClicked: false,
   sideEffect_fever_isClicked: false,
   sideEffect_pain_isClicked: false,
+  signUp_email: '',
+  signUp_password: '',
+  signUp_userInfo: '',
   symptom_observations: [
     {
       "entry_datetime": Date.now() - millisecondsInADay*30,
@@ -395,6 +399,21 @@ export const peopleReducer = (state = initialState, action) => {
         })
       return {
         ...state,
+      }
+    case SIGNUP_EMAIL:
+      return {
+        ...state,
+        signUp_email: action.content,
+      }
+    case SIGNUP_PASSWORD:
+      return {
+        ...state,
+        signUp_password: action.content,
+      }
+    case SIGNUP_USERINFO:
+      return {
+        ...state,
+        signUp_userInfo: action.content,
       }
     default:
       return state

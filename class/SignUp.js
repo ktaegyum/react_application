@@ -14,7 +14,21 @@ import { StackNavigator } from 'react-navigation';
 import * as firebase from "firebase";
 import styles from './Style';
 import RegimenInfomation from './RegimenInfomation'
+import store from '../reducers/people.js'
+import {SIGNUP_EMAIL, SIGNUP_PASSWORD, SIGNUP_USERINFO} from '../constants.js'
 
+function redux_connector(command,data){
+  console.log(data);
+  return {
+    type: command,
+    content: data
+  }
+}
+function signUp_Update(email, password, info) {
+    store.dispatch(redux_connector(SIGNUP_EMAIL,data));
+    store.dispatch(redux_connector(SIGNUP_PASSWORD,data));
+    store.dispatch(redux_connector(SIGNUP_USERINFO,data));
+}
 export default class SignUp extends Component {
   constructor(props, context) {
     super(props, context)
@@ -42,6 +56,10 @@ export default class SignUp extends Component {
       information: user_information
     })
   }
+  update = () => {
+    this.props.navigation.navigate('Condition')
+    signUp_Update(this.email, this.password, this.information) 
+  }
   render() {
     return (
         <View style = {{
@@ -57,8 +75,13 @@ export default class SignUp extends Component {
         	<Text> Password </Text>
         	<TextInput
         		style = {{height: 40, padding: 10}}
-        		placeholder =  "password"
+        		placeholder =  "password1"
         		onChangeText = {(value) => this.setPassword(value)}
+            secureTextEntry = {true}/>
+          <TextInput
+            style = {{height: 40, padding: 10}}
+            placeholder =  "password2"
+            onChangeText = {(value) => this.setPassword(value)}
             secureTextEntry = {true}/>
           <Text>Additional Information</Text>
           <TextInput

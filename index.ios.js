@@ -22,8 +22,8 @@ import configureStore from './configureStore'
 import {Provider} from 'react-redux'
 
 //Pages class
-import styles from './class/Style';
-import SignUp from './class/SignUp'
+import styles from './class/Style'
+import SignUp from './action_login.js'
 import RegimenInfomation from './action_regimentInfo'
 import Condition from './class/Condition'
 import Overview from './action_overview'
