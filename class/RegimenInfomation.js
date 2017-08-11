@@ -28,7 +28,8 @@ function date_convertor(unix_timestamp) {
   var year = t.getFullYear();
   var month = t.getMonth();
   var date = t.getDate();
-  var formatted = year + "-" + month + "-" + date;
+  // month needs +1 because it is 0 indexed
+  var formatted = year + "-" + (month+1) + "-" + date;
   return {
     date: formatted,
   }
