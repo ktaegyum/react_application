@@ -23,6 +23,16 @@ function redux_connector(command,data){
     content: data
   }
 }
+function date_convertor(unix_timestamp) {
+  var t = new Date(unix_timestamp);
+  var year = t.getFullYear();
+  var month = t.getMonth();
+  var date = t.getDate();
+  var formatted = year + "-" + month + "-" + date;
+  return {
+    date: formatted,
+  }
+}
 export default class RegimenInfomation extends Component {
   constructor(props, context) {
     super(props, context)
@@ -66,7 +76,7 @@ export default class RegimenInfomation extends Component {
         }}>
           <Text> DAYS PER INFUSION CYCLE </Text>
           <Slider
-            value={this.state.days}
+            value={this.props.cycle}
             minimumValue = {0}
             maximumValue = {31}
             step = {1}
@@ -80,7 +90,7 @@ export default class RegimenInfomation extends Component {
         }}>
           <Text> NUMBER OF INFUSION </Text>
           <Slider
-            value={this.state.infusion}
+            value={this.props.num}
             minimumValue = {0}
             maximumValue = {31}
             step = {1}
@@ -95,7 +105,7 @@ export default class RegimenInfomation extends Component {
         <Calendar
           onDayPress={this.onDayPress}
           scrollEnabled={true}  />
-        <Text>Selected Date: {this.props.date} </Text>
+        <Text>Selected Date: {date_convertor(this.props.date).date} </Text>
 
         </View>
           <View style={{backgroundColor: 'antiquewhite'}}>

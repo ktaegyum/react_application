@@ -37,7 +37,7 @@ export default class DataPage extends Component {
       monthNum = dateTimeOfObservation.getMonth()
       observation_width = ob.fatigue
       return(
-            <View style={{flexDirection: 'row'}}>
+            <View style={{flexDirection: 'row'}} key = {ob.entry_datetime}>
               <View style ={{marginRight: 5}}>
                 <Text>
                   {["M","T","W","R","F","S","U"][dayIndexOfWeek]}:
@@ -56,7 +56,7 @@ export default class DataPage extends Component {
       monthNum = dateTimeOfObservation.getMonth()
       observation_width = ob.anxiety
       return(
-            <View style={{flexDirection: 'row'}}>
+            <View style={{flexDirection: 'row'}}  key = {ob.entry_datetime}>
               <View style ={{marginRight: 5}}>
                 <Text>
                   {["M","T","W","R","F","S","U"][dayIndexOfWeek]}:
@@ -74,7 +74,7 @@ export default class DataPage extends Component {
       monthNum = dateTimeOfObservation.getMonth()
       observation_width = ob.lack_of_appetite
       return(
-            <View style={{flexDirection: 'row'}}>
+            <View style={{flexDirection: 'row'}}  key = {ob.entry_datetime}>
               <View style ={{marginRight: 5}}>
                 <Text>
                   {["M","T","W","R","F","S","U"][dayIndexOfWeek]}:
