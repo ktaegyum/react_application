@@ -11,15 +11,13 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types'; // ES6
 
-
-
 function range(len) {
   return Array.apply(null, {length: len}).map(Number.call, Number)
 }
 
-dayMilliseconds = (num) => 86400000*num
+dayMilliseconds = (num) => 86400000 * num
 
-function infusionDates(startDateUnixTime, numInfusions,cycleLength) {
+function infusionDates(startDateUnixTime, numInfusions, cycleLength) {
   return range(numInfusions).map((dayIndex) => startDateUnixTime + dayMilliseconds(dayIndex))
 }
 
@@ -27,7 +25,6 @@ function nextInfusion(infusionDates) {
   // remove dates in past, then return first of remaining list.
   return infusionDates.filter((infusionDate) => infusionDate < Date.now())[0]
 }
-
 
 export default class Overview extends Component {
   render() {
