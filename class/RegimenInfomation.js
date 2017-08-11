@@ -29,7 +29,11 @@ function date_convertor(unix_timestamp) {
   var month = t.getMonth();
   var date = t.getDate();
   // month needs +1 because it is 0 indexed
+<<<<<<< HEAD
   var formatted = year + "-" + (month+1) + "-" + (date+1);
+=======
+  var formatted = year + "-" + (month+1) + "-" + (date-1);
+>>>>>>> 048183ac191d92206ed02d9254c71b29139f2836
   return {
     date: formatted,
   }
