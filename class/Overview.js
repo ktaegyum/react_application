@@ -51,7 +51,7 @@ export default class Overview extends Component {
         </View>
 
         <View style={{
-          backgroundColor: 'antiquewhite'
+          backgroundColor: '#FFFFFF'
         }}>
           <Button onPress= {() => this.props.navigation.navigate('SideEffect')} title="Submit"/>
         </View>
