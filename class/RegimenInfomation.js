@@ -26,14 +26,10 @@ function redux_connector(command,data){
 function date_convertor(unix_timestamp) {
   var t = new Date(unix_timestamp);
   var year = t.getFullYear();
-  var month = t.getMonth();
-  var date = t.getDate();
+  var month = t.getMonth() + 1;
+  var date = t.getDate() + 1;
   // month needs +1 because it is 0 indexed
-<<<<<<< HEAD
-  var formatted = year + "-" + (month+1) + "-" + (date+1);
-=======
-  var formatted = year + "-" + (month+1) + "-" + (date-1);
->>>>>>> 048183ac191d92206ed02d9254c71b29139f2836
+  var formatted = year + "-" + month + "-" + date;
   return {
     date: formatted,
   }
