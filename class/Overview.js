@@ -17,14 +17,24 @@ function range(len) {
 
 dayMilliseconds = (num) => 86400000 * num
 
+//@return array of infusion dates in unixtime format
 function infusionDates(startDateUnixTime, numInfusions, cycleLength) {
   return range(numInfusions).map((dayIndex) => startDateUnixTime + dayMilliseconds(dayIndex))
 }
 
+//@param array of infusion dates in unixtime format
 function nextInfusion(infusionDates) {
   // remove dates in past, then return first of remaining list.
   return infusionDates.filter((infusionDate) => infusionDate < Date.now())[0]
 }
+//@return Date object for next infusion datetime
+function nextInfusionDate(start, num, cycleLength){
+  return new Date(nextInfusion(infusionDates(startDateUnixTime, numInfusions, cycleLength)))
+}
+
+const weekdayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+
+weekdayString = (dateObject) => weekdayName[dateObject.getDay()]
 
 export default class Overview extends Component {
   render() {
@@ -33,6 +43,7 @@ export default class Overview extends Component {
     progressNumerator = completedInfusions
     progressDenominator = this.props.state.regimen_infusionNum
     progressWidth = totalWidth * (progressNumerator / progressDenominator)
+
     return (
       <View style={{
         flex: 1,
@@ -42,7 +53,7 @@ export default class Overview extends Component {
 
         <View>
           <Text>Infusions</Text>
-          <Text>Your next treatment is Thursday of next week, on June 1st</Text>
+          <Text>Your next treatment is </Text>
           <Text>Progress</Text>
           <Text>You have completed {progressNumerator}/{this.props.state.regimen_infusionCycle}
             infusions</Text>
