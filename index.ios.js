@@ -54,7 +54,7 @@ export default class project extends Component {
         const resetAction = NavigationActions.reset({
           index: 0,
           actions: [
-            NavigationActions.navigate({ routeName: 'RegimenInfomation'})
+            NavigationActions.navigate({ routeName: 'MainDash'})
           ]
         })
         this.props.navigation.dispatch(resetAction)
