@@ -48,9 +48,9 @@ export default class project extends Component {
     };
   };
 
-  componentWillMount() {
+  async componentWillMount() {
     firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
+      if (user && user.emailVerified) {
         const resetAction = NavigationActions.reset({
           index: 0,
           actions: [

@@ -47,6 +47,11 @@ export default class LogIn extends Component {
             .signInWithEmailAndPassword(email, password);
 
         console.log("Logged In!");
+        const user = firebase.auth().currentUser;
+        if (!user.emailVerified){
+          alert("Please verify your email.");
+          return;
+        }
 
         const resetAction = NavigationActions.reset({
           index: 0,

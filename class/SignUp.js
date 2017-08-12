@@ -15,6 +15,7 @@ import styles from './Style';
 import RegimenInfomation from './RegimenInfomation'
 import store from '../reducers/people.js'
 import {SIGNUP_EMAIL, SIGNUP_PASSWORD, SIGNUP_USERINFO} from '../constants.js'
+import * as firebase from "firebase";
 
 function redux_connector(command,data){
   console.log(data);
@@ -32,34 +33,69 @@ export default class SignUp extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = {
-      email: 0,
-      password: 0,
-      information: null
+      email: null,
+      password: null,
+      information: null,
+      confirm_password: null,
     }
   }
   static navigationOptions = {
       title: 'Sign Up',
   };
-  setEmail = (user_email) => {
+  setEmail = (email) => {
   	this.setState ({
-  		email: user_email
+  		email
   	})
   }
-  setPassword = (user_password) => {
+  setPassword = (password) => {
   	this.setState({
-  		password: user_password
+  		password
   	})
   }
-  setInformation = (user_information) => {
+  setConfirmPassword = (confirm_password) => {
+  	this.setState({
+  		confirm_password
+  	})
+  }
+  setInformation = (information) => {
     this.setState({
-      information: user_information
+      information
     })
   }
+
+  singupUser = async () => {
+    const {email, password, confirm_password, information} = this.state;
+    if (password != confirm_password) {
+      alert('Password does not match');
+      return;
+    }
+    try {
+      await firebase.auth().createUserWithEmailAndPassword(email, password);
+      
+        const user = firebase.auth().currentUser;
+        console.log(user);
+        await user.sendEmailVerification();
+        this.setState({
+          email: null,
+          password: null,
+          confirm_password: null,
+          information: null,
+        });
+        this.props.navigation.navigate('Condition');
+        firebase.auth().signOut();
+        alert("Email verification link has been sent. Please verify your account to login");
+    } catch (error) {
+      alert(error.toString());
+    }
+
+  }
+
   update = () => {
     this.props.navigation.navigate('Condition')
     signUp_Update(this.email, this.password, this.information) 
   }
   render() {
+    const {email, password, confirm_password, information} = this.state;
     return (
         <View style = {{
           flex: 1,
@@ -70,28 +106,35 @@ export default class SignUp extends Component {
         	<TextInput
         		style = {{height: 40, padding: 10}}
         		placeholder =  "account@example.com"
+            autoCapitalize="none"
+            autoCorrect={false}
+            value={email}
         		onChangeText = {(value) => this.setEmail(value)}/>
         	<Text> Password </Text>
         	<TextInput
         		style = {{height: 40, padding: 10}}
-        		placeholder =  "password1"
+        		placeholder =  "password"
         		onChangeText = {(value) => this.setPassword(value)}
+            value={password}
             secureTextEntry = {true}/>
+          <Text> Confirm Password </Text>
           <TextInput
             style = {{height: 40, padding: 10}}
-            placeholder =  "password2"
-            onChangeText = {(value) => this.setPassword(value)}
+            placeholder =  "confirm password"
+            onChangeText = {(value) => this.setConfirmPassword(value)}
+            value={confirm_password}
             secureTextEntry = {true}/>
-          <Text>Additional Information</Text>
+          <Text> Additional Information</Text>
           <TextInput
             style = {{height: 300, padding: 10}}
+            value={information}
             placeholder = "Add additional information"
             onChangeText = {(value) => this.setInformation(value)}
             multiline = {true}/>
         </View>
 	       <View style={{backgroundColor: '#FFFFFF'}}>
           <Button
-            onPress={() => this.props.navigation.navigate('Condition')}
+            onPress={this.singupUser}
             title="DONE"/>
          </View>
       </View>
