@@ -10,7 +10,7 @@ import {
   TextInput
 } from 'react-native';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, NavigationActions } from 'react-navigation';
 import * as firebase from "firebase";
 import styles from './Style';
 import RegimenInfomation from './RegimenInfomation'
@@ -32,17 +32,43 @@ export default class LogIn extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = {
-      email: 0,
-      password: 0,
+      email: '',
+      password: '',
       information: null
     }
   }
   static navigationOptions = {
       title: 'LogIn',
   };
+  onPressLogin = async () => {
+    try {
+      const {email, password} = this.state;
+      await firebase.auth()
+            .signInWithEmailAndPassword(email, password);
+
+        console.log("Logged In!");
+
+        const resetAction = NavigationActions.reset({
+          index: 0,
+          actions: [
+            NavigationActions.navigate({ routeName: 'RegimenInfomation'})
+          ]
+        })
+        this.props.navigation.dispatch(resetAction)
+
+    } catch (error) {
+        console.log(error.toString())
+        alert(error.toString());
+    }
+  }
   setEmail = (user_email) => {
   	this.setState ({
   		email: user_email
+  	})
+  }
+  setPassword = (password) => {
+  	this.setState ({
+  		password
   	})
   }
   update = () => {
@@ -60,6 +86,8 @@ export default class LogIn extends Component {
         	<TextInput
         		style = {{height: 40, padding: 10}}
         		placeholder =  "account@example.com"
+            autoCapitalize="none"
+            autoCorrect={false}
         		onChangeText = {(value) => this.setEmail(value)}/>
         	<Text> Password </Text>
         	<TextInput
@@ -70,7 +98,7 @@ export default class LogIn extends Component {
         </View>
 	       <View style={{backgroundColor: '#FFFFFF'}}>
           <Button
-            onPress={() => this.props.navigation.navigate('RegimenInfomation')}
+            onPress={this.onPressLogin}
             title="Submit"/>
          </View>
       </View>

@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import { StackNavigator } from 'react-navigation';
-import * as firebase from "firebase";
 import styles from './Style';
 import RegimenInfomation from './RegimenInfomation'
 import store from '../reducers/people.js'
@@ -99,9 +98,3 @@ export default class SignUp extends Component {
     );
   }
 }
-firebase.initializeApp({
-    apiKey: "yourkeyhere",
-    authDomain: "infusion-e7ed9.firebaseapp.com",
-    databaseURL: "https://infusion-e7ed9.firebaseio.com",
-    storageBucket: "infusion-e7ed9.appspot.com"
-});

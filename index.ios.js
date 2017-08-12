@@ -13,10 +13,11 @@ import {
   Slider,
   Button,
   Alert,
-  Image
+  Image,
+  ActivityIndicator
 } from 'react-native';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
-import {StackNavigator, TabNavigator} from 'react-navigation';
+import {StackNavigator, TabNavigator, NavigationActions} from 'react-navigation';
 import ImageSlider from 'react-native-image-slider';
 import configureStore from './configureStore'
 import {Provider} from 'react-redux'
@@ -31,9 +32,10 @@ import Overview from './action_overview'
 import DataPage from './action_datapage'
 import SettingsPage from './action_setting.js'
 import SideEffect from './action_sideEffect.js'
-
+import * as firebase from "firebase";
 //Redux Store
 import store from './reducers/people.js'
+import firebaseApp from './Firebase';
 
 //initial page
 export default class project extends Component {
@@ -41,13 +43,38 @@ export default class project extends Component {
     super(props, context);
     this.state = {
       position: 0,
-      interval: null
+      interval: null,
+      load: true,
     };
   };
+
+  componentWillMount() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        const resetAction = NavigationActions.reset({
+          index: 0,
+          actions: [
+            NavigationActions.navigate({ routeName: 'RegimenInfomation'})
+          ]
+        })
+        this.props.navigation.dispatch(resetAction)
+      } else {
+        this.setState({load: false});
+      }
+    });
+  }
+
   static navigationOptions = {
     title: 'Infusion'
   };
   render() {
+    if (this.state.load) {
+      return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <ActivityIndicator />
+        </View>
+      );
+    }
     return (
       <View style={{
         flex: 1,
