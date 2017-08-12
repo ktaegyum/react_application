@@ -30,9 +30,7 @@ function date_convertor(unix_timestamp) {
   var date = t.getDate() + 1;
   // month needs +1 because it is 0 indexed
   var formatted = year + "-" + month + "-" + date;
-  return {
-    date: formatted,
-  }
+  return formatted;
 }
 export default class RegimenInfomation extends Component {
   constructor(props, context) {
@@ -61,9 +59,9 @@ export default class RegimenInfomation extends Component {
     this.setState({
       selected: day.dateString
     });
-    store.dispatch(redux_connector(REGIMEN_DATE,day.dateString));
   }
   render() {
+    regimenDateSelected = {[date_convertor(this.props.date)] : {selected: true, marked: true}}
     return (
       <View style = {{
         flex: 1,
@@ -104,9 +102,10 @@ export default class RegimenInfomation extends Component {
           borderBottomWidth: 2
         }}>
         <Calendar
-          onDayPress={this.onDayPress}
+          onDayPress={(day) => store.dispatch(redux_connector(REGIMEN_DATE,day.timestamp))}
+          markedDates={regimenDateSelected}
           scrollEnabled={true}  />
-        <Text>Selected Date: {date_convertor(this.props.date).date} </Text>
+        <Text>Selected Date: {date_convertor(this.props.date)} </Text>
 
         </View>
           <View style={{backgroundColor: '#FFFFFF'}}>

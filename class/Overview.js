@@ -25,23 +25,45 @@ function infusionDates(startDateUnixTime, numInfusions, cycleLength) {
 //@param array of infusion dates in unixtime format
 function nextInfusion(infusionDates) {
   // remove dates in past, then return first of remaining list.
-  return infusionDates.filter((infusionDate) => infusionDate < Date.now())[0]
+  return infusionDates.filter((infusionDate) => infusionDate > Date.now())[0]
 }
+
+function rmFutureDates(infusionDates) {
+  // remove dates in future
+  return infusionDates.filter((infusionDate) => infusionDate < Date.now())
+}
+
 //@return Date object for next infusion datetime
-function nextInfusionDate(start, num, cycleLength){
-  return new Date(nextInfusion(infusionDates(startDateUnixTime, numInfusions, cycleLength)))
+function nextInfusionDate(startDateUnixTime, num, cycleLength){
+  return new Date(nextInfusion(infusionDates(startDateUnixTime, num, cycleLength)))
 }
 
-const weekdayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+const weekdayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"]
 
-weekdayString = (dateObject) => weekdayName[dateObject.getDay()]
+weekdayString = (dateObject) => weekdayNames[dateObject.getDay()]
+monthString = (dateObject) => monthNames[dateObject.getMonth()]
+dateStringPhrase = (dateObject) => weekdayString(dateObject) + ", " + monthString(dateObject) + " " + dateObject.getDate()
 
+numberOfCompletedInfusions = (start,num,cycleLength) => {
+  return rmFutureDates(infusionDates(start,num,cycleLength)).length
+}
 export default class Overview extends Component {
   render() {
-    completedInfusions = 2
+    completedInfusions = numberOfCompletedInfusions(
+                            this.props.state.regimen_date,
+                            this.props.state.regimen_infusionNum,
+                            this.props.state.regimen_infusionCycle
+                          )
     totalWidth = 300
+    debugger;
     progressNumerator = completedInfusions
     progressDenominator = this.props.state.regimen_infusionNum
+    upcomingInfusionDate = nextInfusionDate(
+                              this.props.state.regimen_date,
+                              this.props.state.regimen_infusionNum,
+                              this.props.state.regimen_infusionCycle
+                            )
     progressWidth = totalWidth * (progressNumerator / progressDenominator)
 
     return (
@@ -53,7 +75,7 @@ export default class Overview extends Component {
 
         <View>
           <Text>Infusions</Text>
-          <Text>Your next treatment is </Text>
+          <Text>Your next treatment is on {dateStringPhrase(new Date(upcomingInfusionDate))} </Text>
           <Text>Progress</Text>
           <Text>You have completed {progressNumerator}/{this.props.state.regimen_infusionCycle}
             infusions</Text>
