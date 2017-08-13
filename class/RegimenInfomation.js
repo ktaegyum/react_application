@@ -27,12 +27,10 @@ function date_convertor(unix_timestamp) {
   var t = new Date(unix_timestamp);
   var year = t.getFullYear();
   var month = t.getMonth() + 1;
-  var date = t.getDate() + 1;
+  var date = t.getDate();
   // month needs +1 because it is 0 indexed
   var formatted = year + "-" + month + "-" + date;
-  return {
-    date: formatted,
-  }
+  return formatted
 }
 export default class RegimenInfomation extends Component {
   constructor(props, context) {
@@ -41,8 +39,6 @@ export default class RegimenInfomation extends Component {
        days: 0,
        infusion: 0,
     }
-    this.onDayPress = this.onDayPress.bind(this);
-
   }
   static navigationOptions = {
     title: 'Regimen Infomation',
@@ -57,13 +53,8 @@ export default class RegimenInfomation extends Component {
         infusion: value
     })
   }
-  onDayPress(day) {
-    this.setState({
-      selected: day.dateString
-    });
-    store.dispatch(redux_connector(REGIMEN_DATE,day.dateString));
-  }
   render() {
+    selectedDate = new Date(this.props.date)
     return (
       <View style = {{
         flex: 1,
@@ -75,28 +66,26 @@ export default class RegimenInfomation extends Component {
           marginBottom: 5,
 
         }}>
-          <Text> DAYS PER INFUSION CYCLE </Text>
+          <Text> DAYS PER INFUSION CYCLE: {this.props.cycle} </Text>
           <Slider
             value={this.props.cycle}
-            minimumValue = {0}
-            maximumValue = {31}
+            minimumValue = {1}
+            maximumValue = {28}
             step = {1}
-            onValueChange={(value)=> store.dispatch(redux_connector(REGIMEN_INFUSIONCYCLE,value))}/>
-          <Text>DAYS: {this.props.cycle} </Text>
+            onValueChange={(value) => store.dispatch(redux_connector(REGIMEN_INFUSIONCYCLE,value))}/>
         </View>
         <View style={{
           borderBottomColor: 'black',
           borderBottomWidth: 2,
           marginBottom: 5,
         }}>
-          <Text> NUMBER OF INFUSION </Text>
+          <Text> NUMBER OF INFUSIONS: {this.props.num} </Text>
           <Slider
             value={this.props.num}
             minimumValue = {0}
             maximumValue = {31}
             step = {1}
             onValueChange={(value)=> store.dispatch(redux_connector(REGIMEN_INFUSIONNUM,value))}/>
-          <Text>Infusion: {this.props.num} </Text>
         </View>
         <View style = {{
           height: 350,
@@ -104,9 +93,9 @@ export default class RegimenInfomation extends Component {
           borderBottomWidth: 2
         }}>
         <Calendar
-          onDayPress={this.onDayPress}
+          onDayPress={(day) => {console.log("day is: ",day); store.dispatch(redux_connector(REGIMEN_DATE,day.dateString))}}
           scrollEnabled={true}  />
-        <Text>Selected Date: {date_convertor(this.props.date).date} </Text>
+        <Text>Selected Date: {selectedDate.toDateString()} </Text>
 
         </View>
           <View style={{backgroundColor: '#FFFFFF'}}>
