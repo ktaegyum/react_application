@@ -38,6 +38,7 @@ export default class RegimenInfomation extends Component {
     this.state = {
        days: 0,
        infusion: 0,
+       dateOfInterest: Date(Date.now())
     }
   }
   static navigationOptions = {
@@ -54,7 +55,6 @@ export default class RegimenInfomation extends Component {
     })
   }
   render() {
-    selectedDate = new Date(this.props.date)
     return (
       <View style = {{
         flex: 1,
@@ -72,7 +72,7 @@ export default class RegimenInfomation extends Component {
             minimumValue = {1}
             maximumValue = {28}
             step = {1}
-            onValueChange={(value) => store.dispatch(redux_connector(REGIMEN_INFUSIONCYCLE,value))}/>
+            onValueChange={(value) => this.props.dispatch(redux_connector(REGIMEN_INFUSIONCYCLE,value))}/>
         </View>
         <View style={{
           borderBottomColor: 'black',
@@ -85,22 +85,25 @@ export default class RegimenInfomation extends Component {
             minimumValue = {0}
             maximumValue = {31}
             step = {1}
-            onValueChange={(value)=> store.dispatch(redux_connector(REGIMEN_INFUSIONNUM,value))}/>
+            onValueChange={(value)=> this.props.dispatch(redux_connector(REGIMEN_INFUSIONNUM,value))}/>
         </View>
         <View style = {{
           height: 350,
           borderBottomColor: 'black',
           borderBottomWidth: 2
         }}>
+        <Text> DATE OF FIRST INFUSION </Text>
         <Calendar
-          onDayPress={(day) => {console.log("day is: ",day); store.dispatch(redux_connector(REGIMEN_DATE,day.dateString))}}
+          onDayPress={(day) => { this.setState({dateOfInterest: day}) }}
           scrollEnabled={true}  />
-        <Text>Selected Date: {selectedDate.toDateString()} </Text>
 
         </View>
           <View style={{backgroundColor: '#FFFFFF'}}>
           <Button
-            onPress={() => this.props.navigation.navigate('MainDash')}
+            onPress={() => {
+              this.props.navigation.navigate('MainDash');
+              this.props.dispatch(redux_connector(REGIMEN_DATE,this.state.dateOfInterest))
+          }}
             title="DONE"/>
         </View>
       </View>
