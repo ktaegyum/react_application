@@ -25,13 +25,11 @@ function infusionDates(startDateUnixTime, numInfusions, cycleLength) {
 //@param array of infusion dates in unixtime format
 function nextInfusion(infusionDates) {
   // remove dates in past, then return first of remaining list.
+  // debugger;
   return infusionDates.filter((infusionDate) => infusionDate > Date.now())[0]
 }
 
-function rmFutureDates(infusionDates) {
-  // remove dates in future
-  return infusionDates.filter((infusionDate) => infusionDate < Date.now())
-}
+rmFutureDates = (infusionDates) => infusionDates.filter((infusionDate) => infusionDate < Date.now())
 
 //@return Date object for next infusion datetime
 function nextInfusionDate(startDateUnixTime, num, cycleLength){
@@ -48,6 +46,17 @@ dateStringPhrase = (dateObject) => weekdayString(dateObject) + ", " + monthStrin
 numberOfCompletedInfusions = (start,num,cycleLength) => {
   return rmFutureDates(infusionDates(start,num,cycleLength)).length
 }
+
+unixTimeToStringDate = (unixTime) => {
+  dateObject = new Date(unixTime)
+  return dateObject.toLocaleDateString()
+}
+
+infusionDatesList = () => {
+      <Text>DATES LIST:</Text>
+  }
+
+
 export default class Overview extends Component {
   render() {
     completedInfusions = numberOfCompletedInfusions(
@@ -56,7 +65,6 @@ export default class Overview extends Component {
                             this.props.state.regimen_infusionCycle
                           )
     totalWidth = 300
-    debugger;
     progressNumerator = completedInfusions
     progressDenominator = this.props.state.regimen_infusionNum
     upcomingInfusionDate = nextInfusionDate(
@@ -74,9 +82,10 @@ export default class Overview extends Component {
       }}>
 
         <View>
-          <Text>First Infusion date is {Date(this.props.state.regimen_date)}</Text>
+          <Text>First Infusion date is {unixTimeToStringDate(this.props.state.regimen_date)}</Text>
           <Text>Your next treatment is Thursday of next week, on June 1st</Text>
           <Text>Progress</Text>
+          {infusionDatesList}
           <Text>Completed {progressNumerator}/{progressDenominator} infusions</Text>
           <View style={{
             flexDirection: 'row'

@@ -21,9 +21,9 @@ const initialState = {
   people: [],
   isFetching: false,
   error: false,
-  regimen_infusionCycle: 12,
-  regimen_infusionNum: 14,
-  regimen_date: Date.now(),
+  regimen_infusionCycle: 14,
+  regimen_infusionNum: 12,
+  regimen_date: Date.now() - 30*millisecondsInADay,
   setting_account: false,
   setting_regimen: false,
   setting_notification: false,
@@ -256,7 +256,7 @@ const initialState = {
 
 }
 export const peopleReducer = (state = initialState, action) => {
-  console.log(state.regimen_infusionCycle);
+  console.log(state.regimen_date, "infusiondate");
   switch (action.type) {
     case FETCHING_PEOPLE:
       return {
