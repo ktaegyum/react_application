@@ -51,13 +51,7 @@ export default class project extends Component {
   async componentWillMount() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user && user.emailVerified) {
-        const resetAction = NavigationActions.reset({
-          index: 0,
-          actions: [
-            NavigationActions.navigate({ routeName: 'MainDash'})
-          ]
-        })
-        this.props.navigation.dispatch(resetAction)
+        this.props.navigation.dispatch('MainDash')
       } else {
         this.setState({load: false});
       }
