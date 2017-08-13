@@ -49,17 +49,10 @@ export default class LogIn extends Component {
         console.log("Logged In!");
         const user = firebase.auth().currentUser;
         if (!user.emailVerified){
-          alert("Please verify your email.");
+          alert("Please verify your email first.");
           return;
         }
-
-        const resetAction = NavigationActions.reset({
-          index: 0,
-          actions: [
-            NavigationActions.navigate({ routeName: 'RegimenInfomation'})
-          ]
-        })
-        this.props.navigation.dispatch(resetAction)
+        this.props.navigation.navigate('RegimenInfomation')
 
     } catch (error) {
         console.log(error.toString())
@@ -78,7 +71,7 @@ export default class LogIn extends Component {
   }
   update = () => {
     this.props.navigation.navigate('Condition')
-    signUp_Update(this.email, this.password, this.information) 
+    signUp_Update(this.email, this.password, this.information)
   }
   render() {
     return (
