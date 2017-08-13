@@ -71,7 +71,7 @@ export default class SignUp extends Component {
     }
     try {
       await firebase.auth().createUserWithEmailAndPassword(email, password);
-      
+
         const user = firebase.auth().currentUser;
         console.log(user);
         await user.sendEmailVerification();
@@ -83,7 +83,8 @@ export default class SignUp extends Component {
         });
         this.props.navigation.navigate('Condition');
         firebase.auth().signOut();
-        alert("Email verification link has been sent. Please verify your account to login");
+        alert("Check your email and verify your account");
+        this.props.navigation.navigate('MainDash')
     } catch (error) {
       alert(error.toString());
     }
@@ -92,7 +93,7 @@ export default class SignUp extends Component {
 
   update = () => {
     this.props.navigation.navigate('Condition')
-    signUp_Update(this.email, this.password, this.information) 
+    signUp_Update(this.email, this.password, this.information)
   }
   render() {
     const {email, password, confirm_password, information} = this.state;
