@@ -84,7 +84,7 @@ export default class SignUp extends Component {
         this.props.navigation.navigate('Condition');
         firebase.auth().signOut();
         alert("Check your email and verify your account");
-        this.props.navigation.navigate('MainDash')
+        this.props.navigation.navigate('RegimenInfomation')
     } catch (error) {
       alert(error.toString());
     }
