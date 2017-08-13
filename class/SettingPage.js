@@ -10,6 +10,8 @@ import {
   ScrollView,
 } from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import {NavigationActions} from 'react-navigation';
+import * as firebase from "firebase";
 import {styles} from './Style';
 
 function renderIf(condition, content) {
@@ -100,6 +102,25 @@ export default class SettingsPage extends Component {
                 <Text>hey</Text>
               </View>
               )}
+          </View>
+
+          <View style={{
+            borderBottomColor: 'black',
+            borderBottomWidth: 1,
+            marginBottom: 5,
+            }}>
+              <Button
+                onPress = {async () => {
+                    const resetAction = NavigationActions.reset({
+                      index: 0,
+                      actions: [
+                        NavigationActions.navigate({ routeName: 'Home'})
+                      ]
+                    })
+                    this.props.navigation.dispatch(resetAction);
+                    await firebase.auth().signOut();
+                }}
+                title = "Logout"/>
           </View>
 
         </ScrollView>

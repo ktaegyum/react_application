@@ -13,26 +13,29 @@ import {
   Slider,
   Button,
   Alert,
-  Image
+  Image,
+  ActivityIndicator
 } from 'react-native';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
-import {StackNavigator, TabNavigator} from 'react-navigation';
+import {StackNavigator, TabNavigator, NavigationActions} from 'react-navigation';
 import ImageSlider from 'react-native-image-slider';
 import configureStore from './configureStore'
 import {Provider} from 'react-redux'
 
 //Pages class
 import styles from './class/Style'
-import SignUp from './action_login.js'
+import SignUp from './action_signup.js'
+import LogIn from './action_login.js'
 import RegimenInfomation from './action_regimentInfo'
 import Condition from './class/Condition'
 import Overview from './action_overview'
 import DataPage from './action_datapage'
 import SettingsPage from './action_setting.js'
 import SideEffect from './action_sideEffect.js'
-
+import * as firebase from "firebase";
 //Redux Store
 import store from './reducers/people.js'
+import firebaseApp from './Firebase';
 
 //initial page
 export default class project extends Component {
@@ -40,13 +43,32 @@ export default class project extends Component {
     super(props, context);
     this.state = {
       position: 0,
-      interval: null
+      interval: null,
+      load: true,
     };
   };
+
+  async componentWillMount() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user && user.emailVerified) {
+        this.props.navigation.dispatch('MainDash')
+      } else {
+        this.setState({load: false});
+      }
+    });
+  }
+
   static navigationOptions = {
     title: 'Infusion'
   };
   render() {
+    if (this.state.load) {
+      return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <ActivityIndicator />
+        </View>
+      );
+    }
     return (
       <View style={{
         flex: 1,
@@ -109,6 +131,9 @@ const App = StackNavigator({
   },
   SideEffect: {
     screen: SideEffect
+  },
+  LogIn: {
+    screen: LogIn
   }
 });
 /* firebase setup

@@ -13,7 +13,11 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+<<<<<<< HEAD
   dispatch: dispatch
+=======
+  dispatch:dispatch
+>>>>>>> master
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegimenInfomation);

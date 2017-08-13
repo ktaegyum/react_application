@@ -15,6 +15,7 @@ import {StackNavigator} from 'react-navigation';
 import styles from './Style';
 import RegimenInfomation from './RegimenInfomation'
 import SignUp from './SignUp';
+import LogIn from  './Login'
 
 export default class Condition extends Component {
   constructor(props, context) {
@@ -50,7 +51,7 @@ export default class Condition extends Component {
         <View style={{
           backgroundColor: '#FFFFFF'
         }}>
-          <Button onPress={() => this.props.navigation.navigate('RegimenInfomation')} title="DONE" color="#841584"/>
+          <Button onPress={() => this.props.navigation.navigate('LogIn')} title="DONE" color="#841584"/>
         </View>
       </View>
 

@@ -74,11 +74,15 @@ export default class Overview extends Component {
       }}>
 
         <View>
+<<<<<<< HEAD
           <Text>Infusions</Text>
           <Text>Your next treatment is on {dateStringPhrase(new Date(upcomingInfusionDate))} </Text>
+=======
+          <Text>First Infusion date is {Date(this.props.state.regimen_date)}</Text>
+          <Text>Your next treatment is Thursday of next week, on June 1st</Text>
+>>>>>>> master
           <Text>Progress</Text>
-          <Text>You have completed {progressNumerator}/{this.props.state.regimen_infusionCycle}
-            infusions</Text>
+          <Text>Completed {progressNumerator}/{progressDenominator} infusions</Text>
           <View style={{
             flexDirection: 'row'
           }}>
@@ -102,7 +106,9 @@ export default class Overview extends Component {
         <View style={{
           backgroundColor: '#FFFFFF'
         }}>
-          <Button onPress= {() => this.props.navigation.navigate('SideEffect')} title="Submit"/>
+          <Button onPress= {() => {
+            this.props.navigation.navigate('SideEffect')}
+          } title="Submit"/>
         </View>
       </View>
     )
