@@ -72,7 +72,7 @@ export default class project extends Component {
         <Text>LOAD FALSE</Text>
       }
     }
-    debugger;
+    debugger
     return (
       <View style={{
         flex: 1,
