@@ -14,8 +14,6 @@ import {styles} from './Style';
 //this.props.observations
 
 function DateAndBar(day, width) {
-  console.log(day)
-  console.log(width)
   return (
     <View style={{
       flexDirection: 'row'

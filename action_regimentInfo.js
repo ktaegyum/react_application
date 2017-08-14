@@ -9,11 +9,11 @@ import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE} from './consta
 const mapStateToProps = state => ({
   cycle: state.regimen_infusionCycle,
   num: state.regimen_infusionNum,
-  date: state.regimen_date,
+  date: state.regimen_date
 })
 
 const mapDispatchToProps = (dispatch) => ({
-
+  dispatch: dispatch
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegimenInfomation);
