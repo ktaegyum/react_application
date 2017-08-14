@@ -19,13 +19,12 @@ dayMilliseconds = (num) => 86400000 * num
 
 //@return array of infusion dates in unixtime format
 function infusionDates(startDateUnixTime, numInfusions, cycleLength) {
-  return range(numInfusions).map((dayIndex) => startDateUnixTime + dayMilliseconds(dayIndex))
+  return range(numInfusions).map((dayIndex) => startDateUnixTime + cycleLength*dayMilliseconds(dayIndex))
 }
 
 //@param array of infusion dates in unixtime format
 function nextInfusion(infusionDates) {
-  // remove dates in past, then return first of remaining list.
-  // debugger;
+  // remove dates in past, then return first of remaining list
   return infusionDates.filter((infusionDate) => infusionDate > Date.now())[0]
 }
 
@@ -52,9 +51,6 @@ unixTimeToStringDate = (unixTime) => {
   return dateObject.toLocaleDateString()
 }
 
-infusionDatesList = () => {
-      <Text>DATES LIST:</Text>
-  }
 
 
 export default class Overview extends Component {
@@ -85,7 +81,6 @@ export default class Overview extends Component {
           <Text>First Infusion date is {unixTimeToStringDate(this.props.state.regimen_date)}</Text>
           <Text>Your next treatment is Thursday of next week, on June 1st</Text>
           <Text>Progress</Text>
-          {infusionDatesList}
           <Text>Completed {progressNumerator}/{progressDenominator} infusions</Text>
           <View style={{
             flexDirection: 'row'
