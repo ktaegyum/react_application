@@ -15,7 +15,8 @@ import {
 } from '../constants.js'
 import {SIGNUP_EMAIL, SIGNUP_PASSWORD, SIGNUP_USERINFO} from '../constants.js'
 
-import {createStore} from 'redux'
+import { createStore, compose } from 'redux'
+import { persistStore, autoRehydrate } from 'redux-persist'
 const millisecondsInADay = 60*60*24*1000
 const initialState = {
   people: [],
@@ -419,6 +420,8 @@ export const peopleReducer = (state = initialState, action) => {
       return state
   }
 }
-let store = createStore(peopleReducer);
+const store = compose(autoRehydrate())(createStore(peopleReducer));
+//let store = createStore(peopleReducer);
+persistStore(store);
 
 export default store;
