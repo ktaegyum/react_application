@@ -44,7 +44,7 @@ export default class project extends Component {
     this.state = {
       position: 0,
       interval: null,
-      load: true,
+      isLoading: true,
     };
   };
 
@@ -53,7 +53,7 @@ export default class project extends Component {
       if (user && user.emailVerified) {
         this.props.navigation.dispatch('MainDash')
       } else {
-        this.setState({load: false});
+        this.setState({isLoading: false});
       }
     });
   }
@@ -61,14 +61,18 @@ export default class project extends Component {
   static navigationOptions = {
     title: 'Infusion'
   };
+
   render() {
-    if (this.state.load) {
-      return (
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <ActivityIndicator />
-        </View>
-      );
+    isItLoading = () => {
+      if (this.state.isLoading) {
+        return(
+          <Text>LOAD TRUE</Text>
+        )
+      } else {
+        <Text>LOAD FALSE</Text>
+      }
     }
+    debugger;
     return (
       <View style={{
         flex: 1,
@@ -87,6 +91,7 @@ export default class project extends Component {
         <View style={{
           backgroundColor: '#FFFFFF'
         }}>
+        <Text>{isItLoading()}</Text>
           <Button onPress= {() => this.props.navigation.navigate('SignUp')} title="Sign Up"/>
           <Button onPress= {() => this.props.navigation.navigate('Condition')} title="Log In W/ CancerBase"/>
           <Button onPress= {() => this.props.navigation.navigate('MainDash')} title="Jump to Main Dashboard"/>
