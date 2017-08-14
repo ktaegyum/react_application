@@ -15,7 +15,9 @@ import {
 } from '../constants.js'
 import {SIGNUP_EMAIL, SIGNUP_PASSWORD, SIGNUP_USERINFO} from '../constants.js'
 
-import {createStore} from 'redux'
+import {createStore, compose} from 'redux'
+import {persistStore,autoRehydrate} from 'redux-persist'
+import {AsyncStorage} from 'react-native'
 const millisecondsInADay = 60*60*24*1000
 const initialState = {
   people: [],
@@ -419,6 +421,10 @@ export const peopleReducer = (state = initialState, action) => {
       return state
   }
 }
-let store = createStore(peopleReducer);
+const store = compose(autoRehydrate())(createStore)(peopleReducer)
+
+persistStore(store, {storage: AsyncStorage}, () => {
+  console.log('Restored Data For Redux!')
+})
 
 export default store;
