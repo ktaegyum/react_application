@@ -7,9 +7,7 @@ import {SETTING_ACCOUNT, SETTING_NOTIFICATION, SETTING_EDITREGIMEN, SETTING_ABOU
 import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE} from './constants.js'
 import {SYMPTOM_OBSERVATION} from './constants.js'
 
-const mapStateToProps = state => ({
-  observations: state.symptom_observations,
-})
+const mapStateToProps = state => ({state: state})
 
 const mapDispatchToProps = (dispatch) => ({
 	//
