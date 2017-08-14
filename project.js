@@ -1,8 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
 console.ignoredYellowBox = ['Remote debugger'];
 import React, {Component} from 'react';
 import {
@@ -32,14 +27,12 @@ import Overview from './action_overview'
 import DataPage from './action_datapage'
 import SettingsPage from './action_setting.js'
 import SideEffect from './action_sideEffect.js'
-import Project from './action_project.js'
 import * as firebase from "firebase";
 //Redux Store
 import store from './reducers/people.js'
 import firebaseApp from './Firebase';
 
-<<<<<<< HEAD
-//initial page
+
 export default class project extends Component {
   constructor(props, context) {
     super(props, context);
@@ -74,7 +67,7 @@ export default class project extends Component {
         <Text>LOAD FALSE</Text>
       }
     }
-    debugger
+    debugger;
     return (
       <View style={{
         flex: 1,
@@ -102,62 +95,3 @@ export default class project extends Component {
     );
   };
 }
-
-=======
->>>>>>> 6e476eb86028df20aa14490b3ffc0eb15b7ed9dc
-const MainDashNavigator = TabNavigator({
-  Overview: {
-    screen: Overview
-  },
-  Data: {
-    screen: DataPage
-  },
-  Settings: {
-    screen: SettingsPage
-  }
-}, {
-  swipeEnabled: true,
-  lazy: false
-}
-// tabBarOptions: {styles.tabBarStyle}
-);
-
-const App = StackNavigator({
-  Home: {
-    screen: Project
-  },
-  SignUp: {
-    screen: SignUp
-  },
-  RegimenInfomation: {
-    screen: RegimenInfomation
-  },
-  Condition: {
-    screen: Condition
-  },
-  MainDash: {
-    screen: MainDashNavigator
-  },
-  SideEffect: {
-    screen: SideEffect
-  },
-  LogIn: {
-    screen: LogIn
-  }
-});
-/* firebase setup
-firebase.initializeApp({
-    apiKey: "AIzaSyBfnermI1NQwpKOhy5FIKpJJ4Y_zZcCBJc",
-    authDomain: "infusion-e7ed9.firebaseapp.com",
-    databaseURL: "https://infusion-e7ed9.firebaseio.com",
-    storageBucket: "infusion-e7ed9.appspot.com"
-});
-*/
-//redux initialization
-const rnredux = () => (
-  <Provider store={store}>
-    <App/>
-  </Provider>
-)
-//calling
-AppRegistry.registerComponent('project', () => rnredux);
