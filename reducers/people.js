@@ -419,6 +419,8 @@ export const peopleReducer = (state = initialState, action) => {
       return state
   }
 }
+//Not Persist
 let store = createStore(peopleReducer);
 
+//persist
 export default store;
