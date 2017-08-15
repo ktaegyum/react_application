@@ -20,6 +20,15 @@ export const styles = StyleSheet.create({
     borderLeftWidth: 1,
     alignItems: 'center'
   },
+  dataHeaders : {fontSize:25,
+  fontFamily:'Avenir',
+marginLeft: 47,
+marginTop:20,
+marginBottom:10},
+  dataTitles: {
+    fontFamily:'courier',
+    fontSize: 9
+  },
   symptomDescriptionText: {
     fontSize: 8,
     fontFamily: 'Avenir',

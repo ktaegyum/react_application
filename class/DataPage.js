@@ -62,7 +62,7 @@ export default class DataPage extends Component {
           <View style ={{
             marginRight: 5
           }}>
-            <Text style={{fontFamily:'courier', fontSize: 9}}>
+            <Text style={styles.dataTitles}>
               {daysOfWeek[dayIndexOfWeek]}, {monthNum}/{dayOfMonth}:
             </Text>
           </View>
@@ -89,9 +89,9 @@ export default class DataPage extends Component {
           <View style ={{
             marginRight: 5
           }}>
-            <Text style={{fontFamily:'courier', fontSize: 9}}>
-              {daysOfWeek[dayIndexOfWeek]}:
-            </Text>
+          <Text style={styles.dataTitles}>
+            {daysOfWeek[dayIndexOfWeek]}, {monthNum}/{dayOfMonth}:
+          </Text>
           </View>
           <View style={{
             width: 300 *(observation_width / 4),
@@ -116,9 +116,9 @@ export default class DataPage extends Component {
           <View style ={{
             marginRight: 5
           }}>
-            <Text style={{fontFamily:'courier', fontSize: 9}}>
-              {daysOfWeek[dayIndexOfWeek]}:
-            </Text>
+          <Text style={styles.dataTitles}>
+            {daysOfWeek[dayIndexOfWeek]}, {monthNum}/{dayOfMonth}:
+          </Text>
           </View>
           <View style={{
             width: 300 *(observation_width / 4),
@@ -131,16 +131,14 @@ export default class DataPage extends Component {
     });
 
     return (
-      <ScrollView>
-        <Text style={{fontSize:25}}>FATIGUE</Text>
+      <ScrollView style={{backgroundColor:'#ffffff'}}>
 
-        <View style={{
-          marginLeft: 10
-        }}>
+        <View style={{marginLeft: 10}}>
+        <Text style={styles.dataHeaders}>FATIGUE</Text>
           {fatigueItems}
-          <Text style={{fontSize:25}}>Anxiety</Text>
+          <Text style={styles.dataHeaders}>ANXIETY</Text>
           {anxietyItems}
-          <Text style={{fontSize:25}}>Lack of Appetite</Text>
+          <Text style={styles.dataHeaders}>LACK OF APPETITE</Text>
           {appetiteItems}
           <Text>{JSON.stringify(this.props.observations)}</Text>
         </View>
