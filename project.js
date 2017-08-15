@@ -14,7 +14,6 @@ import {
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import {StackNavigator, TabNavigator, NavigationActions} from 'react-navigation';
 import ImageSlider from 'react-native-image-slider';
-import configureStore from './configureStore'
 import {Provider} from 'react-redux'
 
 //Pages class

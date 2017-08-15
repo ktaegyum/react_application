@@ -421,12 +421,23 @@ export const peopleReducer = (state = initialState, action) => {
       return state
   }
 }
-const store = compose(applyMiddleware(logger),autoRehydrate())(createStore)(peopleReducer)
+
+
+const composedEnhancers = compose(
+  applyMiddleware(logger),
+  autoRehydrate()
+);
+
+const store = createStore(peopleReducer, composedEnhancers); // can skip preloadedState if not available
 
 
 let persistor = persistStore(store, {storage: AsyncStorage}, () => {
   console.log('Restored Data For Redux!')
 })
+
+
+
+
 
 //persist
 export default store;
