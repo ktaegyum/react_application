@@ -423,6 +423,7 @@ export const peopleReducer = (state = initialState, action) => {
 }
 const store = compose(applyMiddleware(logger),autoRehydrate())(createStore)(peopleReducer)
 
+
 let persistor = persistStore(store, {storage: AsyncStorage}, () => {
   console.log('Restored Data For Redux!')
 })
