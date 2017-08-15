@@ -3,6 +3,7 @@ import {SETTING_ACCOUNT, SETTING_NOTIFICATION, SETTING_EDITREGIMEN, SETTING_ABOU
 import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE} from '../constants.js'
 import {SYMPTOM_OBSERVATION} from '../constants.js'
 import {
+  ADD_INFUSION,
   ADD_SYMPTOMS,
   EFFECT_FATIGUE,
   EFFECT_NAUSEA,
@@ -25,7 +26,7 @@ const initialState = {
   error: false,
   regimen_infusionCycle: 14,
   regimen_infusionNum: 12,
-  regimen_date: Date.now() - 30*millisecondsInADay,
+  regimen_date: Date.now()-30*millisecondsInADay,
   setting_account: false,
   setting_regimen: false,
   setting_notification: false,
@@ -43,6 +44,7 @@ const initialState = {
   signUp_email: '',
   signUp_password: '',
   signUp_userInfo: '',
+  infusion_Date: [],
   symptom_observations: [
     {
       "entry_datetime": Date.now() - millisecondsInADay*30,
@@ -416,6 +418,11 @@ export const peopleReducer = (state = initialState, action) => {
       return {
         ...state,
         signUp_userInfo: action.content,
+      }
+    case ADD_INFUSION:
+      infusion_Date.push(action.content);
+      return {
+        ...state,
       }
     default:
       return state

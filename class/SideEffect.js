@@ -46,6 +46,9 @@ function redux_dispatcher(type, value) {
 	}else if(type == 'pain') {
 		store.dispatch(redux_connector(EFFECT_PAIN,value));
 		store.dispatch(redux_connector(EFFECT_CLICKED_PAIN,value));
+	}else if(type == 'infusion') {
+		var date = Date.now();
+		store.dispatch(redux_connector(ADD_INFUSION, date));
 	}
 }
 function Symptom_Constructor(fatigue, nausea, fever, pain) {
@@ -217,13 +220,19 @@ export default class SideEffect extends Component {
 	    		</ScrollView>
 		        <View style={{backgroundColor: '#FFFFFF'}}>
 		          <Button
+		              onPress={() => redux_dispatcher('infusion', 0)}
+		              title="Infusion Today?"
+		              color="#841584"/>
+		        </View>
+		        <View style={{backgroundColor: '#FFFFFF'}}>
+		          <Button
 		              onPress={() => {
                     addSymptoms(this.props.fatigue, this.props.nausea, this.props.fever, this.props.pain);
                     this.props.navigation.navigate('MainDash')}
                   }
 		              title="SUBMIT"
 		              color="#841584"/>
-		        </View>
+		        </View>		        
 		        <View style={{backgroundColor: '#FFFFFF'}}>
 		          <Button
 		              onPress={() => this.props.navigation.navigate('MainDash')}
