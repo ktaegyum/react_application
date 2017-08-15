@@ -60,6 +60,7 @@ function Symptom_Constructor(fatigue, nausea, fever, pain) {
 }
 function addSymptoms(fatigue, nausea, fever, pain) {
 	store.dispatch(redux_connector(ADD_SYMPTOMS,Symptom_Constructor(fatigue, nausea, fever, pain)));
+  //reset vals
 	store.dispatch(redux_connector(EFFECT_CLICKED_FATIGUE,0));
 	store.dispatch(redux_connector(EFFECT_CLICKED_NAUSEA,0));
 	store.dispatch(redux_connector(EFFECT_CLICKED_FEVER,0));

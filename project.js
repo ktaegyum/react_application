@@ -22,7 +22,6 @@ import styles from './class/Style'
 import SignUp from './action_signup.js'
 import LogIn from './action_login.js'
 import RegimenInfomation from './action_regimentInfo'
-import Condition from './class/Condition'
 import Overview from './action_overview'
 import DataPage from './action_datapage'
 import SettingsPage from './action_setting.js'
@@ -94,7 +93,7 @@ export default class project extends Component {
         }}>
         <Text>{isItLoading()}</Text>
           <Button onPress= {() => this.props.navigation.navigate('SignUp')} title="Sign Up"/>
-          <Button onPress= {() => this.props.navigation.navigate('Condition')} title="Log In W/ CancerBase"/>
+          <Button onPress= {() => this.props.navigation.navigate('LogIn')} title="Log In W/ CancerBase"/>
           <Button onPress= {() => this.props.navigation.navigate('MainDash')} title="Jump to Main Dashboard"/>
         </View>
       </View>

@@ -78,7 +78,9 @@ export default class Overview extends Component {
       }}>
 
         <View>
-          <Text>First Infusion date is {unixTimeToStringDate(this.props.state.regimen_date)}</Text>
+          <View style={{margin:10, padding:20, backgroundColor:'white'}}>
+          <Text style={{fontSize:25, fontFamily:'Avenir'}}>First Infusion date is {unixTimeToStringDate(this.props.state.regimen_date)}</Text>
+        </View>
           <Text>Your next treatment is Thursday of next week, on June 1st</Text>
           <Text>Progress</Text>
           <Text>Completed {progressNumerator}/{progressDenominator} infusions</Text>

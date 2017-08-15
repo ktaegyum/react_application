@@ -81,7 +81,7 @@ export default class SignUp extends Component {
           confirm_password: null,
           information: null,
         });
-        this.props.navigation.navigate('Condition');
+        this.props.navigation.navigate('Overview');
         firebase.auth().signOut();
         alert("Check your email and verify your account");
         this.props.navigation.navigate('RegimenInfomation')
@@ -92,7 +92,7 @@ export default class SignUp extends Component {
   }
 
   update = () => {
-    this.props.navigation.navigate('Condition')
+    this.props.navigation.navigate('Overview')
     signUp_Update(this.email, this.password, this.information)
   }
   render() {

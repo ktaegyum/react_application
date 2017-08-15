@@ -27,7 +27,6 @@ import styles from './class/Style'
 import SignUp from './action_signup.js'
 import LogIn from './action_login.js'
 import RegimenInfomation from './action_regimentInfo'
-import Condition from './class/Condition'
 import Overview from './action_overview'
 import DataPage from './action_datapage'
 import SettingsPage from './action_setting.js'
@@ -64,9 +63,6 @@ const App = StackNavigator({
   },
   RegimenInfomation: {
     screen: RegimenInfomation
-  },
-  Condition: {
-    screen: Condition
   },
   MainDash: {
     screen: MainDashNavigator
