@@ -80,7 +80,7 @@ export default class RegimenInfomation extends Component {
           <Text>
             DAYS PER INFUSION CYCLE: {this.props.cycle}
           </Text>
-          <Slider value={this.props.cycle} minimumValue={1} maximumValue={28} step={1} onValueChange={(value) => this.props.dispatch(redux_connector(REGIMEN_INFUSIONCYCLE, value))}/>
+          <Slider value={this.props.cycle} minimumValue={7} maximumValue={28} step={7} onValueChange={(value) => this.props.dispatch(redux_connector(REGIMEN_INFUSIONCYCLE, value))}/>
         </View>
         <View style={{
           borderBottomColor: 'black',
