@@ -27,7 +27,7 @@ import SettingsPage from './action_setting.js'
 import SideEffect from './action_sideEffect.js'
 import * as firebase from "firebase";
 //Redux Store
-import store from './reducers/people.js'
+import store, {persistor} from './reducers/people.js'
 import firebaseApp from './Firebase';
 
 
@@ -46,6 +46,7 @@ export default class project extends Component {
   }
 
   async componentWillMount() {
+    persistor.rehydrate()
     firebase.auth().onAuthStateChanged((user) => {
       // TODO implement && user.emailVerified
       if (user) {
