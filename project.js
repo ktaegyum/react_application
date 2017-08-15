@@ -39,16 +39,22 @@ export default class project extends Component {
     this.state = {
       position: 0,
       interval: null,
-      isLoading: true,
+      loggedIn: true,
     };
   };
 
+  static navigationOptions = {
+  headerMode: 'none',
+  }
+
   async componentWillMount() {
     firebase.auth().onAuthStateChanged((user) => {
-      if (user && user.emailVerified) {
-        this.props.navigation.dispatch('MainDash')
+      // TODO implement && user.emailVerified
+      if (user) {
+        console.log('YOU ARE LOGGED IN:'); console.log(user)
+        this.setState({loggedIn: true})
       } else {
-        this.setState({isLoading: false});
+        this.setState({loggedIn: false});
       }
     });
   }
@@ -59,7 +65,7 @@ export default class project extends Component {
 
   render() {
     isItLoading = () => {
-      if (this.state.isLoading) {
+      if (this.state.loggedIn) {
         return(
           <Text>LOAD TRUE</Text>
         )
@@ -67,7 +73,7 @@ export default class project extends Component {
         <Text>LOAD FALSE</Text>
       }
     }
-    debugger;
+
     return (
       <View style={{
         flex: 1,
