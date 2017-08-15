@@ -67,11 +67,12 @@ export default class project extends Component {
       <View style={{
         flex: 1,
         flexDirection: 'column',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+          backgroundColor: '#ffffff'
       }}>
         <View style ={{
-          marginBottom: 40,
-          backgroundColor: '#ffffff'
+
+
         }}>
           <ImageSlider images={[require('./images/intro.png'), require('./images/trajectory.png'), require('./images/calendar.png')]} height={400} position={this.state.position} onPositionChanged={position => this.setState({position})}/>
         </View>
@@ -79,11 +80,16 @@ export default class project extends Component {
           alignItems: 'center'
         }}></View>
         <View style={{
-          backgroundColor: '#FFFFFF'
+          backgroundColor: '#f2f5f9',
+          marginTop:80
         }}>
           <Button onPress= {() => this.props.navigation.navigate('SignUp')} title="Sign Up"/>
-          <Button onPress= {() => this.props.navigation.navigate('LogIn')} title="Log In W/ CancerBase"/>
-          <Button onPress= {() => this.props.navigation.navigate('MainDash')} title="Jump to Main Dashboard"/>
+            </View>
+            <View style={{
+              backgroundColor: '#f2f5f9',
+              marginBottom:40
+            }}>
+          <Button onPress= {() => this.props.navigation.navigate('LogIn')} title="Log In"/>
         </View>
       </View>
     );
