@@ -44,6 +44,7 @@ const initialState = {
   signUp_email: '',
   signUp_password: '',
   signUp_userInfo: '',
+  date_to_protect: Date.now() + millisecondsInADay*18,
   infusion_Date: [],
   symptom_observations: [
     {
