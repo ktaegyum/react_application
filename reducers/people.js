@@ -36,7 +36,7 @@ const initialState = {
   sideEffect_nausea: 0,
   sideEffect_fever: 0,
   sideEffect_pain: 0,
-  sideEffect_fatigue_isClicked: false,
+  sideEffect_fatigue_isClicked: true,
   sideEffect_nausea_isClicked: false,
   sideEffect_fever_isClicked: false,
   sideEffect_pain_isClicked: false,

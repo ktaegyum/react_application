@@ -61,7 +61,7 @@ function Symptom_Constructor(fatigue, nausea, fever, pain) {
 function addSymptoms(fatigue, nausea, fever, pain) {
 	store.dispatch(redux_connector(ADD_SYMPTOMS,Symptom_Constructor(fatigue, nausea, fever, pain)));
   //reset vals
-	store.dispatch(redux_connector(EFFECT_CLICKED_FATIGUE,0));
+	store.dispatch(redux_connector(EFFECT_CLICKED_FATIGUE,1));
 	store.dispatch(redux_connector(EFFECT_CLICKED_NAUSEA,0));
 	store.dispatch(redux_connector(EFFECT_CLICKED_FEVER,0));
 	store.dispatch(redux_connector(EFFECT_CLICKED_PAIN,0));
@@ -105,37 +105,33 @@ export default class SideEffect extends Component {
 		    <View style = {{
 		        flex: 1,
 		        flexDirection: 'column',
-		        justifyContent: 'space-between'}}>
+		        justifyContent: 'space-between',
+          backgroundColor:'white',
+        paddingTop:40}}>
 	    		<ScrollView>
-	    			<View>
-	    				<Text>FATIGUE</Text>
+	    			<View style={{marginRight:20}}>
+	    				<Text style={styles.sideEffectTitles}>FATIGUE</Text>
 	 					<RadioForm
 	          				radio_props = {radio_props}
 	          				initial = {0}
-	          				style = {{flex: 1,
-						        flexDirection: 'row',
-						        justifyContent: 'space-between',
-						        alignItems: 'center'
-						    	}}
-	          				labelStyle = {{color: '#000000'}}
+	          				style = {styles.radio}
 	          				onPress = {(value) => redux_dispatcher('fatigue', value)}
 							formHorizontal={true}
 							labelHorizontal={false}
-							buttonColor={'#2196f3'}
+							// buttonColor={'#99999'}
 							isSelected = {false}
 							buttonWrapStyle={{marginLeft: 100}}/>
 
 						{renderIf(this.props.fatigue_isClicked,
 						<View style={{flex: 1, flexDirection: 'row'}}>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{fatigue0}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{fatigue1}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{fatigue2}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{fatigue3}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{fatigue4}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fatigue0}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fatigue1}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fatigue2}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fatigue3}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fatigue4}</Text></View>
 						</View>
 						)}
-						<Text>Selected Level: {this.props.fatigue}</Text>
-	    				<Text>NAUSEA</Text>
+	    				<Text style={styles.sideEffectTitles}>NAUSEA</Text>
 	 					<RadioForm
 	          				radio_props = {radio_props}
 	          				initial = {0}
@@ -144,24 +140,23 @@ export default class SideEffect extends Component {
 						        justifyContent: 'space-between',
 						        alignItems: 'center'
 						    	}}
-	          				labelStyle = {{color: '#000000'}}
+	          				// labelStyle = {{color: '#000000'}}
 	          				onPress = {(value)=> redux_dispatcher('nausea', value)}
 							formHorizontal={true}
 							labelHorizontal={false}
-							buttonColor={'#2196f3'}
+							// buttonColor={'#2196f3'}
 							isSelected = {true}
 						buttonWrapStyle={{marginLeft: 50}}/>
 						{renderIf(this.props.nausea_isClicked,
 						<View style={{flex: 1, flexDirection: 'row'}}>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{nausea0}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{nausea1}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{nausea2}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{nausea3}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{nausea4}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{nausea0}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{nausea1}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{nausea2}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{nausea3}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{nausea4}</Text></View>
 						</View>
 						)}
-						<Text>Selected Level: {this.props.nausea}</Text>
-	    				<Text>APPETITE</Text>
+	    				<Text style={styles.sideEffectTitles}>APPETITE</Text>
 	 					<RadioForm
 	          				radio_props = {radio_props}
 	          				initial = {0}
@@ -170,25 +165,24 @@ export default class SideEffect extends Component {
 						        justifyContent: 'space-between',
 						        alignItems: 'center'
 						    	}}
-	          				labelStyle = {{color: '#000000'}}
+	          				// labelStyle = {{color: '#000000'}}
 	          				onPress = {(value)=> redux_dispatcher('fever', value)}
 							formHorizontal={true}
 							labelHorizontal={false}
-							buttonColor={'#2196f3'}
+							// buttonColor={'#2196f3'}
 							isSelected = {true}
 							buttonWrapStyle={{marginLeft: 50}}/>
 						{renderIf(this.props.fever_isClicked,
 						<View style={{flex: 1, flexDirection: 'row'}}>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{fever0}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{fever1}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{fever2}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{fever3}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{fever4}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fever0}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fever1}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fever2}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fever3}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fever4}</Text></View>
 						</View>
 						)}
-						<Text>Selected Level: {this.props.fever}</Text>
 
-						<Text>Pain</Text>
+						<Text style={styles.sideEffectTitles}>Pain</Text>
 	 					<RadioForm
 	          				radio_props = {radio_props}
 	          				initial = {0}
@@ -206,17 +200,16 @@ export default class SideEffect extends Component {
 							buttonWrapStyle={{marginLeft: 50}}/>
 						{renderIf(this.props.pain_isClicked,
 						<View style={{flex: 1, flexDirection: 'row'}}>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{pain0}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{pain1}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{pain2}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{pain3}</Text></View>
-							<View style={{width: 76, borderLeftColor:'black', borderLeftWidth: 2, alignItems: 'center'}}><Text>{pain4}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{pain0}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{pain1}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{pain2}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{pain3}</Text></View>
+							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{pain4}</Text></View>
 						</View>
 						)}
-						<Text>Selected Level: {this.props.pain}</Text>
 					</View>
 	    		</ScrollView>
-		        <View style={{backgroundColor: '#FFFFFF'}}>
+		        <View>
 		          <Button
 		              onPress={() => {
                     addSymptoms(this.props.fatigue, this.props.nausea, this.props.fever, this.props.pain);
@@ -225,7 +218,7 @@ export default class SideEffect extends Component {
 		              title="SUBMIT"
 		              color="#841584"/>
 		        </View>
-		        <View style={{backgroundColor: '#FFFFFF'}}>
+		        <View>
 		          <Button
 		              onPress={() => this.props.navigation.navigate('MainDash')}
 		              title="Go Back"

@@ -50,7 +50,7 @@ const MainDashNavigator = TabNavigator({
   swipeEnabled: true,
   lazy: false
 }
-// tabBarOptions: {styles.tabBarStyle}
+
 );
 
 const App = StackNavigator({

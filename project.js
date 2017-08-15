@@ -62,15 +62,6 @@ export default class project extends Component {
   };
 
   render() {
-    isItLoading = () => {
-      if (this.state.loggedIn) {
-        return(
-          <Text>LOAD TRUE</Text>
-        )
-      } else {
-        <Text>LOAD FALSE</Text>
-      }
-    }
 
     return (
       <View style={{
@@ -90,7 +81,6 @@ export default class project extends Component {
         <View style={{
           backgroundColor: '#FFFFFF'
         }}>
-        <Text>{isItLoading()}</Text>
           <Button onPress= {() => this.props.navigation.navigate('SignUp')} title="Sign Up"/>
           <Button onPress= {() => this.props.navigation.navigate('LogIn')} title="Log In W/ CancerBase"/>
           <Button onPress= {() => this.props.navigation.navigate('MainDash')} title="Jump to Main Dashboard"/>

@@ -60,7 +60,7 @@ export default class Overview extends Component {
                             this.props.state.regimen_infusionNum,
                             this.props.state.regimen_infusionCycle
                           )
-    totalWidth = 300
+    totalWidth = 250
     progressNumerator = completedInfusions
     progressDenominator = this.props.state.regimen_infusionNum
     upcomingInfusionDate = nextInfusionDate(
@@ -69,7 +69,8 @@ export default class Overview extends Component {
                               this.props.state.regimen_infusionCycle
                             )
     progressWidth = totalWidth * (progressNumerator / progressDenominator)
-
+    nextInfusionDateFormatted = upcomingInfusionDate
+    console.log(upcomingInfusionDate)
     return (
       <View style={{
         flex: 1,
@@ -79,28 +80,44 @@ export default class Overview extends Component {
 
         <View>
           <View style={{margin:10, padding:20, backgroundColor:'white'}}>
-          <Text style={{fontSize:25, fontFamily:'Avenir'}}>First Infusion date is {unixTimeToStringDate(this.props.state.regimen_date)}</Text>
+          <Text style={{fontSize:25, fontFamily:'Avenir'}}>First Infusion date is <Text style={{fontWeight: "bold"}}> {upcomingInfusionDate.toLocaleDateString()}</Text></Text>
         </View>
-          <Text>Your next treatment is Thursday of next week, on June 1st</Text>
-          <Text>Progress</Text>
-          <Text>Completed {progressNumerator}/{progressDenominator} infusions</Text>
-          <View style={{
-            flexDirection: 'row'
-          }}>
+
+
+
+          <View style={{margin:10, padding:20, backgroundColor:'white'}}>
+            <Text style={{fontSize:25, fontFamily:'Avenir'}}>Progress</Text>
             <View style={{
-              width: progressWidth,
-              height: 10,
-              backgroundColor: 'green'
-            }}></View>
-            <View style={{
-              width: 300,
-              height: 10,
-              backgroundColor: 'lightgrey'
-            }}></View>
-          </View>
-          <Text>Todays Forecast</Text>
-          <Text>Some vomiting, Severe constipation, no peripheral neuropathy.</Text>
-          <Text>Fatigue</Text>
+              flexDirection: 'row',
+              marginBottom:10,
+              marginTop:15
+            }}>
+              <View style={{
+                width: progressWidth,
+                height: 12,
+                backgroundColor: 'green'
+              }}></View>
+              <View style={{
+                width: totalWidth,
+                paddingTop:10,
+                height: 12,
+                backgroundColor: 'lightgrey'
+              }}>
+
+              </View>
+            </View>
+            <Text style={{fontSize:12, fontFamily:'Avenir'}}>Completed {progressNumerator}/{progressDenominator} infusions.</Text>
+            <Text style={{fontSize:12, fontFamily:'Avenir'}}>Regimen from {unixTimeToStringDate(this.props.state.regimen_date)} until </Text>
+        </View>
+
+        <View style={{margin:10, padding:20, backgroundColor:'white'}}>
+          <Text style={{fontSize:25, fontFamily:'Avenir'}}>Today's Forecast</Text>
+          <Text style={{fontSize:12, fontFamily:'Avenir'}}>Anxiety: <Text style={{fontWeight: "bold"}}>2</Text></Text>
+          <Text style={{fontSize:12, fontFamily:'Avenir'}}>Fatigue: <Text style={{fontWeight: "bold"}}>3</Text></Text>
+          <Text style={{fontSize:12, fontFamily:'Avenir'}}>Lack of Appetite: <Text style={{fontWeight: "bold"}}>0</Text></Text>
+        </View>
+
+
 
         </View>
 
@@ -109,7 +126,7 @@ export default class Overview extends Component {
         }}>
           <Button onPress= {() => {
             this.props.navigation.navigate('SideEffect')}
-          } title="Submit"/>
+          } title="Log Symptoms"/>
         </View>
       </View>
     )
