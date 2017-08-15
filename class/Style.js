@@ -29,6 +29,12 @@ marginBottom:10},
     fontFamily:'courier',
     fontSize: 9
   },
+  supportButton: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    borderBottomColor: 'lightgrey',
+    marginBottom: 5,
+  },
   symptomDescriptionText: {
     fontSize: 8,
     fontFamily: 'Avenir',

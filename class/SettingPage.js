@@ -28,27 +28,14 @@ export default class SettingsPage extends Component {
   render() {
     return (
       <View>
-        <ScrollView>
-          <View style={{
-            borderBottomColor: 'black',
-            borderBottomWidth: 1,
-            marginBottom: 5,
-            }}>
+        <ScrollView styles={{alignItems: 'space-between'}}>
+          <View style={styles.supportButton}>
                <Button
                 onPress={() => this.props.navigation.navigate('RegimenInfomation')}
                 title = "Edit Regimen"/>
-              {renderIf(this.props.regimen,
-              <View>
-                <Text>hey</Text>
-              </View>
-              )}
           </View>
 
-          <View style={{
-            borderBottomColor: 'black',
-            borderBottomWidth: 1,
-            marginBottom: 5,
-            }}>
+          <View style={styles.supportButton}>
               <Button
                 onPress = {this.props.showing_support}
                 title = "Support"/>
@@ -59,11 +46,7 @@ export default class SettingsPage extends Component {
               )}
           </View>
 
-          <View style={{
-            borderBottomColor: 'black',
-            borderBottomWidth: 1,
-            marginBottom: 5,
-            }}>
+          <View style={styles.supportButton}>
               <Button
                 onPress = {async () => {
                     const resetAction = NavigationActions.reset({
