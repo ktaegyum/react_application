@@ -20,6 +20,8 @@ import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import {StackNavigator, TabNavigator, NavigationActions} from 'react-navigation';
 import ImageSlider from 'react-native-image-slider';
 import {Provider} from 'react-redux'
+import {compose, applyMiddleware, createStore} from 'redux'
+import {persistStore, autoRehydrate} from 'redux-persist'
 
 //Pages class
 import styles from './class/Style'
@@ -44,6 +46,7 @@ export default class project extends Component {
       position: 0,
       interval: null,
       load: true,
+      regydrated: false,
     };
   };
 
@@ -55,6 +58,7 @@ export default class project extends Component {
         this.setState({load: false});
       }
     });
+
   }
 
   static navigationOptions = {
@@ -143,7 +147,7 @@ firebase.initializeApp({
     storageBucket: "infusion-e7ed9.appspot.com"
 });
 */
-//redux initialization
+
 const rnredux = () => (
   <Provider store={store}>
     <App/>

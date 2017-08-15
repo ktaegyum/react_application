@@ -14,9 +14,9 @@ import {
   EFFECT_CLICKED_PAIN
 } from '../constants.js'
 import {SIGNUP_EMAIL, SIGNUP_PASSWORD, SIGNUP_USERINFO} from '../constants.js'
-
-import { createStore, compose } from 'redux'
-import { persistStore, autoRehydrate } from 'redux-persist'
+import {AsyncStorage} from 'redux'
+import {compose, applyMiddleware, createStore} from 'redux'
+import {persistStore, autoRehydrate} from 'redux-persist'
 const millisecondsInADay = 60*60*24*1000
 const initialState = {
   people: [],
@@ -420,8 +420,8 @@ export const peopleReducer = (state = initialState, action) => {
       return state
   }
 }
-const store = compose(autoRehydrate())(createStore(peopleReducer));
-//let store = createStore(peopleReducer);
-persistStore(store);
+//const store = compose(autoRehydrate())(createStore)(peopleReducer)
+let store = createStore(peopleReducer);
+//persistStore(store, {storage: AsyncStorage})
 
 export default store;
