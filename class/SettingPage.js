@@ -28,87 +28,25 @@ export default class SettingsPage extends Component {
   render() {
     return (
       <View>
-        <ScrollView>
-            <View style={{
-              borderBottomColor: 'black',
-              borderBottomWidth: 1,
-              marginBottom: 5,
-              }}>
-              <Button
-                onPress = {this.props.showing_account}
-                title = "Edit Account"/>
-              {renderIf(this.props.account,
-              <View>
-                <Text>hey</Text>
-              </View>
-              )}
-          </View>
-
-          <View style={{
-            borderBottomColor: 'black',
-            borderBottomWidth: 1,
-            marginBottom: 5,
-            }}>
-              <Button
-                onPress = {this.props.showing_notification}
-                title = "Push Notification"/>
-              {renderIf(this.props.notification,
-              <View>
-                <Text>hey</Text>
-              </View>
-              )}
-          </View>
-
-          <View style={{
-            borderBottomColor: 'black',
-            borderBottomWidth: 1,
-            marginBottom: 5,
-            }}>
+        <ScrollView styles={{alignItems: 'space-between'}}>
+          <View style={styles.supportButton}>
                <Button
                 onPress={() => this.props.navigation.navigate('RegimenInfomation')}
                 title = "Edit Regimen"/>
-              {renderIf(this.props.regimen,
-              <View>
-                <Text>hey</Text>
-              </View>
-              )}
           </View>
 
-          <View style={{
-            borderBottomColor: 'black',
-            borderBottomWidth: 1,
-            marginBottom: 5,
-            }}>
-              <Button
-                onPress = {this.props.showing_about}
-                title = "About"/>
-              {renderIf(this.props.about,
-              <View>
-                <Text>hey</Text>
-              </View>
-              )}
-          </View>
-
-          <View style={{
-            borderBottomColor: 'black',
-            borderBottomWidth: 1,
-            marginBottom: 5,
-            }}>
+          <View style={styles.supportButton}>
               <Button
                 onPress = {this.props.showing_support}
                 title = "Support"/>
               {renderIf(this.props.support,
               <View>
-                <Text>hey</Text>
+                <Text>Contact brian.cohn@usc.edu</Text>
               </View>
               )}
           </View>
 
-          <View style={{
-            borderBottomColor: 'black',
-            borderBottomWidth: 1,
-            marginBottom: 5,
-            }}>
+          <View style={styles.supportButton}>
               <Button
                 onPress = {async () => {
                     const resetAction = NavigationActions.reset({

@@ -52,7 +52,7 @@ export default class LogIn extends Component {
           alert("Please verify your email first.");
           return;
         }
-        this.props.navigation.navigate('RegimenInfomation')
+        this.props.navigation.navigate('Overview')
 
     } catch (error) {
         console.log(error.toString())
@@ -70,7 +70,7 @@ export default class LogIn extends Component {
   	})
   }
   update = () => {
-    this.props.navigation.navigate('Condition')
+    this.props.navigation.navigate('Overview')
     signUp_Update(this.email, this.password, this.information)
   }
   render() {

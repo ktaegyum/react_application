@@ -14,8 +14,10 @@ import {
   EFFECT_CLICKED_PAIN
 } from '../constants.js'
 import {SIGNUP_EMAIL, SIGNUP_PASSWORD, SIGNUP_USERINFO} from '../constants.js'
-
-import {createStore} from 'redux'
+import logger from 'redux-logger'
+import {createStore, compose,applyMiddleware} from 'redux'
+import {persistStore,autoRehydrate} from 'redux-persist'
+import {AsyncStorage} from 'react-native'
 const millisecondsInADay = 60*60*24*1000
 const initialState = {
   people: [],
@@ -34,7 +36,7 @@ const initialState = {
   sideEffect_nausea: 0,
   sideEffect_fever: 0,
   sideEffect_pain: 0,
-  sideEffect_fatigue_isClicked: false,
+  sideEffect_fatigue_isClicked: true,
   sideEffect_nausea_isClicked: false,
   sideEffect_fever_isClicked: false,
   sideEffect_pain_isClicked: false,
@@ -389,17 +391,17 @@ export const peopleReducer = (state = initialState, action) => {
         sideEffect_pain_isClicked: true
       }
     case ADD_SYMPTOMS:
-        state.symptom_observations.push(
-        {
+
+        newItem = {
           "entry_datetime": action.content.date,
           "nausea": action.content.fatigue,
           "fatigue": action.content.nausea,
           "anxiety": action.content.fever,
           "lack_of_appetite": action.content.pain,
-        })
-      return {
-        ...state,
-      }
+        }
+        console.log("new Symptom")
+        console.log(newItem)
+      return { symptom_observations: [...state.symptom_observations, newItem] }
     case SIGNUP_EMAIL:
       return {
         ...state,
@@ -419,6 +421,23 @@ export const peopleReducer = (state = initialState, action) => {
       return state
   }
 }
-let store = createStore(peopleReducer);
 
+
+const composedEnhancers = compose(
+  applyMiddleware(logger),
+  autoRehydrate()
+);
+
+const store = createStore(peopleReducer, composedEnhancers); // can skip preloadedState if not available
+
+
+let persistor = persistStore(store, {storage: AsyncStorage}, () => {
+  console.log('Restored Data For Redux!')
+})
+
+
+
+
+
+//persist
 export default store;
