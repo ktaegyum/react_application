@@ -30,6 +30,7 @@ import Overview from './action_overview'
 import DataPage from './action_datapage'
 import SettingsPage from './action_setting.js'
 import SideEffect from './action_sideEffect.js'
+import OptimizeSchedule from './action_OptimizeSchedule.js'
 import Project from './action_project.js'
 import * as firebase from "firebase";
 //Redux Store
@@ -68,6 +69,9 @@ const App = StackNavigator({
   },
   SideEffect: {
     screen: SideEffect
+  },
+  OptimizeSchedule: {
+    screen: OptimizeSchedule
   },
   LogIn: {
     screen: LogIn
