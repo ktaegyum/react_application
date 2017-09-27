@@ -105,9 +105,21 @@ export default class SideEffect extends Component {
 		    <View style = {{
 		        flex: 1,
 		        flexDirection: 'column',
-		        justifyContent: 'space-between',
-          backgroundColor:'white',
-        paddingTop:40}}>
+
+          backgroundColor:'#e9e9ef'}}>
+
+        <View style={{paddingLeft:10,paddingRight:10, backgroundColor:'#FFFFFF',
+        alignItems:'center',
+        justifyContent:'space-between',
+        marginTop:20, height:60, flexDirection:'row', marginBottom:10}}>
+          <Text style={{fontSize:18, color:'#465f92', fontFamily:'Courier'}} onPress= {() => {
+            this.props.navigation.navigate('Overview')}
+          }>{" <"}</Text>
+          <Text style={{fontSize:18, color:'#5774a3'}}>Log Side Effects</Text>
+          <Text style={{fontSize:25, color:'#5774a3'}}>{"    "}</Text>
+        </View>
+
+
 	    		<ScrollView>
 	    			<View style={{marginRight:20}}>
 	    				<Text style={styles.sideEffectTitles}>FATIGUE</Text>
