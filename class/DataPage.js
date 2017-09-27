@@ -135,6 +135,16 @@ export default class DataPage extends Component {
       <ScrollView style={{backgroundColor:'#ffffff'}}>
 
         <View style={{marginLeft: 10}}>
+
+          <View style={{
+            backgroundColor: '#FFFFFF'
+          }}>
+            <Button onPress= {() => {
+              this.props.navigation.navigate('OptimizeSchedule')}
+            } title="OPTIMIZE SCHEDULE"/>
+          </View>
+          
+
         <Text style={styles.dataHeaders}>FATIGUE</Text>
           {fatigueItems}
           <Text style={styles.dataHeaders}>ANXIETY</Text>
@@ -144,13 +154,6 @@ export default class DataPage extends Component {
           <Text>{JSON.stringify(this.props.observations)}</Text>
         </View>
       </ScrollView>
-      <View style={{
-        backgroundColor: '#FFFFFF'
-      }}>
-        <Button onPress= {() => {
-          this.props.navigation.navigate('OptimizeSchedule')}
-        } title="OPTIMIZE SCHEDULE"/>
-      </View>
     </View>
     )
   };

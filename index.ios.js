@@ -42,14 +42,19 @@ const MainDashNavigator = TabNavigator({
     screen: Overview
   },
   Data: {
-    screen: DataPage
+    screen: DataPage,
+    //override the header at top
   },
   Settings: {
     screen: SettingsPage
   }
 }, {
   swipeEnabled: true,
-  lazy: false
+  lazy: false,
+  tabBarPosition: 'top',
+  navigationOptions: ({navigation}) => ({
+    header: false
+  }),
 }
 
 );
