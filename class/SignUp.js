@@ -110,7 +110,8 @@ export default class SignUp extends Component {
             autoCapitalize="none"
             autoCorrect={false}
             value={email}
-        		onChangeText = {(value) => this.setEmail(value)}/>
+        		onChangeText = {(value) => this.setEmail(value)}
+            keyboardType = 'email-address'/>
         	<Text> Password </Text>
         	<TextInput
         		style = {{height: 40, padding: 10}}
