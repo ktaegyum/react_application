@@ -7,7 +7,8 @@ import {
   Slider,
   Button,
   Alert,
-  ScrollView
+  ScrollView,
+  TouchableHighlight
 } from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import {styles} from './Style';
@@ -32,6 +33,18 @@ function DateAndBar(day, width) {
     </View>
   )
 }
+
+function BottomButton(buttonText, pageDestination) {
+  <TouchableHighlight style={{backgroundColor:'#888888',
+    alignItems:'center',
+    justifyContent:'center',
+    height:60}} onPress= {() => {
+    this.props.navigation.navigate(pageDestination)}
+  }>
+    <Text style={{fontSize:18, color:'#FFFFFF'}}>{buttonText}</Text>
+  </TouchableHighlight>
+}
+
 
 export default class DataPage extends Component {
   constructor(props, context) {
@@ -131,9 +144,18 @@ export default class DataPage extends Component {
     });
 
     return (
+      <View style={{flex:1}}>
       <ScrollView style={{backgroundColor:'#ffffff'}}>
 
         <View style={{marginLeft: 10}}>
+
+          <View style={{
+            backgroundColor: '#FFFFFF'
+          }}>
+
+          </View>
+
+
         <Text style={styles.dataHeaders}>FATIGUE</Text>
           {fatigueItems}
           <Text style={styles.dataHeaders}>ANXIETY</Text>
@@ -143,6 +165,19 @@ export default class DataPage extends Component {
           <Text>{JSON.stringify(this.props.observations)}</Text>
         </View>
       </ScrollView>
+
+    
+      <TouchableHighlight style={{backgroundColor:'#888888',
+        alignItems:'center',
+        justifyContent:'center',
+        height:60}} onPress= {() => {
+        this.props.navigation.navigate('OptimizeSchedule')}
+      }>
+        <Text style={{fontSize:18, color:'#FFFFFF'}}>OPTIMIZE SCHEDULE</Text>
+      </TouchableHighlight>
+
+
+    </View>
     )
   };
 }

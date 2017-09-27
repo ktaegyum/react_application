@@ -25,6 +25,7 @@ import Overview from './action_overview'
 import DataPage from './action_datapage'
 import SettingsPage from './action_setting.js'
 import SideEffect from './action_sideEffect.js'
+import OptimizeSchedule from './action_OptimizeSchedule.js'
 import * as firebase from "firebase";
 //Redux Store
 import store, {persistor} from './reducers/people.js'

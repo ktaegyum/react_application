@@ -30,47 +30,68 @@ import Overview from './action_overview'
 import DataPage from './action_datapage'
 import SettingsPage from './action_setting.js'
 import SideEffect from './action_sideEffect.js'
+import OptimizeSchedule from './action_OptimizeSchedule.js'
 import Project from './action_project.js'
 import * as firebase from "firebase";
 //Redux Store
 import store from './reducers/people.js'
 import firebaseApp from './Firebase';
 
+// This function can be passed to the navigationOptions within StackNavigator or
+// TabNavigator to remove the top header/title
+let rmHeader = ({navigation}) => ({
+  header: false
+})
+
 const MainDashNavigator = TabNavigator({
   Overview: {
     screen: Overview
   },
   Data: {
-    screen: DataPage
+    screen: DataPage,
   },
   Settings: {
     screen: SettingsPage
   }
 }, {
   swipeEnabled: true,
-  lazy: false
+  lazy: false,
+  tabBarPosition: 'top',
+  navigationOptions: rmHeader,
 }
 
 );
 
+
+
 const App = StackNavigator({
   Home: {
-    screen: Project
+    screen: Project,
+    navigationOptions: rmHeader,
   },
   SignUp: {
-    screen: SignUp
+    screen: SignUp,
+    navigationOptions: rmHeader,
   },
   RegimenInfomation: {
-    screen: RegimenInfomation
+    screen: RegimenInfomation,
+    navigationOptions: rmHeader,
   },
   MainDash: {
-    screen: MainDashNavigator
+    screen: MainDashNavigator,
+    navigationOptions: rmHeader,
   },
   SideEffect: {
-    screen: SideEffect
+    screen: SideEffect,
+    navigationOptions: rmHeader,
+  },
+  OptimizeSchedule: {
+    screen: OptimizeSchedule,
+    navigationOptions: rmHeader,
   },
   LogIn: {
-    screen: LogIn
+    screen: LogIn,
+    navigationOptions: rmHeader,
   }
 });
 /* firebase setup

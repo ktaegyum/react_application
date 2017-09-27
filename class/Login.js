@@ -78,7 +78,8 @@ export default class LogIn extends Component {
         <View style = {{
           flex: 1,
           flexDirection: 'column',
-          justifyContent: 'space-between'}}>
+          justifyContent: 'space-between',
+          marginTop: 40}}>
         <View>
         	<Text> Email/Account </Text>
         	<TextInput
