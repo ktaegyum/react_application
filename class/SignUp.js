@@ -7,7 +7,8 @@ import {
   Slider,
   Button,
   Alert,
-  TextInput
+  TextInput,
+  KeyboardAvoidingView
 } from 'react-native';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import { StackNavigator } from 'react-navigation';
@@ -99,39 +100,47 @@ export default class SignUp extends Component {
     const {email, password, confirm_password, information} = this.state;
     return (
         <View style = {{
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'space-between'}}>
-        <View>
-        	<Text> Email </Text>
-        	<TextInput
-        		style = {{height: 40, padding: 10}}
-        		placeholder =  "account@example.com"
-            autoCapitalize="none"
-            autoCorrect={false}
-            value={email}
-        		onChangeText = {(value) => this.setEmail(value)}
-            keyboardType = 'email-address'/>
-        	<Text> Password </Text>
-        	<TextInput
-        		style = {{height: 40, padding: 10}}
-        		placeholder =  "password"
-        		onChangeText = {(value) => this.setPassword(value)}
-            value={password}
-            secureTextEntry = {true}/>
-          <Text> Confirm Password </Text>
-          <TextInput
-            style = {{height: 40, padding: 10}}
-            placeholder =  "confirm password"
-            onChangeText = {(value) => this.setConfirmPassword(value)}
-            value={confirm_password}
-            secureTextEntry = {true}/>
-        </View>
-	       <View style={{backgroundColor: '#FFFFFF'}}>
-          <Button
-            onPress={this.singupUser}
-            title="DONE"/>
-         </View>
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-between'}}>
+          <KeyboardAvoidingView 
+            behavior="padding"
+            style = {{
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-between'}}>
+          <View>
+          	<Text> Email </Text>
+          	<TextInput
+          		style = {{height: 40, padding: 10}}
+          		placeholder =  "account@example.com"
+              autoCapitalize="none"
+              autoCorrect={false}
+              value={email}
+          		onChangeText = {(value) => this.setEmail(value)}
+              keyboardType = 'email-address'/>
+          	<Text> Password </Text>
+          	<TextInput
+          		style = {{height: 40, padding: 10}}
+          		placeholder =  "password"
+          		onChangeText = {(value) => this.setPassword(value)}
+              value={password}
+              secureTextEntry = {true}/>
+            <Text> Confirm Password </Text>
+            <TextInput
+              style = {{height: 40, padding: 10}}
+              placeholder =  "confirm password"
+              onChangeText = {(value) => this.setConfirmPassword(value)}
+              value={confirm_password}
+              secureTextEntry = {true}
+              onSubmitEditing={this.singupUser}/>
+          </View>
+  	       <View style={{backgroundColor: '#FFFFFF'}}>
+            <Button
+              onPress={this.singupUser}
+              title="DONE"/>
+           </View>
+          </KeyboardAvoidingView>
       </View>
     );
   }
