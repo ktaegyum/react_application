@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import {styles} from './Style';
+import {BottomButton} from '../components/BottomButton.js';
 //this.props.observations
 function DateAndBar(day, width) {
   return (
@@ -33,18 +34,7 @@ function DateAndBar(day, width) {
   )
 }
 
-const BottomButton = (buttonText, pageDestination, navigatorObject) => {
-  return(
-  <TouchableHighlight style={{backgroundColor:'#888888',
-    alignItems:'center',
-    justifyContent:'center',
-    height:60}} onPress= {() => {
-    navigatorObject.navigate(pageDestination)}
-  }>
-    <Text style={{fontSize:18, color:'#FFFFFF'}}>{buttonText}</Text>
-  </TouchableHighlight>
-)
-}
+
 
 
 export default class DataPage extends Component {

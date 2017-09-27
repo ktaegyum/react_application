@@ -10,6 +10,7 @@ import {
   Alert
 } from 'react-native';
 import PropTypes from 'prop-types'; // ES6
+import {BottomButton} from '../components/BottomButton.js';
 
 function range(len) {
   return Array.apply(null, {length: len}).map(Number.call, Number)
@@ -120,14 +121,7 @@ export default class Overview extends Component {
 
 
         </View>
-
-        <View style={{
-          backgroundColor: '#FFFFFF'
-        }}>
-          <Button onPress= {() => {
-            this.props.navigation.navigate('SideEffect')}
-          } title="Log Symptoms"/>
-        </View>
+        {BottomButton("LOG SYMPTOMS","SideEffect", this.props.navigation)}
       </View>
     )
   };
