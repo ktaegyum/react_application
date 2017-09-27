@@ -13,7 +13,6 @@ import {
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import {styles} from './Style';
 //this.props.observations
-
 function DateAndBar(day, width) {
   return (
     <View style={{
@@ -34,15 +33,17 @@ function DateAndBar(day, width) {
   )
 }
 
-function BottomButton(buttonText, pageDestination) {
+const BottomButton = (buttonText, pageDestination, navigatorObject) => {
+  return(
   <TouchableHighlight style={{backgroundColor:'#888888',
     alignItems:'center',
     justifyContent:'center',
     height:60}} onPress= {() => {
-    this.props.navigation.navigate(pageDestination)}
+    navigatorObject.navigate(pageDestination)}
   }>
     <Text style={{fontSize:18, color:'#FFFFFF'}}>{buttonText}</Text>
   </TouchableHighlight>
+)
 }
 
 
@@ -166,16 +167,7 @@ export default class DataPage extends Component {
         </View>
       </ScrollView>
 
-    
-      <TouchableHighlight style={{backgroundColor:'#888888',
-        alignItems:'center',
-        justifyContent:'center',
-        height:60}} onPress= {() => {
-        this.props.navigation.navigate('OptimizeSchedule')}
-      }>
-        <Text style={{fontSize:18, color:'#FFFFFF'}}>OPTIMIZE SCHEDULE</Text>
-      </TouchableHighlight>
-
+{BottomButton("OPTIMIZE SCHEDULE","OptimizeSchedule", this.props.navigation)}
 
     </View>
     )
