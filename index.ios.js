@@ -59,27 +59,52 @@ const MainDashNavigator = TabNavigator({
 
 );
 
+let rmHeader = ({navigation}) => ({
+  header: false
+})
+
 const App = StackNavigator({
   Home: {
-    screen: Project
+    screen: Project,
+    navigationOptions: ({navigation}) => ({
+      header: false
+    }),
   },
   SignUp: {
-    screen: SignUp
+    screen: SignUp,
+    navigationOptions: ({navigation}) => ({
+      header: false
+    }),
   },
   RegimenInfomation: {
-    screen: RegimenInfomation
+    screen: RegimenInfomation,
+    navigationOptions: ({navigation}) => ({
+      header: false
+    }),
   },
   MainDash: {
-    screen: MainDashNavigator
+    screen: MainDashNavigator,
+    navigationOptions: ({navigation}) => ({
+      header: false
+    }),
   },
   SideEffect: {
-    screen: SideEffect
+    screen: SideEffect,
+    navigationOptions: ({navigation}) => ({
+      header: false
+    }),
   },
   OptimizeSchedule: {
-    screen: OptimizeSchedule
+    screen: OptimizeSchedule,
+    navigationOptions: ({navigation}) => ({
+      header: false
+    }),
   },
   LogIn: {
-    screen: LogIn
+    screen: LogIn,
+    navigationOptions: ({navigation}) => ({
+      header: false
+    }),
   }
 });
 /* firebase setup
