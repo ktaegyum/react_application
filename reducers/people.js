@@ -14,6 +14,7 @@ import {
   EFFECT_CLICKED_PAIN
 } from '../constants.js'
 import {SIGNUP_EMAIL, SIGNUP_PASSWORD, SIGNUP_USERINFO} from '../constants.js'
+import {Infusion} from '../class/Infusion.js'
 import logger from 'redux-logger'
 import {createStore, compose,applyMiddleware} from 'redux'
 import {persistStore,autoRehydrate} from 'redux-persist'
@@ -43,6 +44,7 @@ const initialState = {
   signUp_email: '',
   signUp_password: '',
   signUp_userInfo: '',
+  infusion: [],
   symptom_observations: [
     {
       "entry_datetime": Date.now() - millisecondsInADay*30,
