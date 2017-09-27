@@ -126,13 +126,6 @@ export default class SignUp extends Component {
             onChangeText = {(value) => this.setConfirmPassword(value)}
             value={confirm_password}
             secureTextEntry = {true}/>
-          <Text> Additional Information</Text>
-          <TextInput
-            style = {{height: 300, padding: 10}}
-            value={information}
-            placeholder = "Add additional information"
-            onChangeText = {(value) => this.setInformation(value)}
-            multiline = {true}/>
         </View>
 	       <View style={{backgroundColor: '#FFFFFF'}}>
           <Button
