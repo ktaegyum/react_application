@@ -37,7 +37,7 @@ import * as firebase from "firebase";
 import store from './reducers/people.js'
 import firebaseApp from './Firebase';
 
-// This function can be passed to the navigationOptions within StackNavigator or 
+// This function can be passed to the navigationOptions within StackNavigator or
 // TabNavigator to remove the top header/title
 let rmHeader = ({navigation}) => ({
   header: false

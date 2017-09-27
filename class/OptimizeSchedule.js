@@ -106,25 +106,29 @@ export default class OptimizeSchedule extends Component {
 		        flex: 1,
 		        flexDirection: 'column',
 		        justifyContent: 'space-between',
-          backgroundColor:'white',
+          backgroundColor:'#e9e9ef',
         paddingTop:40}}>
 	    		<ScrollView>
 	    			<Text>brian</Text>
+
+
+            <View style={{margin:10, padding:20, backgroundColor:'white'}}>
+              <Text style={{fontSize:16, fontFamily:'Avenir', color: '#5774a3', fontWeight:'bold'}}>CHOOSE A DATE</Text>
+              <View style={{marginTop: 10, marginBottom: 15, padding:8, borderColor:'#c2c4c5', borderRadius:1, borderWidth:2}}>
+                <Text style={{fontSize:12, fontFamily:'Avenir'}}>07/30/2017</Text>
+              </View>
+              <Text style={{fontSize:12, fontFamily:'Avenir'}}>Based on your current schedule, you're predicted to feel <Text style={{fontWeight: "bold"}}>severely fatigued </Text>(3.7 out of 4).</Text>
+            </View>
+
+
+
+
 	    		</ScrollView>
-		        <View>
-		          <Button
-		              onPress={() => {
-                    addSymptoms(this.props.fatigue, this.props.nausea, this.props.fever, this.props.pain);
-                    this.props.navigation.navigate('MainDash')}
-                  }
-		              title="SUBMIT"
-		              color="#841584"/>
-		        </View>
-		        <View>
-		          <Button
-		              onPress={() => this.props.navigation.navigate('MainDash')}
-		              title="Go Back"
-		              color="#841584"/>
+		        <View style={{backgroundColor:'#888888',
+            alignItems:'center',
+            justifyContent:'center',
+            height:60}}>
+		          <Text style={{fontSize:18, color:'#FFFFFF'}}>UPDATE REGIMEN</Text>
 		        </View>
 	    	</View>
 	)
