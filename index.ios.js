@@ -37,13 +37,18 @@ import * as firebase from "firebase";
 import store from './reducers/people.js'
 import firebaseApp from './Firebase';
 
+// This function can be passed to the navigationOptions within StackNavigator or 
+// TabNavigator to remove the top header/title
+let rmHeader = ({navigation}) => ({
+  header: false
+})
+
 const MainDashNavigator = TabNavigator({
   Overview: {
     screen: Overview
   },
   Data: {
     screen: DataPage,
-    //override the header at top
   },
   Settings: {
     screen: SettingsPage
@@ -52,59 +57,41 @@ const MainDashNavigator = TabNavigator({
   swipeEnabled: true,
   lazy: false,
   tabBarPosition: 'top',
-  navigationOptions: ({navigation}) => ({
-    header: false
-  }),
+  navigationOptions: rmHeader,
 }
 
 );
 
-let rmHeader = ({navigation}) => ({
-  header: false
-})
+
 
 const App = StackNavigator({
   Home: {
     screen: Project,
-    navigationOptions: ({navigation}) => ({
-      header: false
-    }),
+    navigationOptions: rmHeader,
   },
   SignUp: {
     screen: SignUp,
-    navigationOptions: ({navigation}) => ({
-      header: false
-    }),
+    navigationOptions: rmHeader,
   },
   RegimenInfomation: {
     screen: RegimenInfomation,
-    navigationOptions: ({navigation}) => ({
-      header: false
-    }),
+    navigationOptions: rmHeader,
   },
   MainDash: {
     screen: MainDashNavigator,
-    navigationOptions: ({navigation}) => ({
-      header: false
-    }),
+    navigationOptions: rmHeader,
   },
   SideEffect: {
     screen: SideEffect,
-    navigationOptions: ({navigation}) => ({
-      header: false
-    }),
+    navigationOptions: rmHeader,
   },
   OptimizeSchedule: {
     screen: OptimizeSchedule,
-    navigationOptions: ({navigation}) => ({
-      header: false
-    }),
+    navigationOptions: rmHeader,
   },
   LogIn: {
     screen: LogIn,
-    navigationOptions: ({navigation}) => ({
-      header: false
-    }),
+    navigationOptions: rmHeader,
   }
 });
 /* firebase setup
