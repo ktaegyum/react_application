@@ -109,7 +109,18 @@ export default class OptimizeSchedule extends Component {
           backgroundColor:'#e9e9ef',
         paddingTop:40}}>
 	    		<ScrollView>
-	    			<Text>brian</Text>
+
+            <View style={{paddingLeft:10,paddingRight:10, backgroundColor:'#FFFFFF',
+            alignItems:'center',
+            justifyContent:'space-between',
+            height:60, flex:1, flexDirection:'row'}}>
+              <Text style={{fontSize:18, color:'#465f92', fontFamily:'Courier'}} onPress= {() => {
+                this.props.navigation.navigate('Data')}
+              }>{" <"}</Text>
+		          <Text style={{fontSize:18, color:'#5774a3'}}>Optimize for Date</Text>
+              <Text style={{fontSize:25, color:'#5774a3'}}>{"    "}</Text>
+		        </View>
+
 
 
             <View style={{margin:10, padding:20, backgroundColor:'white'}}>
@@ -118,6 +129,15 @@ export default class OptimizeSchedule extends Component {
                 <Text style={{fontSize:12, fontFamily:'Avenir'}}>07/30/2017</Text>
               </View>
               <Text style={{fontSize:12, fontFamily:'Avenir'}}>Based on your current schedule, you're predicted to feel <Text style={{fontWeight: "bold"}}>severely fatigued </Text>(3.7 out of 4).</Text>
+            </View>
+
+
+            <View style={{margin:10, padding:20, backgroundColor:'white'}}>
+              <Text style={{fontSize:16, fontFamily:'Avenir', color: '#5774a3', fontWeight:'bold'}}>SUGGESTION</Text>
+              <Text style={{fontSize:12, fontFamily:'Avenir', marginTop:15}}>
+To minimize the side effects on June 29, 2017, you will need to adjust your current schedule:{"\n"}{"\n"}
+You currently have an infusion scheduled for <Text style={{fontWeight: "bold"}}>May 3, 2017</Text>.{"\n"}{"\n"}
+Moving your infusion to <Text style={{fontWeight: "bold"}}>May 2, 2017</Text>.</Text>
             </View>
 
 
