@@ -25,7 +25,7 @@ export class Infusion {
 
 	}
 	add_anxiety(symptom_date,anxiety) {
-		//Check the date of the fatique
+		//Check the date of the anxiety
 		//to determin whether tit can be added or averaged(duplicate date exist)
 		//check the differences of date to get correct index of the list
 		var date_diff = symptom_date.getDate() - this.date.getDate();
