@@ -3,11 +3,13 @@ import {StyleSheet} from 'react-native';
 import FileSystem from 'react-native-filesystem';
 
 export const styles = StyleSheet.create({
+  whiteCard: {margin:10, padding:20, backgroundColor:'white'},
   container: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-between'
   },
+  cardHeader: {fontSize:16, fontFamily:'Avenir', color: '#5774a3', fontWeight:'bold'},
   radio: {
     flex: 1,
     flexDirection: 'row',
