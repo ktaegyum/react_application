@@ -117,6 +117,7 @@ export default class SideEffect extends Component {
  	_hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 	_handleDatePicked = (date) => {
 		var date_string = "Last Infusion Date: "+ date_convertor(date)
+		this.props.last_infusion = date;
 	    this.state = {
 	    	buttonMessage : date_string
 	    }
