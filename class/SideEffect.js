@@ -8,7 +8,9 @@ import {
   Button,
   Alert,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
+import DateTimePicker from 'react-native-modal-datetime-picker';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import {styles} from './Style';
 import {ADD_SYMPTOMS, EFFECT_FATIGUE, EFFECT_NAUSEA, EFFECT_FEVER, EFFECT_PAIN, EFFECT_CLICKED_FATIGUE, EFFECT_CLICKED_NAUSEA, EFFECT_CLICKED_FEVER, EFFECT_CLICKED_PAIN} from '../constants.js'
@@ -66,6 +68,15 @@ function addSymptoms(fatigue, nausea, fever, pain) {
 	store.dispatch(redux_connector(EFFECT_CLICKED_FEVER,0));
 	store.dispatch(redux_connector(EFFECT_CLICKED_PAIN,0));
 }
+function date_convertor(unix_timestamp) {
+  var t = new Date(unix_timestamp);
+  var year = t.getFullYear();
+  var month = t.getMonth() + 1;
+  var date = t.getDate();
+  // month needs +1 because it is 0 indexed
+  var formatted = year + "-" + month + "-" + date;
+  return formatted
+}
 var fatigue0 = "No fatigue"
 var fatigue1 = "Fatigue relieved by rest"
 var fatigue2 = "Fatigue not relieved by rest; limiting instrucmental ADL"
@@ -95,11 +106,22 @@ export default class SideEffect extends Component {
 	constructor(props, context) {
 		super(props, context)
 		this.state = {
+			isDateTimePickerVisible: false,
+			buttonMessage: "Last Infusion Date: None"
 		}
 	}
 	static navigationOptions = {
     	title: 'Side Effect',
 	};
+	_showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
+ 	_hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
+	_handleDatePicked = (date) => {
+		var date_string = "Last Infusion Date: "+ date_convertor(date)
+	    this.state = {
+	    	buttonMessage : date_string
+	    }
+	    this._hideDateTimePicker();
+  	};
 	render() {
 	    return (
 		    <View style = {{
@@ -209,6 +231,16 @@ export default class SideEffect extends Component {
 						)}
 					</View>
 	    		</ScrollView>
+	    		<View>
+	    			<Button
+	    				onPress = {() => this._showDateTimePicker()}
+	    				title = {this.state.buttonMessage}
+	    				color = "#841584"/>
+				   	<DateTimePicker
+			          isVisible={this.state.isDateTimePickerVisible}
+			          onConfirm={this._handleDatePicked}
+			          onCancel={this._hideDateTimePicker}/>
+	    		</View>
 		        <View>
 		          <Button
 		              onPress={() => {
