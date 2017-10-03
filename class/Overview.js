@@ -10,7 +10,7 @@ import {
   Alert
 } from 'react-native';
 import PropTypes from 'prop-types'; // ES6
-
+import DateTimePicker from 'react-native-modal-datetime-picker';
 function range(len) {
   return Array.apply(null, {length: len}).map(Number.call, Number)
 }
@@ -34,7 +34,15 @@ rmFutureDates = (infusionDates) => infusionDates.filter((infusionDate) => infusi
 function nextInfusionDate(startDateUnixTime, num, cycleLength){
   return new Date(nextInfusion(infusionDates(startDateUnixTime, num, cycleLength)))
 }
-
+function date_convertor(unix_timestamp) {
+  var t = new Date(unix_timestamp);
+  var year = t.getFullYear();
+  var month = t.getMonth() + 1;
+  var date = t.getDate();
+  // month needs +1 because it is 0 indexed
+  var formatted = year + "-" + month + "-" + date;
+  return formatted
+}
 const weekdayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"]
 
@@ -54,6 +62,25 @@ unixTimeToStringDate = (unixTime) => {
 
 
 export default class Overview extends Component {
+  constructor(props, context) {
+    super(props, context)
+    this.state = {
+      isDateTimePickerVisible: false,
+      infusion_Message: "Invalid"
+    }
+  }
+  _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
+  _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
+  
+  _handleDatePicked = (date) => {
+    var date_string = "Last Infusion Date: "+ date_convertor(date)
+    this.props.last_infusion = date;
+      this.state = {
+        infusion_Message : date_string
+      }
+      this._hideDateTimePicker();
+  };
+
   render() {
     completedInfusions = numberOfCompletedInfusions(
                             this.props.state.regimen_date,
@@ -80,7 +107,15 @@ export default class Overview extends Component {
 
         <View>
           <View style={{margin:10, padding:20, backgroundColor:'white'}}>
-          <Text style={{fontSize:25, fontFamily:'Avenir'}}>First Infusion date is <Text style={{fontWeight: "bold"}}> {upcomingInfusionDate.toLocaleDateString()}</Text></Text>
+          <Text style={{fontSize:25, fontFamily:'Avenir'}}>First Infusion date is <Text style={{fontWeight: "bold"}}> {this.state.infusion_Message}</Text></Text>
+            <Button
+              onPress = {() => this._showDateTimePicker()}
+              title = "Click to set your infusion date"
+              color = "#841584"/>
+            <DateTimePicker
+                isVisible={this.state.isDateTimePickerVisible}
+                onConfirm={this._handleDatePicked}
+                onCancel={this._hideDateTimePicker}/>
         </View>
 
 
