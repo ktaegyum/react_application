@@ -121,8 +121,8 @@ export default class SideEffect extends Component {
 
 
 	    		<ScrollView>
-	    			<View style={{marginRight:20}}>
-	    				<Text style={styles.sideEffectTitles}>FATIGUE</Text>
+	    			<View style={{paddingRight:20, paddingLeft:12}}>
+	    				<Text style={styles.cardHeader}>FATIGUE</Text>
 	 					<RadioForm
 	          				radio_props = {radio_props}
 	          				initial = {0}
@@ -143,7 +143,7 @@ export default class SideEffect extends Component {
 							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fatigue4}</Text></View>
 						</View>
 						)}
-	    				<Text style={styles.sideEffectTitles}>NAUSEA</Text>
+	    				<Text style={styles.cardHeader}>NAUSEA</Text>
 	 					<RadioForm
 	          				radio_props = {radio_props}
 	          				initial = {0}
@@ -168,7 +168,7 @@ export default class SideEffect extends Component {
 							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{nausea4}</Text></View>
 						</View>
 						)}
-	    				<Text style={styles.sideEffectTitles}>APPETITE</Text>
+	    				<Text style={styles.cardHeader}>APPETITE</Text>
 	 					<RadioForm
 	          				radio_props = {radio_props}
 	          				initial = {0}
@@ -194,7 +194,7 @@ export default class SideEffect extends Component {
 						</View>
 						)}
 
-						<Text style={styles.sideEffectTitles}>Pain</Text>
+						<Text style={styles.cardHeader}>PAIN</Text>
 	 					<RadioForm
 	          				radio_props = {radio_props}
 	          				initial = {0}
