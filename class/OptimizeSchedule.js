@@ -13,6 +13,22 @@ import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-
 import {styles} from './Style';
 import {ADD_SYMPTOMS, EFFECT_FATIGUE, EFFECT_NAUSEA, EFFECT_FEVER, EFFECT_PAIN, EFFECT_CLICKED_FATIGUE, EFFECT_CLICKED_NAUSEA, EFFECT_CLICKED_FEVER, EFFECT_CLICKED_PAIN} from '../constants.js'
 import store from '../reducers/people.js'
+import { DatePickerDialog } from 'react-native-datepicker-dialog'
+
+
+//this is based on Serhan's experience. Algorithm shamelessly implemented by Brian
+compute_expected_fatigue = (days_since_last_infusion, cycle_length) => {
+  fractions = [0.333,0.8]
+  current_fraction = days_since_last_infusion/cycle_length
+  if (current_fraction < fractions[0]) {
+    return(10)
+  } else if (current_fraction < fractions[1]) {
+    return(6)
+  } else {
+    return(0)
+  }
+}
+
 
 
 export default class OptimizeSchedule extends Component {
@@ -48,6 +64,7 @@ export default class OptimizeSchedule extends Component {
               <Text style={styles.cardHeader}>CHOOSE A DATE</Text>
               <View style={{marginTop: 10, marginBottom: 15, padding:8, borderColor:'#c2c4c5', borderRadius:1, borderWidth:2}}>
                 <Text style={{fontSize:12, fontFamily:'Avenir'}}>07/30/2017</Text>
+
               </View>
               <Text style={{fontSize:12, fontFamily:'Avenir'}}>Based on your current schedule, you're predicted to feel <Text style={{fontWeight: "bold"}}>severely fatigued </Text>(3.7 out of 4).</Text>
             </View>

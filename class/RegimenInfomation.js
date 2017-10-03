@@ -12,11 +12,9 @@ import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import {StackNavigator} from 'react-navigation';
 import {styles} from './Style';
 import SignUp from './SignUp';
-import {FETCHING_PEOPLE, FETCHING_PEOPLE_SUCCESS, FETCHING_PEOPLE_FAILURE} from '../constants'
 import {SETTING_ACCOUNT, SETTING_NOTIFICATION, SETTING_EDITREGIMEN, SETTING_ABOUT, SETTING_SUPPORT} from '../constants.js'
 import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE} from '../constants.js'
 import store from '../reducers/people.js'
-import {moment} from 'moment';
 
 function redux_connector(command, data) {
   return {type: command, content: data}
@@ -79,7 +77,7 @@ export default class RegimenInfomation extends Component {
         }}>
           <Text style={styles.cardHeader}>DAYS BETWEEN INFUSIONS: <Text style={{fontWeight: "bold"}}>{this.props.cycle}</Text></Text>
 
-          <Slider value={this.state.days} minimumValue={7} maximumValue={28} step={7} onValueChange={(value) => this.props.dispatch(redux_connector(REGIMEN_INFUSIONCYCLE, value))}/>
+          <Slider value={this.state.days} minimumValue={7} maximumValue={21} step={7} onValueChange={(value) => this.props.dispatch(redux_connector(REGIMEN_INFUSIONCYCLE, value))}/>
         </View>
         <View style={{
           marginBottom: 5

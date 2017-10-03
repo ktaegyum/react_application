@@ -3334,6 +3334,10 @@ react-native-calendars@1.4.0:
     prop-types "^15.5.10"
     xdate "^0.8.0"
 
+react-native-datepicker-dialog@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-datepicker-dialog/-/react-native-datepicker-dialog-0.0.6.tgz#4e4ca34c311d35cb5c10efa6a438574602f45e56"
+
 react-native-deprecated-custom-components@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/react-native-deprecated-custom-components/-/react-native-deprecated-custom-components-0.1.0.tgz#f716d431ef2dc4f91b7a686af091ee3656538086"

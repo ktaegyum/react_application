@@ -1,4 +1,3 @@
-import {FETCHING_PEOPLE, FETCHING_PEOPLE_SUCCESS, FETCHING_PEOPLE_FAILURE} from '../constants'
 import {SETTING_ACCOUNT, SETTING_NOTIFICATION, SETTING_EDITREGIMEN, SETTING_ABOUT, SETTING_SUPPORT} from '../constants.js'
 import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE} from '../constants.js'
 import {SYMPTOM_OBSERVATION} from '../constants.js'
@@ -20,9 +19,222 @@ import {createStore, compose,applyMiddleware} from 'redux'
 import {persistStore,autoRehydrate} from 'redux-persist'
 import {AsyncStorage} from 'react-native'
 const millisecondsInADay = 60*60*24*1000
+
+const sampleSerhanData =
+[
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*30,
+    "nausea": 0,
+    "fatigue": 1,
+    "anxiety": 2,
+    "lack_of_appetite": 0
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*29,
+    "nausea": 2,
+    "fatigue": 4,
+    "anxiety": 2,
+    "lack_of_appetite": 4
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*28,
+    "nausea": 3,
+    "fatigue": 3,
+    "anxiety": 1,
+    "lack_of_appetite": 3
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*27,
+    "nausea": 3,
+    "fatigue": 3,
+    "anxiety": 1,
+    "lack_of_appetite": 3
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*26,
+    "nausea": 3,
+    "fatigue": 2,
+    "anxiety": 0,
+    "lack_of_appetite": 2
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*25,
+    "nausea": 2,
+    "fatigue": 2,
+    "anxiety": 0,
+    "lack_of_appetite": 2
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*24,
+    "nausea": 1,
+    "fatigue": 2,
+    "anxiety": 0,
+    "lack_of_appetite": 2
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*23,
+    "nausea": 1,
+    "fatigue": 2,
+    "anxiety": 0,
+    "lack_of_appetite": 2
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*22,
+    "nausea": 1,
+    "fatigue": 2,
+    "anxiety": 0,
+    "lack_of_appetite": 2
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*21,
+    "nausea": 0,
+    "fatigue": 1,
+    "anxiety": 0,
+    "lack_of_appetite": 1
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*20,
+    "nausea": 0,
+    "fatigue": 1,
+    "anxiety": 0,
+    "lack_of_appetite": 1
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*19,
+    "nausea": 0,
+    "fatigue": 1,
+    "anxiety": 1,
+    "lack_of_appetite": 1
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*18,
+    "nausea": 0,
+    "fatigue": 0,
+    "anxiety": 1,
+    "lack_of_appetite": 0
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*17,
+    "nausea": 0,
+    "fatigue": 0,
+    "anxiety": 2,
+    "lack_of_appetite": 0
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*16,
+    "nausea": 0,
+    "fatigue": 0,
+    "anxiety": 3,
+    "lack_of_appetite": 0
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*15,
+    "nausea": 1,
+    "fatigue": 4,
+    "anxiety": 4,
+    "lack_of_appetite": 0
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*14,
+    "nausea": 3,
+    "fatigue": 4,
+    "anxiety": 2,
+    "lack_of_appetite": 4
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*13,
+    "nausea": 3,
+    "fatigue": 4,
+    "anxiety": 2,
+    "lack_of_appetite": 4
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*12,
+    "nausea": 4,
+    "fatigue": 4,
+    "anxiety": 1,
+    "lack_of_appetite": 4
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*11,
+    "nausea": 4,
+    "fatigue": 3,
+    "anxiety": 0,
+    "lack_of_appetite": 3
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*10,
+    "nausea": 3,
+    "fatigue": 3,
+    "anxiety": 0,
+    "lack_of_appetite": 3
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*9,
+    "nausea": 2,
+    "fatigue": 3,
+    "anxiety": 0,
+    "lack_of_appetite": 2
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*8,
+    "nausea": 2,
+    "fatigue": 2,
+    "anxiety": 0,
+    "lack_of_appetite": 2
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*7,
+    "nausea": 1,
+    "fatigue": 2,
+    "anxiety": 0,
+    "lack_of_appetite": 1
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*6,
+    "nausea": 0,
+    "fatigue": 1,
+    "anxiety": 0,
+    "lack_of_appetite": 1
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*5,
+    "nausea": 0,
+    "fatigue": 1,
+    "anxiety": 0,
+    "lack_of_appetite": 1
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*4,
+    "nausea": 0,
+    "fatigue": 0,
+    "anxiety": 1,
+    "lack_of_appetite": 0
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*3,
+    "nausea": 0,
+    "fatigue": 0,
+    "anxiety": 1,
+    "lack_of_appetite": 0
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*2,
+    "nausea": 0,
+    "fatigue": 0,
+    "anxiety": 2,
+    "lack_of_appetite": 0
+  },
+  {
+    "entry_datetime": Date.now() - millisecondsInADay*1,
+    "nausea": 0,
+    "fatigue": 0,
+    "anxiety": 2,
+    "lack_of_appetite": 0
+  }
+]
+
 const initialState = {
-  people: [],
-  isFetching: false,
   error: false,
   regimen_infusionCycle: 14,
   regimen_infusionNum: 12,
@@ -45,241 +257,12 @@ const initialState = {
   signUp_password: '',
   signUp_userInfo: '',
   infusion: [],
-  symptom_observations: [
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*30,
-      "nausea": 0,
-      "fatigue": 1,
-      "anxiety": 2,
-      "lack_of_appetite": 0
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*29,
-      "nausea": 2,
-      "fatigue": 4,
-      "anxiety": 2,
-      "lack_of_appetite": 4
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*28,
-      "nausea": 3,
-      "fatigue": 3,
-      "anxiety": 1,
-      "lack_of_appetite": 3
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*27,
-      "nausea": 3,
-      "fatigue": 3,
-      "anxiety": 1,
-      "lack_of_appetite": 3
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*26,
-      "nausea": 3,
-      "fatigue": 2,
-      "anxiety": 0,
-      "lack_of_appetite": 2
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*25,
-      "nausea": 2,
-      "fatigue": 2,
-      "anxiety": 0,
-      "lack_of_appetite": 2
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*24,
-      "nausea": 1,
-      "fatigue": 2,
-      "anxiety": 0,
-      "lack_of_appetite": 2
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*23,
-      "nausea": 1,
-      "fatigue": 2,
-      "anxiety": 0,
-      "lack_of_appetite": 2
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*22,
-      "nausea": 1,
-      "fatigue": 2,
-      "anxiety": 0,
-      "lack_of_appetite": 2
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*21,
-      "nausea": 0,
-      "fatigue": 1,
-      "anxiety": 0,
-      "lack_of_appetite": 1
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*20,
-      "nausea": 0,
-      "fatigue": 1,
-      "anxiety": 0,
-      "lack_of_appetite": 1
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*19,
-      "nausea": 0,
-      "fatigue": 1,
-      "anxiety": 1,
-      "lack_of_appetite": 1
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*18,
-      "nausea": 0,
-      "fatigue": 0,
-      "anxiety": 1,
-      "lack_of_appetite": 0
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*17,
-      "nausea": 0,
-      "fatigue": 0,
-      "anxiety": 2,
-      "lack_of_appetite": 0
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*16,
-      "nausea": 0,
-      "fatigue": 0,
-      "anxiety": 3,
-      "lack_of_appetite": 0
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*15,
-      "nausea": 1,
-      "fatigue": 4,
-      "anxiety": 4,
-      "lack_of_appetite": 0
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*14,
-      "nausea": 3,
-      "fatigue": 4,
-      "anxiety": 2,
-      "lack_of_appetite": 4
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*13,
-      "nausea": 3,
-      "fatigue": 4,
-      "anxiety": 2,
-      "lack_of_appetite": 4
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*12,
-      "nausea": 4,
-      "fatigue": 4,
-      "anxiety": 1,
-      "lack_of_appetite": 4
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*11,
-      "nausea": 4,
-      "fatigue": 3,
-      "anxiety": 0,
-      "lack_of_appetite": 3
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*10,
-      "nausea": 3,
-      "fatigue": 3,
-      "anxiety": 0,
-      "lack_of_appetite": 3
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*9,
-      "nausea": 2,
-      "fatigue": 3,
-      "anxiety": 0,
-      "lack_of_appetite": 2
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*8,
-      "nausea": 2,
-      "fatigue": 2,
-      "anxiety": 0,
-      "lack_of_appetite": 2
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*7,
-      "nausea": 1,
-      "fatigue": 2,
-      "anxiety": 0,
-      "lack_of_appetite": 1
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*6,
-      "nausea": 0,
-      "fatigue": 1,
-      "anxiety": 0,
-      "lack_of_appetite": 1
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*5,
-      "nausea": 0,
-      "fatigue": 1,
-      "anxiety": 0,
-      "lack_of_appetite": 1
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*4,
-      "nausea": 0,
-      "fatigue": 0,
-      "anxiety": 1,
-      "lack_of_appetite": 0
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*3,
-      "nausea": 0,
-      "fatigue": 0,
-      "anxiety": 1,
-      "lack_of_appetite": 0
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*2,
-      "nausea": 0,
-      "fatigue": 0,
-      "anxiety": 2,
-      "lack_of_appetite": 0
-    },
-    {
-      "entry_datetime": Date.now() - millisecondsInADay*1,
-      "nausea": 0,
-      "fatigue": 0,
-      "anxiety": 2,
-      "lack_of_appetite": 0
-    }
-  ]
+  symptom_observations: []
 
 }
 export const peopleReducer = (state = initialState, action) => {
   console.log(state.regimen_date, "infusiondate");
   switch (action.type) {
-    case FETCHING_PEOPLE:
-      return {
-        ...state,
-        isFetching: true,
-        people: []
-      }
-    case FETCHING_PEOPLE_SUCCESS:
-      return {
-        ...state,
-        isFetching: false,
-        people: action.content
-      }
-    case FETCHING_PEOPLE_FAILURE:
-      return {
-        ...state,
-        isFetching: false,
-        error: true
-      }
     case SETTING_ACCOUNT:
       return {
         ...state,
