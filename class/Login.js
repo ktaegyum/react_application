@@ -49,7 +49,7 @@ export default class LogIn extends Component {
         console.log("Logged In!");
         const user = firebase.auth().currentUser;
         if (!user.emailVerified){
-          alert("Please verify your email first.");
+          alert("Please verify your email");
           return;
         }
         this.props.navigation.navigate('Overview')

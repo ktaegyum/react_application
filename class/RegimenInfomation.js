@@ -10,9 +10,8 @@ import {
 } from 'react-native';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import {StackNavigator} from 'react-navigation';
-import styles from './Style';
+import {styles} from './Style';
 import SignUp from './SignUp';
-import {FETCHING_PEOPLE, FETCHING_PEOPLE_SUCCESS, FETCHING_PEOPLE_FAILURE} from '../constants'
 import {SETTING_ACCOUNT, SETTING_NOTIFICATION, SETTING_EDITREGIMEN, SETTING_ABOUT, SETTING_SUPPORT} from '../constants.js'
 import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE, REGIMEN_INFUSIONLIST, REGIMEN_LASTINFUSION} from '../constants.js'
 import store from '../reducers/people.js'
@@ -89,25 +88,47 @@ export default class RegimenInfomation extends Component {
           borderBottomColor: 'black',
           marginBottom: 5
         }}>
-          <Text style={{fontSize:18, fontFamily:'Avenir'}}>Days per infusion cycle: <Text style={{fontWeight: "bold"}}>{this.props.cycle}</Text></Text>
+          <Text style={styles.cardHeader}>DAYS BETWEEN INFUSIONS: <Text style={{fontWeight: "bold"}}>{this.props.cycle}</Text></Text>
 
-          <Slider value={this.state.days} minimumValue={7} maximumValue={28} step={7} onValueChange={(value) => this.props.dispatch(redux_connector(REGIMEN_INFUSIONCYCLE, value))}/>
+          <Slider value={this.state.days} minimumValue={7} maximumValue={21} step={7} onValueChange={(value) => this.props.dispatch(redux_connector(REGIMEN_INFUSIONCYCLE, value))}/>
         </View>
         <View style={{
           marginBottom: 5
         }}>
-          <Text style={{fontSize:18, fontFamily:'Avenir'}}>Days per infusion cycle: <Text style={{fontWeight: "bold"}}>{this.props.num}</Text></Text>
+          <Text style={styles.cardHeader}>NUMBER OF INFUSIONS <Text style={{fontWeight: "bold"}}>{this.props.num}</Text></Text>
           <Slider value={this.state.infusion} minimumValue={1} maximumValue={31} step={1} onValueChange={(value) => this.props.dispatch(redux_connector(REGIMEN_INFUSIONNUM, value))}/>
         </View>
         <View style={{
-          height: 350,
-          borderBottomColor: 'black',
-          borderBottomWidth: 1
+          height: 350
         }}>
 
-            <Text style={{fontSize:18, fontFamily:'Avenir'}}>First Infusion: <Text style={{fontWeight: "bold", color: 'grey'}}>{date_convertor(this.props.date)}</Text></Text>
+            <Text style={styles.cardHeader}>FIRST INFUSION IS ON <Text style={{fontWeight: "bold", color: 'grey'}}>{date_convertor(this.props.date)}</Text></Text>
 
-          <Calendar onDayPress={(calendarDayPick) => this.props.dispatch(redux_connector(REGIMEN_DATE, dayToUnix(calendarDayPick)))} markedDates={regimenDateSelected} scrollEnabled={true}/>
+          <Calendar onDayPress={(calendarDayPick) => this.props.dispatch(redux_connector(REGIMEN_DATE, dayToUnix(calendarDayPick)))} markedDates={
+            {[regimenDateSelected]: [{startingDay: true}]}
+          } scrollEnabled={true}
+
+          theme={{
+             backgroundColor: '#ffffff',
+             calendarBackground: '#ffffff',
+             textSectionTitleColor: '#b6c1cd',
+             selectedDayBackgroundColor: '#00adf5',
+             selectedDayTextColor: '#ffffff',
+             todayTextColor: '#00adf5',
+             dayTextColor: '#2d4150',
+             textDisabledColor: '#d9e1e8',
+             dotColor: '#00adf5',
+             selectedDotColor: '#000000',
+             arrowColor: 'black',
+             monthTextColor: 'black',
+             textDayFontFamily: 'Avenir',
+             textMonthFontFamily: 'Avenir',
+             textDayHeaderFontFamily: 'Avenir',
+             textDayFontSize: 10,
+             textMonthFontSize: 10,
+             textDayHeaderFontSize: 16
+           }}
+        />
 
 
         </View>
