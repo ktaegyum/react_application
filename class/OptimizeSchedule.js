@@ -14,7 +14,6 @@ import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-
 import {styles} from './Style';
 import {ADD_SYMPTOMS, EFFECT_FATIGUE, EFFECT_NAUSEA, EFFECT_FEVER, EFFECT_PAIN, EFFECT_CLICKED_FATIGUE, EFFECT_CLICKED_NAUSEA, EFFECT_CLICKED_FEVER, EFFECT_CLICKED_PAIN} from '../constants.js'
 import store from '../reducers/people.js'
-import { DatePickerDialog } from 'react-native-datepicker-dialog'
 
 
 //this is based on Serhan's experience. Algorithm shamelessly implemented by Brian

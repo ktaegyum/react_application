@@ -14,19 +14,11 @@
     "react-native": "0.47.0",
     "react-native-calendar": "0.12.2",
     "react-native-calendars": "1.4.0",
-<<<<<<< HEAD
-    "react-native-datepicker-dialog": "^0.0.6",
-    "react-native-deprecated-custom-components": "0.1.0",
-    "react-native-filesystem": "0.1.0",
-    "react-native-image-slider": "1.1.5",
-    "react-native-keyboard-aware-scroll-view": "^0.3.0",
-=======
     "react-native-datepicker-dialog": "0.0.6",
     "react-native-deprecated-custom-components": "0.1.0",
     "react-native-filesystem": "0.1.0",
     "react-native-image-slider": "1.1.5",
     "react-native-modal-datetime-picker": "^4.11.0",
->>>>>>> 630298c7b1d2a8ceb6826ed326ee03da34635c23
     "react-native-multi-slider": "0.3.5",
     "react-native-simple-radio-button": "2.5.0-alpha.1",
     "react-navigation": "1.0.0-beta.11",
