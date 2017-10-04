@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types'; // ES6
 import {BottomButton} from '../components/BottomButton.js';
-
+import {styles} from './Style';
 function range(len) {
   return Array.apply(null, {length: len}).map(Number.call, Number)
 }
@@ -61,7 +61,7 @@ export default class Overview extends Component {
                             this.props.state.regimen_infusionNum,
                             this.props.state.regimen_infusionCycle
                           )
-    totalWidth = 250
+    totalWidth = 270
     progressNumerator = completedInfusions
     progressDenominator = this.props.state.regimen_infusionNum
     upcomingInfusionDate = nextInfusionDate(
@@ -81,13 +81,13 @@ export default class Overview extends Component {
 
         <View>
           <View style={{margin:10, padding:20, backgroundColor:'white'}}>
-          <Text style={{fontSize:25, fontFamily:'Avenir'}}>First Infusion date is <Text style={{fontWeight: "bold"}}> {upcomingInfusionDate.toLocaleDateString()}</Text></Text>
+          <Text style={styles.cardHeader}>NEXT INFUSION DATE: <Text style={{fontWeight: "bold"}}> {upcomingInfusionDate.toLocaleDateString()}</Text></Text>
         </View>
 
 
 
-          <View style={{margin:10, padding:20, backgroundColor:'white'}}>
-            <Text style={{fontSize:25, fontFamily:'Avenir'}}>Progress</Text>
+          <View style={styles.whiteCard}>
+            <Text style={styles.cardHeader}>PROGRESS</Text>
             <View style={{
               flexDirection: 'row',
               marginBottom:10,
@@ -112,7 +112,7 @@ export default class Overview extends Component {
         </View>
 
         <View style={{margin:10, padding:20, backgroundColor:'white'}}>
-          <Text style={{fontSize:25, fontFamily:'Avenir'}}>Today's Forecast</Text>
+          <Text style={styles.cardHeader}>TODAY'S FORECAST</Text>
           <Text style={{fontSize:12, fontFamily:'Avenir'}}>Anxiety: <Text style={{fontWeight: "bold"}}>2</Text></Text>
           <Text style={{fontSize:12, fontFamily:'Avenir'}}>Fatigue: <Text style={{fontWeight: "bold"}}>3</Text></Text>
           <Text style={{fontSize:12, fontFamily:'Avenir'}}>Lack of Appetite: <Text style={{fontWeight: "bold"}}>0</Text></Text>

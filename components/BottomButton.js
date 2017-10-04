@@ -12,7 +12,7 @@ export const BottomButton = (buttonText, pageDestination, navigatorObject) => {
     height:60}} onPress= {() => {
     navigatorObject.navigate(pageDestination)}
   }>
-    <Text style={{fontSize:18, color:'#FFFFFF'}}>{buttonText}</Text>
+    <Text style={{fontSize:18, color:'#FFFFFF', fontWeight:'bold'}}>{buttonText}</Text>
   </TouchableHighlight>
 )
 }
