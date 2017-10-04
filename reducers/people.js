@@ -1,6 +1,6 @@
 import {FETCHING_PEOPLE, FETCHING_PEOPLE_SUCCESS, FETCHING_PEOPLE_FAILURE} from '../constants'
 import {SETTING_ACCOUNT, SETTING_NOTIFICATION, SETTING_EDITREGIMEN, SETTING_ABOUT, SETTING_SUPPORT} from '../constants.js'
-import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE, REGIMEN_INFUSIONLIST} from '../constants.js'
+import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE, REGIMEN_INFUSIONLIST, REGIMEN_LASTINFUSION} from '../constants.js'
 import {SYMPTOM_OBSERVATION} from '../constants.js'
 import {
   ADD_SYMPTOMS,
@@ -28,6 +28,7 @@ const initialState = {
   regimen_infusionNum: 12,
   regimen_date: Date.now() - 30*millisecondsInADay,
   regimen_infusion: [],
+  regimen_lastInfusion: null,
   setting_account: false,
   setting_regimen: false,
   setting_notification: false,
@@ -345,6 +346,11 @@ export const peopleReducer = (state = initialState, action) => {
       return {
         ...state,
         regimen_infusion: action.content
+      }
+    case REGIMEN_LASTINFUSION:
+      return {
+        ...state,
+        regimen_lastInfusion: action.content
       }
     case EFFECT_FATIGUE:
       return {

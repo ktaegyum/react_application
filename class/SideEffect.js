@@ -245,14 +245,7 @@ export default class SideEffect extends Component {
 					</View>
 	    		</ScrollView>
 	    		<View>
-	    			<Button
-	    				onPress = {() => this._showDateTimePicker()}
-	    				title = {this.state.buttonMessage}
-	    				color = "#841584"/>
-				   	<DateTimePicker
-			          isVisible={this.state.isDateTimePickerVisible}
-			          onConfirm={this._handleDatePicked}
-			          onCancel={this._hideDateTimePicker}/>
+	    			<Text>"Last Infusion Date : "</Text>
 	    		</View>
 		        <View>
 		          <Button

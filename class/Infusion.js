@@ -8,6 +8,7 @@ export class Infusion {
 			fatigue.push(-1);
 			anxiety.push(-1);
 		}
+		this.getInfusion = false;
 	}
 	add_fatigue(symptom_date,fatigue) {
 		//Check the date of the fatique
@@ -48,10 +49,10 @@ export class Infusion {
 			anxiety[date_diff] = (anxiety[date_diff] + anxiety) / 2;
 		}
 	}
-	get_numFatigue() {
-		return this.numFatigue;
+	get_infusion_date() {
+		return date;
 	}
-	get_numAnxiety() {
-		return this.numAnxiety;
+	set_infusion() {
+		this 
 	}
 }

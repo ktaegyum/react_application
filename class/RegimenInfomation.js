@@ -14,7 +14,7 @@ import styles from './Style';
 import SignUp from './SignUp';
 import {FETCHING_PEOPLE, FETCHING_PEOPLE_SUCCESS, FETCHING_PEOPLE_FAILURE} from '../constants'
 import {SETTING_ACCOUNT, SETTING_NOTIFICATION, SETTING_EDITREGIMEN, SETTING_ABOUT, SETTING_SUPPORT} from '../constants.js'
-import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE} from '../constants.js'
+import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE, REGIMEN_INFUSIONLIST, REGIMEN_LASTINFUSION} from '../constants.js'
 import store from '../reducers/people.js'
 import {Infusion} from './Infusion.js'
 
@@ -22,8 +22,11 @@ function createInfusion(date, cycle, days) {
     infusionList = [];
     for(i = 0; i < cycle; i++) {
         infusionList.push(new Infusion(date, days));
+        date.setDate(date.getDate() + 7);
     }
     //update redux
+    date.setDate(date.getDate() - 7);
+    redux_connector(REGIMEN_LASTINFUSION, date);
     return infusionList;
 }
 
@@ -113,7 +116,7 @@ export default class RegimenInfomation extends Component {
         }}>
           <Button onPress={() => {
             this.props.navigation.navigate('MainDash')
-            this.props.dispatch(redux_connector(createInfusion(REGIMEN_DATE, REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM)))
+            this.props.dispatch(redux_connector(REGIMEN_INFUSIONLIST, createInfusion(REGIMEN_INFUSIONLIST, REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM)))
           }} title="DONE"/>
         </View>
       </View>
