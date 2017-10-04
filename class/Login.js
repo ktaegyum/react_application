@@ -94,12 +94,12 @@ export default class LogIn extends Component {
         		placeholder =  "password"
         		onChangeText = {(value) => this.setPassword(value)}
             secureTextEntry = {true}/>
+          <View style={{backgroundColor: '#FFFFFF'}}>
+           <Button
+             onPress={this.onPressLogin}
+             title="Submit"/>
+          </View>
         </View>
-	       <View style={{backgroundColor: '#FFFFFF'}}>
-          <Button
-            onPress={this.onPressLogin}
-            title="Submit"/>
-         </View>
       </View>
     );
   }

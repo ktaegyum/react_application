@@ -128,11 +128,16 @@ export default class SignUp extends Component {
             secureTextEntry = {true}/>
           <Text> Additional Information</Text>
           <TextInput
-            style = {{height: 300, padding: 10}}
+            style = {{height: 100, padding: 10}}
             value={information}
             placeholder = "Add additional information"
             onChangeText = {(value) => this.setInformation(value)}
             multiline = {true}/>
+          <View style={{backgroundColor: '#FFFFFF'}}>
+           <Button
+             onPress={this.singupUser}
+             title="DONE"/>
+          </View>
         </View>
 	       <View style={{backgroundColor: '#FFFFFF'}}>
           <Button
