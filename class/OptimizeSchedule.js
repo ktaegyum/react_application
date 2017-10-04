@@ -9,6 +9,7 @@ import {
   Alert,
   ScrollView,
 } from 'react-native';
+import { DatePickerDialog } from 'react-native-datepicker-dialog'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import {styles} from './Style';
 import {ADD_SYMPTOMS, EFFECT_FATIGUE, EFFECT_NAUSEA, EFFECT_FEVER, EFFECT_PAIN, EFFECT_CLICKED_FATIGUE, EFFECT_CLICKED_NAUSEA, EFFECT_CLICKED_FEVER, EFFECT_CLICKED_PAIN} from '../constants.js'
@@ -35,8 +36,16 @@ export default class OptimizeSchedule extends Component {
 	constructor(props, context) {
 		super(props, context)
 		this.state = {
-		}
+      dobDate: null,
+    }
 	}
+
+  onDOBDatePicked = (date) => {
+    this.setState({
+      dobDate: date,
+      dobText: moment(date).format('DD-MMM-YYYY')
+    });
+  }
 	render() {
 	    return (
 		    <View style = {{
@@ -77,10 +86,6 @@ To minimize the side effects on June 29, 2017, you will need to adjust your curr
 You currently have an infusion scheduled for <Text style={{fontWeight: "bold"}}>May 3, 2017</Text>.{"\n"}{"\n"}
 Moving your infusion to <Text style={{fontWeight: "bold"}}>May 2, 2017</Text>.</Text>
             </View>
-
-
-
-
 	    		</ScrollView>
 		        <View style={{backgroundColor:'#888888',
             alignItems:'center',

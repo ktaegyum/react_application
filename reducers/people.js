@@ -253,6 +253,7 @@ const initialState = {
   sideEffect_nausea_isClicked: false,
   sideEffect_fever_isClicked: false,
   sideEffect_pain_isClicked: false,
+  sideEffect_last_infusion: null,
   signUp_email: '',
   signUp_password: '',
   signUp_userInfo: '',
