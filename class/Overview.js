@@ -15,7 +15,6 @@ import {BottomButton} from '../components/BottomButton.js';
 function range(len) {
   return Array.apply(null, {length: len}).map(Number.call, Number)
 }
-
 dayMilliseconds = (num) => 86400000 * num
 
 //@return array of infusion dates in unixtime format

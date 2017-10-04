@@ -1,6 +1,7 @@
 export class Infusion {
+
 	constructor(date, days) {
-		this.date = date;
+		this.date;
 		this.fatigue = [];
 		this.anxiety = [];
 		for(i = 0; i < days; i++) {
