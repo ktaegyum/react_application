@@ -26,7 +26,8 @@ const mapStateToProps = state => ({
   fatigue_isClicked: state.sideEffect_fatigue_isClicked,
   nausea_isClicked: state.sideEffect_nausea_isClicked,
   fever_isClicked: state.sideEffect_fever_isClicked,
-  pain_isClicked: state.sideEffect_pain_isClicked
+  pain_isClicked: state.sideEffect_pain_isClicked,
+  last_infusion: state.sideEffect_last_infusion,
 })
 
 const mapDispatchToProps = (dispatch) => ({})
