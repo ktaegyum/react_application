@@ -6,10 +6,11 @@ import {SETTING_ACCOUNT, SETTING_NOTIFICATION, SETTING_EDITREGIMEN, SETTING_ABOU
 import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE} from './constants.js'
 
 const mapStateToProps = state => ({
+  state: state,
   cycle: state.regimen_infusionCycle,
   num: state.regimen_infusionNum,
   date: state.regimen_date,
-  infusion: regimen_infusion,
+  infusion: state.regimen_infusion,
 })
 
 const mapDispatchToProps = (dispatch) => ({

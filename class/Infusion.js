@@ -1,21 +1,19 @@
-export class Infusion {
-
-	constructor(date, days) {
-		this.date;
-		this.fatigue = [];
-		this.anxiety = [];
-		for(i = 0; i < days; i++) {
-			fatigue.push(-1);
-			anxiety.push(-1);
-		}
-		this.getInfusion = false;
+export function Infusion(date, days) {
+	console.log("infusion");
+	this.date = date;
+	this.fatigue = [];
+	this.anxiety = [];
+	console.log(days);
+	for(i = 0; i < days; i++) {
+		this.fatigue.push(-1);
+		this.anxiety.push(-1);
 	}
-	add_fatigue(symptom_date,fatigue) {
+	this.getInfusion = false;
+	this.addFatigue = function(symptom_date, fatigue) {
 		//Check the date of the fatique
 		//to determin whether tit can be added or averaged(duplicate date exist)
 		//check the differences of date to get correct index of the list
 		var date_diff = symptom_date.getDate() - this.date.getDate();
-
 		if(date_diff >= this.fatigue.length) {
 			//if index is larger than current size of the list, just add 0 between then add new things
 			for(i = 0; i < date_diff - this.fatigue.length; i++) {
@@ -24,13 +22,12 @@ export class Infusion {
 			fatigue.push(fatigue);
 		}else if(fatigu[date_diff] == -1){
 			//if the index exist, take the element and make average
-			fatigue[date_diff] = fatigue
+			fatigue[date_diff] = fatigue;
 		}else {
 			fatigue[date_diff] = (fatigue[date_diff] + fatigue) / 2;
-		}
-
-	}
-	add_anxiety(symptom_date,anxiety) {
+		}	
+	};
+	this.addAnxiety = function(symptom_date, anxiety) {
 		//Check the date of the anxiety
 		//to determin whether tit can be added or averaged(duplicate date exist)
 		//check the differences of date to get correct index of the list
@@ -47,12 +44,15 @@ export class Infusion {
 			anxiety[date_diff] = anxiety
 		}else {
 			anxiety[date_diff] = (anxiety[date_diff] + anxiety) / 2;
-		}
-	}
-	get_infusion_date() {
-		return date;
-	}
-	set_infusion() {
-		this 
-	}
-}
+		}		
+	};
+	this.getInfusionDate = function() {
+		return this.date;
+	};
+	this.setInfusion = function() {
+		this.getInfusion = true;
+	};
+	this.getInfusion = function() {
+		return this.getInfusion;
+	};
+};

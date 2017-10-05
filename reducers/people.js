@@ -259,7 +259,7 @@ const initialState = {
   signUp_email: '',
   signUp_password: '',
   signUp_userInfo: '',
-<<<<<<< HEAD
+  
   symptom_observations: [
     {
       "entry_datetime": Date.now() - millisecondsInADay*30,
@@ -471,7 +471,7 @@ const initialState = {
       "anxiety": 2,
       "lack_of_appetite": 0
     }
-  ]
+  ],
   symptom_observations: []
 
 }

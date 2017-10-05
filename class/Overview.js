@@ -47,6 +47,8 @@ numberOfCompletedInfusions = (start,num,cycleLength) => {
 }
 
 unixTimeToStringDate = (unixTime) => {
+  console.log("in date")
+  console.log(unixTime);
   dateObject = new Date(unixTime)
   return dateObject.toLocaleDateString()
 }
@@ -107,7 +109,7 @@ export default class Overview extends Component {
               </View>
             </View>
             <Text style={{fontSize:12, fontFamily:'Avenir'}}>Completed {progressNumerator}/{progressDenominator} infusions.</Text>
-            <Text style={{fontSize:12, fontFamily:'Avenir'}}>Regimen from {unixTimeToStringDate(this.props.state.regimen_date)} until </Text>
+            <Text style={{fontSize:12, fontFamily:'Avenir'}}>Regimen from {unixTimeToStringDate(this.props.state.regimen_date)} until {unixTimeToStringDate(this.props.state.regimen_lastInfusion)} </Text>
         </View>
 
         <View style={{margin:10, padding:20, backgroundColor:'white'}}>
