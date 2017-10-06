@@ -12,20 +12,14 @@ import {
   EFFECT_FEVER,
   EFFECT_PAIN,
   EFFECT_CLICKED_FATIGUE,
-  EFFECT_CLICKED_NAUSEA,
-  EFFECT_CLICKED_FEVER,
   EFFECT_CLICKED_PAIN
 } from './constants.js'
 
 const mapStateToProps = state => ({
   fatigue: state.sideEffect_fatigue,
-  nausea: state.sideEffect_nausea,
-  fever: state.sideEffect_fever,
-  pain: state.sideEffect_pain,
+  anxiety: state.sideEffect_anxiety,
   fatigue_isClicked: state.sideEffect_fatigue_isClicked,
-  nausea_isClicked: state.sideEffect_nausea_isClicked,
-  fever_isClicked: state.sideEffect_fever_isClicked,
-  pain_isClicked: state.sideEffect_pain_isClicked,
+  anxiety_isClicked: state.sideEffect_anxiety_isClicked,
   last_infusion: state.sideEffect_last_infusion,
 })
 

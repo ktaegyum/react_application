@@ -13,7 +13,7 @@ import {
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import {styles} from './Style';
-import {ADD_SYMPTOMS, EFFECT_FATIGUE, EFFECT_NAUSEA, EFFECT_FEVER, EFFECT_PAIN, EFFECT_CLICKED_FATIGUE, EFFECT_CLICKED_NAUSEA, EFFECT_CLICKED_FEVER, EFFECT_CLICKED_PAIN} from '../constants.js'
+import {ADD_SYMPTOMS, EFFECT_FATIGUE, EFFECT_ANXIETY, EFFECT_CLICKED_FATIGUE, EFFECT_CLICKED_ANXIETY} from '../constants.js'
 import store from '../reducers/people.js'
 var radio_props = [
   {label: '0', value: 0 },
@@ -22,6 +22,10 @@ var radio_props = [
   {label: '3', value: 3 },
   {label: '4', value: 4 },
 ];
+function addSymptom(date, fatigue, anxiety) {
+	//TODO: calculate date differences
+	//
+}
 function redux_connector(command,data){
   return {
     type: command,
@@ -39,15 +43,9 @@ function redux_dispatcher(type, value) {
 	if(type == 'fatigue') {
 		store.dispatch(redux_connector(EFFECT_FATIGUE,value));
 		store.dispatch(redux_connector(EFFECT_CLICKED_FATIGUE,value));
-	}else if(type == 'nausea') {
-		store.dispatch(redux_connector(EFFECT_NAUSEA,value));
-		store.dispatch(redux_connector(EFFECT_CLICKED_NAUSEA,value));
-	}else if(type == 'fever') {
-		store.dispatch(redux_connector(EFFECT_FEVER,value));
-		store.dispatch(redux_connector(EFFECT_CLICKED_FEVER,value));
-	}else if(type == 'pain') {
+	}else if(type == 'anxiety') {
 		store.dispatch(redux_connector(EFFECT_PAIN,value));
-		store.dispatch(redux_connector(EFFECT_CLICKED_PAIN,value));
+		store.dispatch(redux_connector(EFFECT_CLICKED_ANXIETY,value));
 	}
 }
 function Symptom_Constructor(fatigue, nausea, fever, pain) {
@@ -64,9 +62,7 @@ function addSymptoms(fatigue, nausea, fever, pain) {
 	store.dispatch(redux_connector(ADD_SYMPTOMS,Symptom_Constructor(fatigue, nausea, fever, pain)));
   //reset vals
 	store.dispatch(redux_connector(EFFECT_CLICKED_FATIGUE,1));
-	store.dispatch(redux_connector(EFFECT_CLICKED_NAUSEA,0));
-	store.dispatch(redux_connector(EFFECT_CLICKED_FEVER,0));
-	store.dispatch(redux_connector(EFFECT_CLICKED_PAIN,0));
+	store.dispatch(redux_connector(EFFECT_CLICKED_ANXIETY,0));
 }
 function date_convertor(unix_timestamp) {
   var t = new Date(unix_timestamp);
@@ -82,18 +78,6 @@ var fatigue1 = "Fatigue relieved by rest"
 var fatigue2 = "Fatigue not relieved by rest; limiting instrucmental ADL"
 var fatigue3 = "Fatigue not relieved by rest, limiting self casr ADL"
 var fatigue4 = ""
-
-var nausea0 = "No nausea"
-var nausea1 = "Loss of appetite without alteration in eating habits"
-var nausea2 = "Oral intake decreased without significant weight loss, dehydration or malnutrition"
-var nausea3 = "Inadequate oral caloric or fluid intake; tube feeding"
-var nausea4 = ""
-
-var fever0 = "No fever"
-var fever1 = "38.0 - 39.0 degrees C (100.4 - 102.2 degrees F)"
-var fever2 = ">39.0 - 40.0 degrees C (102.3 - 104.0 degrees F)"
-var fever3 = ">39.0 - 40.0 degrees C (102.3 - 104.0 degrees F)"
-var fever4 = ">40.0 degrees C (>104.0 degrees F) for <=24 hrs"
 
 var pain0 = "No pain"
 var pain1 = "Mild pain"
@@ -166,56 +150,6 @@ export default class SideEffect extends Component {
 							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fatigue4}</Text></View>
 						</View>
 						)}
-	    				<Text style={styles.cardHeader}>NAUSEA</Text>
-	 					<RadioForm
-	          				radio_props = {radio_props}
-	          				initial = {0}
-	          				style = {{flex: 1,
-						        flexDirection: 'row',
-						        justifyContent: 'space-between',
-						        alignItems: 'center'
-						    	}}
-	          				// labelStyle = {{color: '#000000'}}
-	          				onPress = {(value)=> redux_dispatcher('nausea', value)}
-							formHorizontal={true}
-							labelHorizontal={false}
-							// buttonColor={'#2196f3'}
-							isSelected = {true}
-						buttonWrapStyle={{marginLeft: 50}}/>
-						{renderIf(this.props.nausea_isClicked,
-						<View style={{flex: 1, flexDirection: 'row'}}>
-							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{nausea0}</Text></View>
-							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{nausea1}</Text></View>
-							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{nausea2}</Text></View>
-							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{nausea3}</Text></View>
-							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{nausea4}</Text></View>
-						</View>
-						)}
-	    				<Text style={styles.cardHeader}>APPETITE</Text>
-	 					<RadioForm
-	          				radio_props = {radio_props}
-	          				initial = {0}
-	          				style = {{flex: 1,
-						        flexDirection: 'row',
-						        justifyContent: 'space-between',
-						        alignItems: 'center'
-						    	}}
-	          				// labelStyle = {{color: '#000000'}}
-	          				onPress = {(value)=> redux_dispatcher('fever', value)}
-							formHorizontal={true}
-							labelHorizontal={false}
-							// buttonColor={'#2196f3'}
-							isSelected = {true}
-							buttonWrapStyle={{marginLeft: 50}}/>
-						{renderIf(this.props.fever_isClicked,
-						<View style={{flex: 1, flexDirection: 'row'}}>
-							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fever0}</Text></View>
-							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fever1}</Text></View>
-							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fever2}</Text></View>
-							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fever3}</Text></View>
-							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{fever4}</Text></View>
-						</View>
-						)}
 
 						<Text style={styles.cardHeader}>PAIN</Text>
 	 					<RadioForm
@@ -227,13 +161,13 @@ export default class SideEffect extends Component {
 						        alignItems: 'center'
 						    	}}
 	          				labelStyle = {{color: '#000000'}}
-	          				onPress = {(value)=> redux_dispatcher('pain', value)}
+	          				onPress = {(value)=> redux_dispatcher('anxiety', value)}
 							formHorizontal={true}
 							labelHorizontal={false}
 							buttonColor={'#2196f3'}
 							isSelected = {true}
 							buttonWrapStyle={{marginLeft: 50}}/>
-						{renderIf(this.props.pain_isClicked,
+						{renderIf(this.props.anxiety_isClicked,
 						<View style={{flex: 1, flexDirection: 'row'}}>
 							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{pain0}</Text></View>
 							<View style={styles.symptomDescription}><Text style={styles.symptomDescriptionText}>{pain1}</Text></View>
@@ -250,7 +184,7 @@ export default class SideEffect extends Component {
 		        <View>
 		          <Button
 		              onPress={() => {
-                    addSymptoms(this.props.fatigue, this.props.nausea, this.props.fever, this.props.pain);
+                    addSymptoms(this.props.fatigue, this.props.anxiety);
                     this.props.navigation.navigate('MainDash')}
                   }
 		              title="SUBMIT"

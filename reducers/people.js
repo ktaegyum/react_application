@@ -4,13 +4,9 @@ import {SYMPTOM_OBSERVATION} from '../constants.js'
 import {
   ADD_SYMPTOMS,
   EFFECT_FATIGUE,
-  EFFECT_NAUSEA,
-  EFFECT_FEVER,
-  EFFECT_PAIN,
+  EFFECT_ANXIETY,
   EFFECT_CLICKED_FATIGUE,
-  EFFECT_CLICKED_NAUSEA,
-  EFFECT_CLICKED_FEVER,
-  EFFECT_CLICKED_PAIN
+  EFFECT_CLICKED_ANXIETY
 } from '../constants.js'
 import {SIGNUP_EMAIL, SIGNUP_PASSWORD, SIGNUP_USERINFO} from '../constants.js'
 import {Infusion} from '../class/Infusion.js'
@@ -248,13 +244,9 @@ const initialState = {
   setting_support: false,
   symptom_observations_fake: true,
   sideEffect_fatigue: 0,
-  sideEffect_nausea: 0,
-  sideEffect_fever: 0,
-  sideEffect_pain: 0,
+  sideEffect_anxiety: 0,
   sideEffect_fatigue_isClicked: true,
-  sideEffect_nausea_isClicked: false,
-  sideEffect_fever_isClicked: false,
-  sideEffect_pain_isClicked: false,
+  sideEffect_anxiety_isClicked: false,
   sideEffect_last_infusion: null,
   signUp_email: '',
   signUp_password: '',
@@ -553,61 +545,29 @@ export const peopleReducer = (state = initialState, action) => {
         ...state,
         sideEffect_fatigue: action.content
       }
-    case EFFECT_NAUSEA:
+    case EFFECT_ANXIETY:
       return {
         ...state,
-        sideEffect_nausea: action.content
-      }
-    case EFFECT_FEVER:
-      return {
-        ...state,
-        sideEffect_fever: action.content
-      }
-    case EFFECT_PAIN:
-      return {
-        ...state,
-        sideEffect_pain: action.content
+        sideEffect_anxiety: action.content
       }
     case EFFECT_CLICKED_FATIGUE:
       return {
         ...state,
         sideEffect_fatigue_isClicked: true,
-        sideEffect_nausea_isClicked: false,
-        sideEffect_fever_isClicked: false,
-        sideEffect_pain_isClicked: false
+        sideEffect_anxiety_isClicked: false
       }
-    case EFFECT_CLICKED_NAUSEA:
+    case EFFECT_CLICKED_ANXIETY:
       return {
         ...state,
         sideEffect_fatigue_isClicked: false,
-        sideEffect_nausea_isClicked: true,
-        sideEffect_fever_isClicked: false,
-        sideEffect_pain_isClicked: false
-      }
-    case EFFECT_CLICKED_FEVER:
-      return {
-        ...state,
-        sideEffect_fatigue_isClicked: false,
-        sideEffect_nausea_isClicked: false,
-        sideEffect_fever_isClicked: true,
-        sideEffect_pain_isClicked: false
-      }
-    case EFFECT_CLICKED_PAIN:
-      return {
-        ...state,
-        sideEffect_fatigue_isClicked: false,
-        sideEffect_nausea_isClicked: false,
-        sideEffect_fever_isClicked: false,
-        sideEffect_pain_isClicked: true
+        sideEffect_anxiety_isClicked: true
       }
     case ADD_SYMPTOMS:
 
         newItem = {
           "entry_datetime": action.content.date,
-          "nausea": action.content.fatigue,
-          "fatigue": action.content.nausea,
-          "anxiety": action.content.fever,
-          "lack_of_appetite": action.content.pain,
+          "fatigue": action.content.fatigue,
+          "anxiety": action.content.anxiety,
         }
         console.log("new Symptom")
         console.log(newItem)
