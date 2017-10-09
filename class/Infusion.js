@@ -1,12 +1,10 @@
 export function Infusion(date, days) {
-	console.log("infusion");
-	this.date = date;
+	this.date = new Date(date);
 	this.fatigue = [];
 	this.anxiety = [];
-	console.log(days);
 	for(i = 0; i < days; i++) {
-		this.fatigue.push(-1);
-		this.anxiety.push(-1);
+		this.fatigue.push(i+1);
+		this.anxiety.push(i+1);
 	}
 	this.getInfusion = false;
 	this.addFatigue = function(symptom_date, fatigue) {
@@ -54,5 +52,11 @@ export function Infusion(date, days) {
 	};
 	this.getInfusion = function() {
 		return this.getInfusion;
+	};
+	this.getFatigue = function(index) {
+		return this.fatigue[index];
+	};
+	this.getAnxiety = function(index) {
+		return this.anxiety[index];
 	};
 };

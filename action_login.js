@@ -19,6 +19,7 @@ import {
 } from './constants.js'
 
 const mapStateToProps = state => ({
+  state: state,
   email: state.signUp_email,
   password: state.signUp_password,
   userInfo: state.signUp_userInfo,

@@ -16,7 +16,55 @@ import styles from './Style';
 import RegimenInfomation from './RegimenInfomation'
 import store from '../reducers/people.js'
 import {SIGNUP_EMAIL, SIGNUP_PASSWORD, SIGNUP_USERINFO} from '../constants.js'
+import { OVERVIEW_AVERAGEFATIGUE, OVERVIEW_AVERAGEANXIETY} from '../constants.js'
+function getAverage(infusionList) {
+  //update date format in 
+  if(infusionList.length == 0) {
+    console.log("NOTHING");
+    return;
+  }
+  console.log("in get average");
+  console.log(infusionList.length);
+  for(i = 0; i < infusionList.length; i++) {
+    infusionList[i].date = new Date(infusionList[i].date);
+  }
+  var currentDate = new Date(Date.now());
+  var previnfo = infusionList[0];
+  var lastIndex = 0;
+  for(i = 1; i < infusionList.length; i++) {
+    if(infusionList[i].date.getTime() > currentDate.getTime()) {
+      break;
+    }else{
+      previnfo = infusionList[i];
+      lastIndex = i;
+    }
+  }
 
+  var diff = currentDate.getDate() - previnfo.date.getDate();
+  var variable = 0;
+  var fatigueSum = 0;
+  var anxietySum = 0;
+  for(i = 0; i < lastIndex; i++) {
+    if(infusionList[i].fatigue[diff-1] != -1) {
+      fatigueSum += infusionList[i].fatigue[diff-1];
+      anxietySum += infusionList[i].anxiety[diff-1];
+      variable++;
+    }
+  }
+  var averageFatigue = fatigueSum / variable;
+  var averageAnxiety = anxietySum / variable;
+  console.log("hey")
+  console.log(averageFatigue);
+  console.log(variable)
+  if(variable == 0) {
+
+    store.dispatch(redux_connector(OVERVIEW_AVERAGEFATIGUE,fatigueSum))
+    store.dispatch(redux_connector(OVERVIEW_AVERAGEANXIETY,anxietySum))
+  }else{
+    store.dispatch(redux_connector(OVERVIEW_AVERAGEFATIGUE,averageFatigue))
+    store.dispatch(redux_connector(OVERVIEW_AVERAGEANXIETY,averageAnxiety))
+  }
+}
 function redux_connector(command,data){
   return {
     type: command,
@@ -52,12 +100,13 @@ export default class LogIn extends Component {
           alert("Please verify your email");
           return;
         }
-        this.props.navigation.navigate('Overview')
 
     } catch (error) {
         console.log(error.toString())
         alert(error.toString());
     }
+        getAverage(this.props.state.regimen_infusion);
+        this.props.navigation.navigate('Overview');
   }
   setEmail = (user_email) => {
   	this.setState ({

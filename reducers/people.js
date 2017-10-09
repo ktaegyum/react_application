@@ -8,6 +8,7 @@ import {
   EFFECT_CLICKED_FATIGUE,
   EFFECT_CLICKED_ANXIETY
 } from '../constants.js'
+import { OVERVIEW_AVERAGEFATIGUE, OVERVIEW_AVERAGEANXIETY} from '../constants.js'
 import {SIGNUP_EMAIL, SIGNUP_PASSWORD, SIGNUP_USERINFO} from '../constants.js'
 import {Infusion} from '../class/Infusion.js'
 import logger from 'redux-logger'
@@ -251,7 +252,6 @@ const initialState = {
   signUp_email: '',
   signUp_password: '',
   signUp_userInfo: '',
-  
   symptom_observations: [
     {
       "entry_datetime": Date.now() - millisecondsInADay*30,
@@ -464,7 +464,9 @@ const initialState = {
       "lack_of_appetite": 0
     }
   ],
-  symptom_observations: []
+  symptom_observations: [],
+  average_fatigue: 0,
+  average_anxiety: 0,
 
 }
 export const peopleReducer = (state = initialState, action) => {
@@ -586,6 +588,17 @@ export const peopleReducer = (state = initialState, action) => {
       return {
         ...state,
         signUp_userInfo: action.content,
+      }
+    case OVERVIEW_AVERAGEFATIGUE:
+      return {
+        ...state,
+        average_fatigue: action.content,
+
+      }
+    case OVERVIEW_AVERAGEANXIETY:
+      return {
+        ...state,
+        average_anxiety: action.content,
       }
     default:
       return state

@@ -14,6 +14,7 @@ import {styles} from './Style';
 import SignUp from './SignUp';
 import {SETTING_ACCOUNT, SETTING_NOTIFICATION, SETTING_EDITREGIMEN, SETTING_ABOUT, SETTING_SUPPORT} from '../constants.js'
 import {REGIMEN_INFUSIONCYCLE, REGIMEN_INFUSIONNUM, REGIMEN_DATE, REGIMEN_INFUSIONLIST, REGIMEN_LASTINFUSION} from '../constants.js'
+import { OVERVIEW_AVERAGEFATIGUE, OVERVIEW_AVERAGEANXIETY} from '../constants.js'
 import store from '../reducers/people.js'
 import { Infusion } from './Infusion.js'
 var lastInfusiondate;
@@ -29,7 +30,51 @@ function createInfusion(date, cycle, days) {
     lastInfusiondate = temp;
     return infusionList;
 }
+function getAverage(infusionList) {
+  //update date format in 
+  if(infusionList.length == 0) {
+    console.log("NOTHING");
+    return;
+  }
+  console.log("in get average");
+  console.log(infusionList.length);
+  for(i = 0; i < infusionList.length; i++) {
+    infusionList[i].date = new Date(infusionList[i].date);
+  }
+  var currentDate = new Date(Date.now());
+  var previnfo = infusionList[0];
+  var lastIndex = 0;
+  for(i = 1; i < infusionList.length; i++) {
+    if(infusionList[i].date.getTime() > currentDate.getTime()) {
+      break;
+    }else{
+      previnfo = infusionList[i];
+      lastIndex = i;
+    }
+  }
 
+  var diff = currentDate.getDate() - previnfo.date.getDate();
+  var variable = 0;
+  var fatigueSum = 0;
+  var anxietySum = 0;
+  for(i = 0; i < lastIndex; i++) {
+    console.log(infusionList[i].fatigue[diff-1]);
+    if(infusionList[i].fatigue[diff-1] != -1) {
+      fatigueSum += infusionList[i].fatigue[diff-1];
+      anxietySum += infusionList[i].anxiety[diff-1];
+      variable++;
+    }
+  }
+  var averageFatigue = fatigueSum / variable;
+  var averageAnxiety = anxietySum / variable;
+  if(variable == 0) {
+    store.dispatch(redux_connector(OVERVIEW_AVERAGEFATIGUE,fatigueSum))
+    store.dispatch(redux_connector(OVERVIEW_AVERAGEANXIETY,anxietySum))
+  }else{
+    store.dispatch(redux_connector(OVERVIEW_AVERAGEFATIGUE,averageFatigue))
+    store.dispatch(redux_connector(OVERVIEW_AVERAGEANXIETY,averageAnxiety))
+  }
+}
 function redux_connector(command, data) {
   return {type: command, content: data}
 }
@@ -137,9 +182,11 @@ export default class RegimenInfomation extends Component {
           backgroundColor: '#FFFFFF'
         }}>
           <Button onPress={() => {
-            this.props.navigation.navigate('MainDash')
             this.props.dispatch(redux_connector(REGIMEN_INFUSIONLIST, createInfusion(this.props.date, this.props.cycle, this.props.num)))
             this.props.dispatch(redux_connector(REGIMEN_LASTINFUSION, lastInfusiondate))
+            this.props.navigation.navigate('MainDash')
+            {getAverage(this.props.state.regimen_infusion)}
+
           }} title="DONE"/>
         </View>
       </View>

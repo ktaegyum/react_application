@@ -12,6 +12,8 @@ import {
 import PropTypes from 'prop-types'; // ES6
 import {BottomButton} from '../components/BottomButton.js';
 import {styles} from './Style';
+import {Infusion} from './Infusion.js';
+
 function range(len) {
   return Array.apply(null, {length: len}).map(Number.call, Number)
 }
@@ -54,9 +56,10 @@ unixTimeToStringDate = (unixTime) => {
 }
 
 
-
 export default class Overview extends Component {
+
   render() {
+
     completedInfusions = numberOfCompletedInfusions(
                             this.props.state.regimen_date,
                             this.props.state.regimen_infusionNum,
@@ -79,14 +82,10 @@ export default class Overview extends Component {
         flexDirection: 'column',
         justifyContent: 'space-between'
       }}>
-
         <View>
           <View style={{margin:10, padding:20, backgroundColor:'white'}}>
           <Text style={styles.cardHeader}>NEXT INFUSION DATE: <Text style={{fontWeight: "bold"}}> {upcomingInfusionDate.toLocaleDateString()}</Text></Text>
         </View>
-
-
-
           <View style={styles.whiteCard}>
             <Text style={styles.cardHeader}>PROGRESS</Text>
             <View style={{
@@ -105,17 +104,15 @@ export default class Overview extends Component {
                 height: 12,
                 backgroundColor: 'lightgrey'
               }}>
-
               </View>
             </View>
             <Text style={{fontSize:12, fontFamily:'Avenir'}}>Completed {progressNumerator}/{progressDenominator} infusions.</Text>
             <Text style={{fontSize:12, fontFamily:'Avenir'}}>Regimen from {unixTimeToStringDate(this.props.state.regimen_date)} until {unixTimeToStringDate(this.props.state.regimen_lastInfusion)} </Text>
         </View>
-
         <View style={{margin:10, padding:20, backgroundColor:'white'}}>
           <Text style={styles.cardHeader}>TODAY'S FORECAST</Text>
-          <Text style={{fontSize:12, fontFamily:'Avenir'}}>Anxiety: <Text style={{fontWeight: "bold"}}>2</Text></Text>
-          <Text style={{fontSize:12, fontFamily:'Avenir'}}>Fatigue: <Text style={{fontWeight: "bold"}}>3</Text></Text>
+          <Text style={{fontSize:12, fontFamily:'Avenir'}}>Anxiety: <Text style={{fontWeight: "bold"}}>{this.props.state.average_fatigue}</Text></Text>
+          <Text style={{fontSize:12, fontFamily:'Avenir'}}>Fatigue: <Text style={{fontWeight: "bold"}}>{this.props.state.average_anxiety}</Text></Text>
           <Text style={{fontSize:12, fontFamily:'Avenir'}}>Lack of Appetite: <Text style={{fontWeight: "bold"}}>0</Text></Text>
         </View>
 
